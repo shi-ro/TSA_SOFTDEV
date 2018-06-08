@@ -9,7 +9,7 @@ namespace Core.External
     // DOCS FOR API WE ARE USING : https://products.wolframalpha.com/short-answers-api/documentation/
     //read the links provided above if you want to understand what this code does.
 
-    class Wolfram
+    public static class Wolfram
     {
         private const string URL = "http://api.wolframalpha.com/v1/result";
         private const string KEY = "3A3XVA-U94H7LH2JK";
