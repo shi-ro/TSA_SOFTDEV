@@ -16,5 +16,10 @@ namespace TSA_SOFTDEV
         {
             InitializeComponent();
         }
+
+        private void StudentLeaderboardScreen_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

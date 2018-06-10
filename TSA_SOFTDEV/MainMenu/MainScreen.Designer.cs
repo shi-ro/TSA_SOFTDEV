@@ -1,6 +1,6 @@
 ﻿namespace MainMenu
 {
-    partial class Form1
+    partial class MainScreen
     {
         /// <summary>
         /// Required designer variable.
@@ -38,6 +38,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Comic Sans MS", 44F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label1.Location = new System.Drawing.Point(413, 69);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(898, 205);
@@ -57,6 +58,7 @@
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button1.FlatAppearance.BorderSize = 5;
             this.button1.Font = new System.Drawing.Font("Comic Sans MS", 13F);
@@ -65,29 +67,34 @@
             this.button1.Size = new System.Drawing.Size(368, 161);
             this.button1.TabIndex = 2;
             this.button1.Text = "Teacher Login";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button2.FlatAppearance.BorderSize = 5;
             this.button2.Font = new System.Drawing.Font("Comic Sans MS", 13F);
             this.button2.Location = new System.Drawing.Point(662, 675);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(368, 161);
             this.button2.TabIndex = 3;
             this.button2.Text = "Student Login";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             // 
-            // Form1
+            // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(1803, 1107);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Form1";
+            this.Name = "MainScreen";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
