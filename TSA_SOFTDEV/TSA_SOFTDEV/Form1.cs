@@ -25,7 +25,7 @@ namespace TSA_SOFTDEV
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            Console.WriteLine(Core.Server.Integration.ExecuteCommand("select count(*) from products"));
         }
     }
 }
