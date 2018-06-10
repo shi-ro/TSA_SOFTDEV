@@ -25,7 +25,20 @@ namespace TSA_SOFTDEV
 
         private void button1_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             Console.WriteLine(Core.Server.Integration.ExecuteCommand("select count(*) from products"));
+=======
+            SqlConnection conn = new SqlConnection("Server=tcp:softdevserver.database.windows.net,1433;Initial Catalog=SoftDevDB;Persist Security Info=False;User ID=serveradmin;Password=SoftDev!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            SqlCommand cmdNew = new SqlCommand("select count(*) from products", conn);
+            cmdNew.CommandType = CommandType.Text;
+
+            conn.Open();
+
+            var result = cmdNew.ExecuteScalar();
+            conn.Close();
+
+
+>>>>>>> 0a8989f57cf12f5acc97cadf6b04ed82263b723b
         }
     }
 }
