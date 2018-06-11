@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Teacher_form;
+
 
 namespace MainMenu
 {
@@ -30,8 +30,8 @@ namespace MainMenu
 
         private void button1_Click(object sender, EventArgs e)
         {
-            TeacherLogin form = new TeacherLogin(); 
-            form.show();
+            /*TeacherLogin form = new TeacherLogin(); 
+            form.show();*/
         }
     }
 }
