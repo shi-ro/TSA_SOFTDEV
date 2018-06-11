@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Teacher_form
 {
-    public partial class Form1 : Form
+    public partial class TeacherLogin : Form
     {
-        public Form1()
+        public TeacherLogin()
         {
             InitializeComponent();
         }

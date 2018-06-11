@@ -45,23 +45,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="TeacherClasses.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TeacherClasses.Designer.cs">
       <DependentUpon>TeacherClasses.cs</DependentUpon>
     </Compile>
+    <Compile Include="TeacherForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TeacherForm.Designer.cs">
+      <DependentUpon>TeacherForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="TeacherLeaderboardsPage.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TeacherLeaderboardsPage.Designer.cs">
       <DependentUpon>TeacherLeaderboardsPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TeacherLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TeacherLogin.Designer.cs">
+      <DependentUpon>TeacherLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="TeacherMainScreen.cs">
       <SubType>Form</SubType>
@@ -80,8 +86,14 @@
     <EmbeddedResource Include="TeacherClasses.resx">
       <DependentUpon>TeacherClasses.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TeacherForm.resx">
+      <DependentUpon>TeacherForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TeacherLeaderboardsPage.resx">
       <DependentUpon>TeacherLeaderboardsPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TeacherLogin.resx">
+      <DependentUpon>TeacherLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TeacherMainScreen.resx">
       <DependentUpon>TeacherMainScreen.cs</DependentUpon>
