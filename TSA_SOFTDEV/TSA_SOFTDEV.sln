@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2005
+VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Student form", "TSA_SOFTDEV\Student form.csproj", "{B9574397-C0CA-4116-8A8A-4A6D01966BD9}"
-EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Core", "Core\Core.shproj", "{A7E4945C-7961-4A76-A626-643026FF0FF6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7F70C964-3989-4287-9E29-50FEF4BBFF71}"
@@ -14,7 +12,6 @@ EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Core\Core.projitems*{a7e4945c-7961-4a76-a626-643026ff0ff6}*SharedItemsImports = 13
-		Core\Core.projitems*{b9574397-c0ca-4116-8a8a-4a6d01966bd9}*SharedItemsImports = 4
 		Core\Core.projitems*{f7843e0e-cdf3-4eb6-89c7-2a3049776cdb}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,10 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B9574397-C0CA-4116-8A8A-4A6D01966BD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B9574397-C0CA-4116-8A8A-4A6D01966BD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B9574397-C0CA-4116-8A8A-4A6D01966BD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B9574397-C0CA-4116-8A8A-4A6D01966BD9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F7843E0E-CDF3-4EB6-89C7-2A3049776CDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F7843E0E-CDF3-4EB6-89C7-2A3049776CDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7843E0E-CDF3-4EB6-89C7-2A3049776CDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
