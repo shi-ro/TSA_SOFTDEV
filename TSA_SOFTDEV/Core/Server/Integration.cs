@@ -14,7 +14,7 @@ namespace Core.Server
             SqlCommand cmdNew = new SqlCommand(command, _connection);
             cmdNew.CommandType = CommandType.Text;
             _connection.Open();
-            var result = cmdNew.ExecuteScalar();
+            var result = cmdNew.ExecuteNonQuery();
             _connection.Close();
             return result;
         }
