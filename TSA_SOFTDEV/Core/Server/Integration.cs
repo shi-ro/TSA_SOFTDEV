@@ -50,6 +50,10 @@ namespace Core.Server
             SqlCommand cmdNew = new SqlCommand("SELECT Users.Password, Users.Points, Users.Classrooms, Users.Ranks, Users.TeamId FROM Users where Users.Name = " + name, _connection);
             cmdNew.CommandType = CommandType.Text;
             User userToReturn = null;
+<<<<<<< HEAD
+
+            try
+=======
             _connection.Open();
             SqlDataReader reader = cmdNew.ExecuteReader();
 
@@ -57,12 +61,28 @@ namespace Core.Server
             // SqlDataReader reader = ExecuteRead($"SELECT Users.Password, Users.Points, Users.Classrooms, Users.Ranks, Users.TeamId FROM Users where Users.Name = {name}");
 
             while (reader.Read())
+>>>>>>> 733553d2c7be94fa412f48d076b75f00df8cafaa
             {
-                userToReturn = new User(name, (String)reader[0], (int)reader[1], (String)reader[2], (String)reader[3], (int)reader[4]);
+                _connection.Open();
+                SqlDataReader reader = cmdNew.ExecuteReader();
+                while (reader.Read())
+                {
+                    Console.WriteLine("well dude the reader has some reading to do");
+                    userToReturn = new User(name, (String)reader[0], (int)reader[1], (String)reader[2], (String)reader[3], (int)reader[4]);
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
 
+<<<<<<< HEAD
+            
+=======
             //line below probably needs to be _connection.Close() instead of reader.Close()
             reader.Close();
+>>>>>>> 733553d2c7be94fa412f48d076b75f00df8cafaa
             return userToReturn; 
         }
     }
