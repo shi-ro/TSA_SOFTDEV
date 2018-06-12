@@ -50,18 +50,13 @@ namespace Core.Server
             SqlCommand cmdNew = new SqlCommand("SELECT Users.Password, Users.Points, Users.Classrooms, Users.Ranks, Users.TeamId FROM Users where Users.Name = " + name, _connection);
             cmdNew.CommandType = CommandType.Text;
             User userToReturn = null;
-<<<<<<< HEAD
 
-            try
-=======
-            _connection.Open();
-            SqlDataReader reader = cmdNew.ExecuteReader();
 
             // above code can be replaced with 
             // SqlDataReader reader = ExecuteRead($"SELECT Users.Password, Users.Points, Users.Classrooms, Users.Ranks, Users.TeamId FROM Users where Users.Name = {name}");
 
-            while (reader.Read())
->>>>>>> 733553d2c7be94fa412f48d076b75f00df8cafaa
+
+            try
             {
                 _connection.Open();
                 SqlDataReader reader = cmdNew.ExecuteReader();
@@ -76,13 +71,6 @@ namespace Core.Server
             {
                 Console.WriteLine(ex.Message);
             }
-
-<<<<<<< HEAD
-            
-=======
-            //line below probably needs to be _connection.Close() instead of reader.Close()
-            reader.Close();
->>>>>>> 733553d2c7be94fa412f48d076b75f00df8cafaa
             return userToReturn; 
         }
     }
