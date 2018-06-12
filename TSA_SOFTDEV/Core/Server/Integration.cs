@@ -26,20 +26,27 @@ namespace Core.Server
         public static User executeGetUser(string name) //using a name, get a user
         {
             SqlCommand cmdNew = new SqlCommand("SELECT Users.Password, Users.Points, Users.Classrooms, Users.Ranks, Users.TeamId FROM Users where Users.Name = " + name, _connection);
-
             cmdNew.CommandType = CommandType.Text;
 
             User userToReturn = null;
 
-            _connection.Open();
-            SqlDataReader reader = cmdNew.ExecuteReader();
-            while(reader.Read())
+            try
             {
-                userToReturn = new User(name, (String)reader[0], (int)reader[1], (String)reader[2], (String)reader[3], (int)reader[4]);
+                _connection.Open();
+                SqlDataReader reader = cmdNew.ExecuteReader();
+                while (reader.Read())
+                {
+                    Console.WriteLine("well dude the reader has some reading to do");
+                    userToReturn = new User(name, (String)reader[0], (int)reader[1], (String)reader[2], (String)reader[3], (int)reader[4]);
+                }
+                reader.Close();
             }
-            reader.Close();
-            
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
+            
             return userToReturn; 
         }
 
