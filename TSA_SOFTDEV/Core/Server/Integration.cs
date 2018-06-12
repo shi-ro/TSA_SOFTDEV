@@ -11,26 +11,57 @@ namespace Core.Server
     {
         private static SqlConnection _connection = new SqlConnection("Server=tcp:softdevserver.database.windows.net,1433;Initial Catalog=SoftDevDB;Persist Security Info=False;User ID=serveradmin;Password=SoftDev!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
 
-        public static void executeAddUser(User bob)
+        public static object ExecuteQuery(string command)
         {
+            SqlCommand cmdNew = new SqlCommand(command, _connection);
+            cmdNew.CommandType = CommandType.Text;
+            _connection.Open();
+            var result = cmdNew.ExecuteNonQuery();
+            _connection.Close();
+            return result;
+        }
+
+        public static SqlDataReader ExecuteRead(string command)
+        {
+            SqlCommand cmdNew = new SqlCommand(command, _connection);
+            cmdNew.CommandType = CommandType.Text;
+            _connection.Open();
+            SqlDataReader reader = cmdNew.ExecuteReader();
+            _connection.Close();
+            return reader;
+        }
+
+        public static void ExecuteAddUser(User bob)
+        {
+
+            // ExecuteQuery($"INSERT INTO[dbo].[Users] VALUES('{bob.getName()}', '{bob.getPassword()}', {bob.getPoints()}, '{bob.getClassrooms()}', '{bob.getRanks()}', {bob.getTeamId()})");
+            // everything below can be replaced with above statement
+
             SqlCommand cmdNew = new SqlCommand("INSERT INTO[dbo].[Users] VALUES('" + bob.getName() + "', '" + bob.getPassword() + "', " + bob.getPoints() + ", '" + bob.getClassrooms() + "', '" + bob.getRanks() + "', " + bob.getTeamId() + ")", _connection);
             cmdNew.CommandType = CommandType.Text;
-
             _connection.Open();
-
             cmdNew.ExecuteNonQuery();
-
             _connection.Close();
         }
 
-        public static User executeGetUser(string name) //using a name, get a user
+        public static User ExecuteGetUser(string name) //using a name, get a user
         {
+            
             SqlCommand cmdNew = new SqlCommand("SELECT Users.Password, Users.Points, Users.Classrooms, Users.Ranks, Users.TeamId FROM Users where Users.Name = " + name, _connection);
             cmdNew.CommandType = CommandType.Text;
-
             User userToReturn = null;
+<<<<<<< HEAD
 
             try
+=======
+            _connection.Open();
+            SqlDataReader reader = cmdNew.ExecuteReader();
+
+            // above code can be replaced with 
+            // SqlDataReader reader = ExecuteRead($"SELECT Users.Password, Users.Points, Users.Classrooms, Users.Ranks, Users.TeamId FROM Users where Users.Name = {name}");
+
+            while (reader.Read())
+>>>>>>> 733553d2c7be94fa412f48d076b75f00df8cafaa
             {
                 _connection.Open();
                 SqlDataReader reader = cmdNew.ExecuteReader();
@@ -46,18 +77,13 @@ namespace Core.Server
                 Console.WriteLine(ex.Message);
             }
 
+<<<<<<< HEAD
             
+=======
+            //line below probably needs to be _connection.Close() instead of reader.Close()
+            reader.Close();
+>>>>>>> 733553d2c7be94fa412f48d076b75f00df8cafaa
             return userToReturn; 
-        }
-
-        public static object ExecuteCommand(string command)
-        {
-            SqlCommand cmdNew = new SqlCommand(command, _connection);
-            cmdNew.CommandType = CommandType.Text;
-            _connection.Open();
-            var result = cmdNew.ExecuteNonQuery();
-            _connection.Close();
-            return result;
         }
     }
 }
