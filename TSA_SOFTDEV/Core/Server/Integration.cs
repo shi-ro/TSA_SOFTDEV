@@ -11,6 +11,18 @@ namespace Core.Server
     {
         private static SqlConnection _connection = new SqlConnection("Server=tcp:softdevserver.database.windows.net,1433;Initial Catalog=SoftDevDB;Persist Security Info=False;User ID=serveradmin;Password=SoftDev!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
 
+        public static void executeAddUser(User bob)
+        {
+            SqlCommand cmdNew = new SqlCommand("INSERT INTO[dbo].[Users] VALUES('" + bob.getName() + "', '" + bob.getPassword() + "', " + bob.getPoints() + ", '" + bob.getClassrooms() + "', '" + bob.getRanks() + "', " + bob.getTeamId() + ")", _connection);
+            cmdNew.CommandType = CommandType.Text;
+
+            _connection.Open();
+
+            cmdNew.ExecuteNonQuery();
+
+            _connection.Close();
+        }
+
         public static User executeGetUser(string name) //using a name, get a user
         {
             SqlCommand cmdNew = new SqlCommand("SELECT Users.Password, Users.Points, Users.Classrooms, Users.Ranks, Users.TeamId FROM Users where Users.Name = " + name, _connection);

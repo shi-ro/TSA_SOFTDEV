@@ -77,6 +77,7 @@
     <Compile Include="TeacherLogin.Designer.cs">
       <DependentUpon>TeacherLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="User.cs" />
     <EmbeddedResource Include="LoginScreen.resx">
       <DependentUpon>LoginScreen.cs</DependentUpon>
     </EmbeddedResource>

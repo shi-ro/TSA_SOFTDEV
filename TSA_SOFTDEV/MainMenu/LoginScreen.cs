@@ -16,5 +16,10 @@ namespace MainMenu
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Core.Server.Integration.executeAddUser(new User("Bob test", "passypass", 5, "1", "14", 1));
+        }
     }
 }

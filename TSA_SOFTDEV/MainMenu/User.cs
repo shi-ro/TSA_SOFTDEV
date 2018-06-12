@@ -24,5 +24,35 @@ namespace MainMenu
             ranks = r;
             teamId = t;
         }
+
+        public String getName()
+        {
+            return name;
+        }
+
+        public String getPassword()
+        {
+            return password;
+        }
+
+        public int getPoints()
+        {
+            return points;
+        }
+
+        public String getClassrooms()
+        {
+            return classrooms;
+        }
+
+        public String getRanks()
+        {
+            return ranks;
+        }
+
+        public int getTeamId()
+        {
+            return teamId;
+        }
     }
 }
