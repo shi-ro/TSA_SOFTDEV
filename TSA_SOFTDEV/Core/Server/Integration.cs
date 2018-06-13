@@ -45,7 +45,12 @@ namespace Core.Server
             cmdNew.ExecuteNonQuery();
             _connection.Close();
         }
-        
+
+        public static List<User> ExecuteGetUsers()
+        {
+            return null;
+        }
+
         public static User ExecuteGetUser(string name) //using a name, get a user
         {
 

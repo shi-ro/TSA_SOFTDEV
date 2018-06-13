@@ -50,6 +50,7 @@ namespace Core.External
         {
             try
             {
+                // try to get solution to 1=1 (should be true)
                 GetSolution("1=1");
                 return true;
             }
