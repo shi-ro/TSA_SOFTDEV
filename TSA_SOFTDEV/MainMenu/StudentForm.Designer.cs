@@ -195,101 +195,18 @@
             // 
             this.studentAssignments.Controls.Add(this.tableLayoutPanel11);
             this.studentAssignments.Controls.Add(this.tableLayoutPanel9);
-            this.studentAssignments.Location = new System.Drawing.Point(4, 45);
+
+            this.studentAssignments.Controls.Add(this.tableLayoutPanel8);
+            this.studentAssignments.Controls.Add(this.tableLayoutPanel7);
+            this.studentAssignments.Location = new System.Drawing.Point(10, 51);
+            this.studentAssignments.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.studentAssignments.Name = "studentAssignments";
             this.studentAssignments.Size = new System.Drawing.Size(657, 377);
             this.studentAssignments.TabIndex = 6;
             this.studentAssignments.Text = "Assignments";
             this.studentAssignments.UseVisualStyleBackColor = true;
-            // 
-            // tableLayoutPanel11
-            // 
-            this.tableLayoutPanel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.tableLayoutPanel11.ColumnCount = 1;
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel11.Controls.Add(this.richTextBox12, 0, 1);
-            this.tableLayoutPanel11.Location = new System.Drawing.Point(868, 404);
-            this.tableLayoutPanel11.Name = "tableLayoutPanel11";
-            this.tableLayoutPanel11.RowCount = 2;
-            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.53488F));
-            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.46512F));
-            this.tableLayoutPanel11.Size = new System.Drawing.Size(828, 516);
-            this.tableLayoutPanel11.TabIndex = 3;
-            // 
-            // label8
-            // 
-            this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.label8.Location = new System.Drawing.Point(138, 120);
-            this.label8.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(210, 23);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Description of Problem Set";
-            // 
-            // richTextBox12
-            // 
-            this.richTextBox12.Location = new System.Drawing.Point(3, 77);
-            this.richTextBox12.Name = "richTextBox12";
-            this.richTextBox12.Size = new System.Drawing.Size(822, 436);
-            this.richTextBox12.TabIndex = 1;
-            this.richTextBox12.Text = "";
-            // 
-            // tableLayoutPanel9
-            // 
-            this.tableLayoutPanel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.tableLayoutPanel9.ColumnCount = 1;
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel9.Controls.Add(this.label9, 0, 0);
-            this.tableLayoutPanel9.Controls.Add(this.richTextBox11, 0, 1);
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(1392, 22);
-            this.tableLayoutPanel9.Margin = new System.Windows.Forms.Padding(1);
-            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
-            this.tableLayoutPanel9.RowCount = 2;
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.99177F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 86.00823F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.64706F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 82.35294F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 117F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(307, 357);
-            this.tableLayoutPanel9.TabIndex = 2;
-            // 
-            // richTextBox9
-            // 
-            this.richTextBox9.Location = new System.Drawing.Point(1, 233);
-            this.richTextBox9.Margin = new System.Windows.Forms.Padding(1);
-            this.richTextBox9.Name = "richTextBox9";
-            this.richTextBox9.Size = new System.Drawing.Size(480, 6);
-            this.richTextBox9.TabIndex = 1;
-            this.richTextBox9.Text = "";
-            // 
-            // label9
-            // 
-            this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.label9.Location = new System.Drawing.Point(111, 13);
-            this.label9.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(85, 23);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "Completed";
-            // 
-            // richTextBox11
-            // 
-            this.richTextBox11.Location = new System.Drawing.Point(3, 52);
-            this.richTextBox11.Name = "richTextBox11";
-            this.richTextBox11.Size = new System.Drawing.Size(301, 289);
-            this.richTextBox11.TabIndex = 1;
-            this.richTextBox11.Text = "";
-            // 
+
+            //
             // studentTeam
             // 
             this.studentTeam.Controls.Add(this.tableLayoutPanel6);
@@ -406,22 +323,22 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.Controls.Add(this.richTextBox3, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(268, 234);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(1);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(714, 459);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.37631F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 83.6237F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(360, 152);
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 19F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(951, 331);
             this.tableLayoutPanel4.TabIndex = 6;
             // 
             // richTextBox3
             // 
-            this.richTextBox3.Location = new System.Drawing.Point(1, 25);
-            this.richTextBox3.Margin = new System.Windows.Forms.Padding(1);
+            this.richTextBox3.Location = new System.Drawing.Point(3, 56);
+            this.richTextBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.richTextBox3.Name = "richTextBox3";
-            this.richTextBox3.Size = new System.Drawing.Size(358, 120);
+            this.richTextBox3.Size = new System.Drawing.Size(945, 273);
             this.richTextBox3.TabIndex = 2;
             this.richTextBox3.Text = "";
             // 
