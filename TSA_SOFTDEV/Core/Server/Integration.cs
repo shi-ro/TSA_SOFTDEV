@@ -11,26 +11,23 @@ namespace Core.Server
     {
         private static SqlConnection _connection = new SqlConnection("Server=tcp:softdevserver.database.windows.net,1433;Initial Catalog=SoftDevDB;Persist Security Info=False;User ID=serveradmin;Password=SoftDev!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
         
-        public static object ExecuteQuery(string command)
+        public static User[] ExecuteGetUsers()
         {
-            SqlCommand cmdNew = new SqlCommand(command, _connection);
-            cmdNew.CommandType = CommandType.Text;
+            SqlCommand cmdGetCount = new SqlCommand("SELECT count(*) FROM Users", _connection);
+            cmdGetCount.CommandType = CommandType.Text;
             _connection.Open();
-            var result = cmdNew.ExecuteNonQuery();
+
+            var numUsers = cmdGetCount.ExecuteScalar();
+
             _connection.Close();
-            return result;
-        }
-        
-        public static SqlDataReader ExecuteRead(string command)
-        {
-            SqlCommand cmdNew = new SqlCommand(command, _connection);
-            cmdNew.CommandType = CommandType.Text;
-            _connection.Open();
-            SqlDataReader reader = cmdNew.ExecuteReader();
-            return reader;
+
+
+            List<User> userList = new List<User>((int)numUsers);
+
+            return null;
         }
 
-        public static void ExecuteAddUser(User bob)
+        public static void ExecuteAddUser(User bob) //add a user object to the sql server
         {
 
             // ExecuteQuery($"INSERT INTO[dbo].[Users] VALUES('{bob.getName()}', '{bob.getPassword()}', {bob.getPoints()}, '{bob.getClassrooms()}', '{bob.getRanks()}', {bob.getTeamId()})");
@@ -83,6 +80,25 @@ namespace Core.Server
                 Console.WriteLine(ex);
             }
             return userToReturn;
+        }
+
+        public static object ExecuteQuery(string command)
+        {
+            SqlCommand cmdNew = new SqlCommand(command, _connection);
+            cmdNew.CommandType = CommandType.Text;
+            _connection.Open();
+            var result = cmdNew.ExecuteNonQuery();
+            _connection.Close();
+            return result;
+        }
+
+        public static SqlDataReader ExecuteRead(string command)
+        {
+            SqlCommand cmdNew = new SqlCommand(command, _connection);
+            cmdNew.CommandType = CommandType.Text;
+            _connection.Open();
+            SqlDataReader reader = cmdNew.ExecuteReader();
+            return reader;
         }
     }
 }
