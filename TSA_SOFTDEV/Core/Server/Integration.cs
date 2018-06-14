@@ -11,7 +11,7 @@ namespace Core.Server
     {
         private static SqlConnection _connection = new SqlConnection("Server=tcp:softdevserver.database.windows.net,1433;Initial Catalog=SoftDevDB;Persist Security Info=False;User ID=serveradmin;Password=SoftDev!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
         
-        public static User[] ExecuteGetUsers()
+        public static User[] ExecuteGetUsers() //return a list of all the user objects
         {
             SqlCommand cmdGetCount = new SqlCommand("SELECT count(*) FROM Users", _connection);
             cmdGetCount.CommandType = CommandType.Text;
@@ -21,8 +21,27 @@ namespace Core.Server
 
             _connection.Close();
 
-
             List<User> userList = new List<User>((int)numUsers);
+
+            SqlCommand cmdAllUsers = new SqlCommand("SELECT Users.Password, Users.Points, Users.Classrooms, Users.Ranks, Users.TeamId FROM Users", _connection);
+            cmdAllUsers.CommandType = CommandType.Text;
+            User userToReturn = null;
+            try
+            {
+                _connection.Open();
+                SqlDataReader reader = cmdAllUsers.ExecuteReader();
+                while (reader.Read())
+                {
+                    Console.WriteLine("well dude the reader has some reading to do");
+                    
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("=========================");
+                Console.WriteLine(ex);
+            }
 
             return null;
         }
@@ -70,7 +89,7 @@ namespace Core.Server
                 while (reader.Read())
                 {
                     Console.WriteLine("well dude the reader has some reading to do");
-                    userToReturn = new User(name, (String)reader[0], (int)reader[1], (String)reader[2] + "", (String)reader[3] + "", (int)reader[4]);
+                    userToReturn = new User(name, (String)reader[0] + "", (int)reader[1], (String)reader[2] + "", (String)reader[3] + "", (int)reader[4]);
                 }
                 reader.Close();
             }
