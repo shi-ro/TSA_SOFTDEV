@@ -39,13 +39,18 @@ namespace Core.Server
             //          ABOVE (Reccomended code) BELOW (Actual code) 
             //
 
-            SqlCommand cmdNew = new SqlCommand("INSERT INTO[dbo].[Users] VALUES('" + bob.getName() + "', '" + bob.getPassword() + "', " + bob.getPoints() + ", '" + bob.getClassrooms() + "', '" + bob.getRanks() + "', " + bob.getTeamId() + ")", _connection);
+            SqlCommand cmdNew = new SqlCommand("INSERT INTO[dbo].[Users] VALUES('" + bob.Name + "', '" + bob.Password + "', " + bob.Points + ", '" + bob.Classrooms + "', '" + bob.Ranks + "', " + bob.TeamId + ")", _connection);
             cmdNew.CommandType = CommandType.Text;
             _connection.Open();
             cmdNew.ExecuteNonQuery();
             _connection.Close();
         }
-        
+
+        public static List<User> ExecuteGetUsers()
+        {
+            return null;
+        }
+
         public static User ExecuteGetUser(string name) //using a name, get a user
         {
 
