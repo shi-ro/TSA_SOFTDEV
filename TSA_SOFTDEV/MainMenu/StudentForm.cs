@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MainMenu;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,6 +22,9 @@ namespace TSA_SOFTDEV
             teacherFormTab.SizeMode = TabSizeMode.Fixed;
 
             this.Controls.Add(teacherFormTab);
+            List<User> users = Core.Server.Integration.ExecuteGetUsers();
+
+            //studentLeaderboardText.Text = 
         }
 
         private void StudentForm_Load(object sender, EventArgs e)
