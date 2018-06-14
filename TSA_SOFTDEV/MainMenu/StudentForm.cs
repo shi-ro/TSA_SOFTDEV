@@ -22,7 +22,8 @@ namespace TSA_SOFTDEV
             teacherFormTab.SizeMode = TabSizeMode.Fixed;
 
             this.Controls.Add(teacherFormTab);
-            List<User> users = Core.Server.Integration.ExecuteGetUsers();
+            // below code commented out because function has gone missing in the sea of git
+            //List<User> users = Core.Server.Integration.ExecuteGetUsers();
 
             //studentLeaderboardText.Text = 
         }
