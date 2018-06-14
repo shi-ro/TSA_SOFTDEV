@@ -8,51 +8,21 @@ namespace MainMenu
 {
     public class User
     {
-        private static String name;
-        private static String password;
-        private static int points;
-        private static String classrooms;
-        private static String ranks;
-        private static int teamId;
+        public String Name { get; set; }
+        public String Password { get; set; }
+        public int Points { get; set; }
+        public String Classrooms { get; set; }
+        public String Ranks { get; set; }
+        public int TeamId { get; set; }
 
         public User(String n, String p, int po, String c, String r, int t)
         {
-            name = n;
-            password = p;
-            points = po;
-            classrooms = c;
-            ranks = r;
-            teamId = t;
-        }
-
-        public String getName()
-        {
-            return name;
-        }
-
-        public String getPassword()
-        {
-            return password;
-        }
-
-        public int getPoints()
-        {
-            return points;
-        }
-
-        public String getClassrooms()
-        {
-            return classrooms;
-        }
-
-        public String getRanks()
-        {
-            return ranks;
-        }
-
-        public int getTeamId()
-        {
-            return teamId;
+            Name = n;
+            Password = p;
+            Points = po;
+            Classrooms = c;
+            Ranks = r;
+            TeamId = t;
         }
     }
 }

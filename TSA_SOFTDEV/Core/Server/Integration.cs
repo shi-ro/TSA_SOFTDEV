@@ -27,7 +27,6 @@ namespace Core.Server
             cmdNew.CommandType = CommandType.Text;
             _connection.Open();
             SqlDataReader reader = cmdNew.ExecuteReader();
-            _connection.Close();
             return reader;
         }
 
@@ -35,9 +34,12 @@ namespace Core.Server
         {
 
             // ExecuteQuery($"INSERT INTO[dbo].[Users] VALUES('{bob.getName()}', '{bob.getPassword()}', {bob.getPoints()}, '{bob.getClassrooms()}', '{bob.getRanks()}', {bob.getTeamId()})");
-            // everything below can be replaced with above statement
 
-            SqlCommand cmdNew = new SqlCommand("INSERT INTO[dbo].[Users] VALUES('" + bob.getName() + "', '" + bob.getPassword() + "', " + bob.getPoints() + ", '" + bob.getClassrooms() + "', '" + bob.getRanks() + "', " + bob.getTeamId() + ")", _connection);
+            //
+            //          ABOVE (Reccomended code) BELOW (Actual code) 
+            //
+
+            SqlCommand cmdNew = new SqlCommand("INSERT INTO[dbo].[Users] VALUES('" + bob.Name + "', '" + bob.Password + "', " + bob.Points + ", '" + bob.Classrooms + "', '" + bob.Ranks + "', " + bob.TeamId + ")", _connection);
             cmdNew.CommandType = CommandType.Text;
             _connection.Open();
             cmdNew.ExecuteNonQuery();
@@ -46,16 +48,24 @@ namespace Core.Server
 
         public static User ExecuteGetUser(string name) //using a name, get a user
         {
-            
+
+            //SqlDataReader reader = ExecuteRead($"SELECT Users.Password, Users.Points, Users.Classrooms, Users.Ranks, Users.TeamId FROM Users where Users.Name = '{name}'");
+            //User userToReturn = null;
+            //while (reader.Read())
+            //{
+            //   userToReturn = new User(name, $"{reader[0]}", (int)reader[1], $"{reader[2]}", $"{reader[3]}", (int)reader[4]);
+            //}
+            //reader.Close();
+            //_connection.Close();
+            //return userToReturn;
+
+            //
+            //          ABOVE (Reccomended code) BELOW (Actual code) 
+            //
+
             SqlCommand cmdNew = new SqlCommand("SELECT Users.Password, Users.Points, Users.Classrooms, Users.Ranks, Users.TeamId FROM Users where Users.Name = '" + name + "'", _connection);
             cmdNew.CommandType = CommandType.Text;
             User userToReturn = null;
-
-
-            // above code can be replaced with 
-            // SqlDataReader reader = ExecuteRead($"SELECT Users.Password, Users.Points, Users.Classrooms, Users.Ranks, Users.TeamId FROM Users where Users.Name = {name}");
-
-
             try
             {
                 _connection.Open();
@@ -69,9 +79,10 @@ namespace Core.Server
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("=========================");
+                Console.WriteLine(ex);
             }
-            return userToReturn; 
+            return userToReturn;
         }
     }
 }
