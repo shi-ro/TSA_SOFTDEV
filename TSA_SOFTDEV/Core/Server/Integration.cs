@@ -11,7 +11,7 @@ namespace Core.Server
     {
         private static SqlConnection _connection = new SqlConnection("Server=tcp:softdevserver.database.windows.net,1433;Initial Catalog=SoftDevDB;Persist Security Info=False;User ID=serveradmin;Password=SoftDev!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
         
-        public static User[] ExecuteGetUsers() //return a list of all the user objects
+        public static List<User> ExecuteGetUsers() //return a list of all the user objects
         {
             SqlCommand cmdGetCount = new SqlCommand("SELECT count(*) FROM Users", _connection);
             cmdGetCount.CommandType = CommandType.Text;
@@ -23,17 +23,15 @@ namespace Core.Server
 
             List<User> userList = new List<User>((int)numUsers);
 
-            SqlCommand cmdAllUsers = new SqlCommand("SELECT Users.Password, Users.Points, Users.Classrooms, Users.Ranks, Users.TeamId FROM Users", _connection);
+            SqlCommand cmdAllUsers = new SqlCommand("SELECT Users.Name, Users.Password, Users.Points, Users.Classrooms, Users.Ranks, Users.TeamId FROM Users", _connection);
             cmdAllUsers.CommandType = CommandType.Text;
-            User userToReturn = null;
             try
             {
                 _connection.Open();
                 SqlDataReader reader = cmdAllUsers.ExecuteReader();
                 while (reader.Read())
                 {
-                    Console.WriteLine("well dude the reader has some reading to do");
-                    
+                    userList.Add(new User(reader[0].ToString(), reader[1].ToString(), (int)reader[2], reader[3].ToString(), reader[4].ToString(), (int)reader[5]));
                 }
                 reader.Close();
             }
@@ -43,7 +41,7 @@ namespace Core.Server
                 Console.WriteLine(ex);
             }
 
-            return null;
+            return userList;
         }
 
         public static void ExecuteAddUser(User bob) //add a user object to the sql server
