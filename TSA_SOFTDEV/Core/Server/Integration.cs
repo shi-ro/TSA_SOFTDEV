@@ -46,11 +46,6 @@ namespace Core.Server
             _connection.Close();
         }
 
-        public static List<User> ExecuteGetUsers()
-        {
-            return null;
-        }
-
         public static User ExecuteGetUser(string name) //using a name, get a user
         {
 
@@ -78,7 +73,7 @@ namespace Core.Server
                 while (reader.Read())
                 {
                     Console.WriteLine("well dude the reader has some reading to do");
-                    userToReturn = new User(name, $"{reader[0]}", (int)reader[1], $"{reader[2]}", $"{reader[3]}", (int)reader[4]);
+                    userToReturn = new User(name, (String)reader[0], (int)reader[1], (String)reader[2] + "", (String)reader[3] + "", (int)reader[4]);
                 }
                 reader.Close();
             }

@@ -31,5 +31,10 @@ namespace TSA_SOFTDEV
         {
             this.Size = new Size(692, 505);
         }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
