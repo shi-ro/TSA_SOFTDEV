@@ -23,7 +23,7 @@ namespace Core.Server
 
             List<User> userList = new List<User>((int)numUsers);
 
-            SqlCommand cmdAllUsers = new SqlCommand("SELECT Users.Name, Users.Password, Users.Points, Users.Classrooms, Users.Ranks, Users.TeamId FROM Users", _connection);
+            SqlCommand cmdAllUsers = new SqlCommand("SELECT Users.Name, Users.Password, Users.Points, Users.Classrooms, Users.Ranks, Users.TeamId, Users.Id FROM Users", _connection);
             cmdAllUsers.CommandType = CommandType.Text;
             try
             {
@@ -31,7 +31,7 @@ namespace Core.Server
                 SqlDataReader reader = cmdAllUsers.ExecuteReader();
                 while (reader.Read())
                 {
-                    userList.Add(new User(reader[0].ToString(), reader[1].ToString(), (int)reader[2], reader[3].ToString(), reader[4].ToString(), (int)reader[5]));
+                    userList.Add(new User(reader[0].ToString(), reader[1].ToString(), (int)reader[2], reader[3].ToString(), reader[4].ToString(), (int)reader[5], (int)reader[6]));
                 }
                 reader.Close();
             }
@@ -77,7 +77,7 @@ namespace Core.Server
             //          ABOVE (Reccomended code) BELOW (Actual code) 
             //
 
-            SqlCommand cmdNew = new SqlCommand("SELECT Users.Password, Users.Points, Users.Classrooms, Users.Ranks, Users.TeamId FROM Users where Users.Name = '" + name + "'", _connection);
+            SqlCommand cmdNew = new SqlCommand("SELECT Users.Password, Users.Points, Users.Classrooms, Users.Ranks, Users.TeamId, Users.Id FROM Users where Users.Name = '" + name + "'", _connection);
             cmdNew.CommandType = CommandType.Text;
             User userToReturn = null;
             try
@@ -87,7 +87,7 @@ namespace Core.Server
                 while (reader.Read())
                 {
                     Console.WriteLine("well dude the reader has some reading to do");
-                    userToReturn = new User(name, (String)reader[0] + "", (int)reader[1], (String)reader[2] + "", (String)reader[3] + "", (int)reader[4]);
+                    userToReturn = new User(name, (String)reader[0] + "", (int)reader[1], (String)reader[2] + "", (String)reader[3] + "", (int)reader[4], (int)reader[5]);
                 }
                 reader.Close();
             }
