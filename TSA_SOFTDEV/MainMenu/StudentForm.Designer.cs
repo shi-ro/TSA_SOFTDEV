@@ -36,11 +36,28 @@
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.richTextBox6 = new System.Windows.Forms.RichTextBox();
             this.label6 = new System.Windows.Forms.Label();
+<<<<<<< HEAD
+            this.studentAssignments = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.richTextBox8 = new System.Windows.Forms.RichTextBox();
+            this.Start = new System.Windows.Forms.Button();
+            this.richTextBox9 = new System.Windows.Forms.RichTextBox();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.richTextBox7 = new System.Windows.Forms.RichTextBox();
+            this.label7 = new System.Windows.Forms.Label();
+=======
+>>>>>>> e16e8fc547a96bd226efc618115121cba397550c
             this.studentTeam = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.studentChat = new System.Windows.Forms.TabPage();
+            this.sendButton = new System.Windows.Forms.Button();
+            this.messageText = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.studentStat = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.richTextBox10 = new System.Windows.Forms.RichTextBox();
@@ -57,6 +74,9 @@
             this.richTextBox12 = new System.Windows.Forms.RichTextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.richTextBox11 = new System.Windows.Forms.RichTextBox();
+<<<<<<< HEAD
+            this.chatTextBox = new System.Windows.Forms.RichTextBox();
+=======
             this.studentAssignments = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.label7 = new System.Windows.Forms.Label();
@@ -71,22 +91,33 @@
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
             this.label12 = new System.Windows.Forms.Label();
             this.richTextBox8 = new System.Windows.Forms.RichTextBox();
+>>>>>>> e16e8fc547a96bd226efc618115121cba397550c
             this.teacherFormTab.SuspendLayout();
             this.studentLeaderboard.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
+<<<<<<< HEAD
+            this.studentAssignments.SuspendLayout();
+            this.tableLayoutPanel8.SuspendLayout();
+            this.tableLayoutPanel7.SuspendLayout();
+=======
+>>>>>>> e16e8fc547a96bd226efc618115121cba397550c
             this.studentTeam.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
+            this.studentChat.SuspendLayout();
             this.studentStat.SuspendLayout();
             this.tableLayoutPanel10.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+<<<<<<< HEAD
+=======
             this.studentAssignments.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
             this.tableLayoutPanel11.SuspendLayout();
+>>>>>>> e16e8fc547a96bd226efc618115121cba397550c
             this.SuspendLayout();
             // 
             // teacherFormTab
@@ -194,6 +225,144 @@
             this.label6.TabIndex = 1;
             this.label6.Text = "Team Leaderboard";
             // 
+<<<<<<< HEAD
+            // studentAssignments
+            // 
+            this.studentAssignments.Controls.Add(this.tableLayoutPanel11);
+            this.studentAssignments.Controls.Add(this.tableLayoutPanel9);
+            this.studentAssignments.Controls.Add(this.tableLayoutPanel8);
+            this.studentAssignments.Controls.Add(this.tableLayoutPanel7);
+            this.studentAssignments.Location = new System.Drawing.Point(4, 45);
+            this.studentAssignments.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.studentAssignments.Name = "studentAssignments";
+            this.studentAssignments.Size = new System.Drawing.Size(657, 377);
+            this.studentAssignments.TabIndex = 6;
+            this.studentAssignments.Text = "Assignments";
+            this.studentAssignments.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel11
+            // 
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanel11.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel11.Name = "tableLayoutPanel11";
+            this.tableLayoutPanel11.Size = new System.Drawing.Size(200, 100);
+            this.tableLayoutPanel11.TabIndex = 0;
+            // 
+            // tableLayoutPanel9
+            // 
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(200, 100);
+            this.tableLayoutPanel9.TabIndex = 1;
+            // 
+            // tableLayoutPanel8
+            // 
+            this.tableLayoutPanel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.tableLayoutPanel8.ColumnCount = 1;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel8.Controls.Add(this.label8, 0, 0);
+            this.tableLayoutPanel8.Controls.Add(this.richTextBox8, 0, 0);
+            this.tableLayoutPanel8.Controls.Add(this.Start, 0, 2);
+            this.tableLayoutPanel8.Controls.Add(this.richTextBox9, 0, 1);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(868, 22);
+            this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(1);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.RowCount = 3;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.99177F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 86.00823F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 49.79079F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.20921F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 117F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(486, 357);
+            this.tableLayoutPanel8.TabIndex = 1;
+            // 
+            // label8
+            // 
+            this.label8.Location = new System.Drawing.Point(3, 32);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(100, 23);
+            this.label8.TabIndex = 0;
+            // 
+            // richTextBox8
+            // 
+            this.richTextBox8.Location = new System.Drawing.Point(1, 1);
+            this.richTextBox8.Margin = new System.Windows.Forms.Padding(1);
+            this.richTextBox8.Name = "richTextBox8";
+            this.richTextBox8.Size = new System.Drawing.Size(480, 30);
+            this.richTextBox8.TabIndex = 0;
+            this.richTextBox8.Text = "";
+            // 
+            // Start
+            // 
+            this.Start.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Start.BackColor = System.Drawing.Color.White;
+            this.Start.Location = new System.Drawing.Point(68, 250);
+            this.Start.Name = "Start";
+            this.Start.Size = new System.Drawing.Size(350, 96);
+            this.Start.TabIndex = 2;
+            this.Start.Text = "Start";
+            this.Start.UseVisualStyleBackColor = false;
+            // 
+            // richTextBox9
+            // 
+            this.richTextBox9.Location = new System.Drawing.Point(3, 235);
+            this.richTextBox9.Name = "richTextBox9";
+            this.richTextBox9.Size = new System.Drawing.Size(100, 2);
+            this.richTextBox9.TabIndex = 3;
+            this.richTextBox9.Text = "";
+            // 
+            // tableLayoutPanel7
+            // 
+            this.tableLayoutPanel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.tableLayoutPanel7.ColumnCount = 1;
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.Controls.Add(this.richTextBox7, 0, 1);
+            this.tableLayoutPanel7.Controls.Add(this.label7, 0, 0);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(44, 19);
+            this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(1);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 2;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.99177F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 86.00823F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.338445F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.66155F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(790, 913);
+            this.tableLayoutPanel7.TabIndex = 0;
+            // 
+            // richTextBox7
+            // 
+            this.richTextBox7.Location = new System.Drawing.Point(1, 128);
+            this.richTextBox7.Margin = new System.Windows.Forms.Padding(1);
+            this.richTextBox7.Name = "richTextBox7";
+            this.richTextBox7.Size = new System.Drawing.Size(784, 784);
+            this.richTextBox7.TabIndex = 2;
+            this.richTextBox7.Text = "";
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Comic Sans MS", 12F);
+            this.label7.Location = new System.Drawing.Point(342, 52);
+            this.label7.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(106, 23);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "Problem Sets";
+            // 
+=======
+>>>>>>> e16e8fc547a96bd226efc618115121cba397550c
             // studentTeam
             // 
             this.studentTeam.Controls.Add(this.tableLayoutPanel6);
@@ -244,13 +413,48 @@
             // 
             // studentChat
             // 
+<<<<<<< HEAD
+            this.studentChat.Controls.Add(this.chatTextBox);
+            this.studentChat.Controls.Add(this.sendButton);
+            this.studentChat.Controls.Add(this.messageText);
+            this.studentChat.Controls.Add(this.label11);
+            this.studentChat.Location = new System.Drawing.Point(4, 45);
+=======
             this.studentChat.Location = new System.Drawing.Point(10, 51);
             this.studentChat.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+>>>>>>> e16e8fc547a96bd226efc618115121cba397550c
             this.studentChat.Name = "studentChat";
             this.studentChat.Size = new System.Drawing.Size(1753, 955);
             this.studentChat.TabIndex = 8;
             this.studentChat.Text = "Chat";
             this.studentChat.UseVisualStyleBackColor = true;
+            // 
+            // sendButton
+            // 
+            this.sendButton.Location = new System.Drawing.Point(415, 330);
+            this.sendButton.Name = "sendButton";
+            this.sendButton.Size = new System.Drawing.Size(75, 31);
+            this.sendButton.TabIndex = 2;
+            this.sendButton.Text = "Send";
+            this.sendButton.UseVisualStyleBackColor = true;
+            this.sendButton.Click += new System.EventHandler(this.sendButton_Click);
+            // 
+            // messageText
+            // 
+            this.messageText.Location = new System.Drawing.Point(109, 330);
+            this.messageText.Name = "messageText";
+            this.messageText.Size = new System.Drawing.Size(299, 32);
+            this.messageText.TabIndex = 1;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(10, 333);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(93, 24);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "Message: ";
+            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // studentStat
             // 
@@ -421,6 +625,40 @@
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // richTextBox12
+<<<<<<< HEAD
+            // 
+            this.richTextBox12.Location = new System.Drawing.Point(0, 0);
+            this.richTextBox12.Name = "richTextBox12";
+            this.richTextBox12.Size = new System.Drawing.Size(100, 96);
+            this.richTextBox12.TabIndex = 0;
+            this.richTextBox12.Text = "";
+            // 
+            // label9
+            // 
+            this.label9.Location = new System.Drawing.Point(0, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(100, 23);
+            this.label9.TabIndex = 0;
+            // 
+            // richTextBox11
+            // 
+            this.richTextBox11.Location = new System.Drawing.Point(0, 0);
+            this.richTextBox11.Name = "richTextBox11";
+            this.richTextBox11.Size = new System.Drawing.Size(100, 96);
+            this.richTextBox11.TabIndex = 0;
+            this.richTextBox11.Text = "";
+            // 
+            // chatTextBox
+            // 
+            this.chatTextBox.Location = new System.Drawing.Point(14, 17);
+            this.chatTextBox.Margin = new System.Windows.Forms.Padding(1);
+            this.chatTextBox.Name = "chatTextBox";
+            this.chatTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.chatTextBox.Size = new System.Drawing.Size(626, 294);
+            this.chatTextBox.TabIndex = 3;
+            this.chatTextBox.Text = "";
+            // 
+=======
             // 
             this.richTextBox12.Location = new System.Drawing.Point(0, 0);
             this.richTextBox12.Name = "richTextBox12";
@@ -607,6 +845,7 @@
             this.richTextBox8.TabIndex = 1;
             this.richTextBox8.Text = "";
             // 
+>>>>>>> e16e8fc547a96bd226efc618115121cba397550c
             // StudentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
@@ -622,9 +861,18 @@
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
+<<<<<<< HEAD
+            this.studentAssignments.ResumeLayout(false);
+            this.tableLayoutPanel8.ResumeLayout(false);
+            this.tableLayoutPanel7.ResumeLayout(false);
+            this.tableLayoutPanel7.PerformLayout();
+=======
+>>>>>>> e16e8fc547a96bd226efc618115121cba397550c
             this.studentTeam.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
+            this.studentChat.ResumeLayout(false);
+            this.studentChat.PerformLayout();
             this.studentStat.ResumeLayout(false);
             this.tableLayoutPanel10.ResumeLayout(false);
             this.tableLayoutPanel10.PerformLayout();
@@ -634,6 +882,8 @@
             this.tableLayoutPanel3.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
+<<<<<<< HEAD
+=======
             this.studentAssignments.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
@@ -643,6 +893,7 @@
             this.tableLayoutPanel9.PerformLayout();
             this.tableLayoutPanel11.ResumeLayout(false);
             this.tableLayoutPanel11.PerformLayout();
+>>>>>>> e16e8fc547a96bd226efc618115121cba397550c
             this.ResumeLayout(false);
 
         }
@@ -691,6 +942,13 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.Label label7;
+<<<<<<< HEAD
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox messageText;
+        private System.Windows.Forms.Button sendButton;
+        private System.Windows.Forms.RichTextBox chatTextBox;
+=======
         private System.Windows.Forms.RichTextBox richTextBox5;
+>>>>>>> e16e8fc547a96bd226efc618115121cba397550c
     }
 }
