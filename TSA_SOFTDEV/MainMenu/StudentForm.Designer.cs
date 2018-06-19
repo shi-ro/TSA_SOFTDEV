@@ -614,7 +614,6 @@
             this.ClientSize = new System.Drawing.Size(1803, 1061);
             this.Controls.Add(this.teacherFormTab);
             this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.Name = "StudentForm";
             this.Text = "StudentForm";
             this.Load += new System.EventHandler(this.StudentForm_Load);
             this.teacherFormTab.ResumeLayout(false);

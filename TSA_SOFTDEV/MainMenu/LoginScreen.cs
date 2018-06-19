@@ -19,11 +19,8 @@ namespace MainMenu
 
         private void button1_Click(object sender, EventArgs e)
         {
-            List<User> allOfThem = Core.Server.Integration.ExecuteGetUsers();
-            for(int i = 0; i < allOfThem.Count; i++)
-            {
-                Console.WriteLine(allOfThem[i].Name + " that is the name of " + i);
-            }
+            User bob = Core.Server.Integration.ExecuteGetUser("Bob test");
+            Console.WriteLine("bob's team is " + Core.Server.Integration.ExecuteGetUserTeam(bob.Name));
         }
     }
 }

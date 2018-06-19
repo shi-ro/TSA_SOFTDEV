@@ -11,6 +11,45 @@ namespace Core.Server
     {
         private static SqlConnection _connection = new SqlConnection("Server=tcp:softdevserver.database.windows.net,1433;Initial Catalog=SoftDevDB;Persist Security Info=False;User ID=serveradmin;Password=SoftDev!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
         
+        public static String ExecuteGetUserTeam(String username)
+        {
+            SqlCommand newCmd = new SqlCommand("SELECT Users.TeamId FROM Users WHERE User.Name = '" + username + "'", _connection);
+            newCmd.CommandType = CommandType.Text;
+
+            _connection.Close();
+
+            String teamname = "";
+            int teamid = 0;
+
+
+            _connection.Open();
+            teamid = (int)newCmd.ExecuteScalar();
+            _connection.Close();
+
+            SqlCommand scndCmd = new SqlCommand("SELECT Teams.TeamName FROM Teams WHERE  Teams.Id = " + teamid, _connection);
+            scndCmd.CommandType = CommandType.Text;
+
+            try
+            {
+                _connection.Open();
+                SqlDataReader reader = scndCmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    teamname = reader[0].ToString();
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("=========================");
+                Console.WriteLine(ex);
+            }
+
+
+            return teamname;
+        }
+        
+
         public static List<User> ExecuteGetUsers() //return a list of all the user objects
         {
             SqlCommand cmdGetCount = new SqlCommand("SELECT count(*) FROM Users", _connection);
@@ -50,7 +89,7 @@ namespace Core.Server
             // ExecuteQuery($"INSERT INTO[dbo].[Users] VALUES('{bob.getName()}', '{bob.getPassword()}', {bob.getPoints()}, '{bob.getClassrooms()}', '{bob.getRanks()}', {bob.getTeamId()})");
 
             //
-            //          ABOVE (Reccomended code) BELOW (Actual code) 
+            //          ABOVE (Recomended code) BELOW (Actual code) 
             //
 
             SqlCommand cmdNew = new SqlCommand("INSERT INTO[dbo].[Users] VALUES('" + bob.Name + "', '" + bob.Password + "', " + bob.Points + ", '" + bob.Classrooms + "', '" + bob.Ranks + "', " + bob.TeamId + ")", _connection);
@@ -87,7 +126,7 @@ namespace Core.Server
                 while (reader.Read())
                 {
                     Console.WriteLine("well dude the reader has some reading to do");
-                    userToReturn = new User(name, (String)reader[0] + "", (int)reader[1], (String)reader[2] + "", (String)reader[3] + "", (int)reader[4], (int)reader[5]);
+                    userToReturn = new User(name, reader[0] + "", (int)reader[1], reader[2] + "", reader[3] + "", (int)reader[4], (int)reader[5]);
                 }
                 reader.Close();
             }
