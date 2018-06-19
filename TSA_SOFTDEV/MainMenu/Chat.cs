@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Net.Sockets;
 using System.Threading.Tasks;
-//using System.IO.Stream;
-//https://stackoverflow.com/questions/8119631/is-there-a-c-sharp-equivalent-way-for-java-inputstream-and-outputstream
 using static System.Net.Sockets.Socket;
 using System.Collections.Concurrent;
 using System.Threading;
@@ -14,6 +12,8 @@ using System.Net;
 using System.Net.Sockets;
 using TSA_SOFTDEV;
 using System.Windows.Forms;
+//using System.IO.Stream;
+//https://stackoverflow.com/questions/8119631/is-there-a-c-sharp-equivalent-way-for-java-inputstream-and-outputstream
 //using Windows.Networking.Sockets;
 //using System.Collections.Concurrent.ConcurrentQueue;
 

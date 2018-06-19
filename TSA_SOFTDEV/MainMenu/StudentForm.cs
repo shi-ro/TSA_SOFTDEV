@@ -25,6 +25,8 @@ namespace TSA_SOFTDEV
             teacherFormTab.ItemSize = new Size((int)(teacherFormTab.Width / 5) - 1, 41);
             teacherFormTab.SizeMode = TabSizeMode.Fixed;
 
+            List<ProblemSet> problemSets = new List<ProblemSet>();
+
             this.Controls.Add(teacherFormTab);
 
             Console.WriteLine("SETUPCHAT");
@@ -34,7 +36,7 @@ namespace TSA_SOFTDEV
             //List<User> users = Core.Server.Integration.ExecuteGetUsers();
 
             //studentLeaderboardText.Text = 
-            chatTextBox.Text += "LOADING...";
+            chatTextBox.Text = "LOADING...";
             /*BackgroundWorker bw = new BackgroundWorker();
             bw.WorkerReportsProgress = true;
             //bw.DoWork +=
@@ -49,59 +51,65 @@ namespace TSA_SOFTDEV
 
         private void updateChatBox()
         {
-                    while (true)
+            while (true)
+            {
+                ConcurrentQueue<string> inQueue = chat.inQueue;
+                List<string> listMessages = chat.messages;
+                string message;
+                Boolean m = inQueue.TryDequeue(out message);
+                if (listMessages.Count > 0)
+                {
+                    message = listMessages.ElementAt(0);
+                    listMessages.Remove(message);
+                    chat.messages.Remove(message);
+                    //FILTER
+                    string filteredMessage = message;
+                    if (message.Contains("End of /NAMES list")) //ONCE Loaded get rid of loaded sign
                     {
-                        ConcurrentQueue<string> inQueue = chat.inQueue;
-                        List<string> listMessages = chat.messages;
-                        string message;
-                        Boolean m = inQueue.TryDequeue(out message);
-                        if (listMessages.Count > 0)
+                        Console.WriteLine("LOADING SHOULD STOP");
+                        messageText.Invoke((MethodInvoker)delegate
                         {
-                            message = listMessages.ElementAt(0);
-                            listMessages.Remove(message);
-                            chat.messages.Remove(message);
-                            //FILTER
-                            string filteredMessage = message;
-                            if (message.Contains("End of /NAMES list")) //ONCE Loaded get rid of loaded sign
-                            {
-                                Console.WriteLine("LOADING SHOULD STOP");
-                                chatTextBox.Invoke((MethodInvoker)delegate {
-                                    // Running on the UI thread
-                                    chatTextBox.Clear();
-                                });
-                            }
-                            if (message.Contains("PRIVMSG #")) 
-                            {
-                                filteredMessage = message.Split('#')[1];
-                                filteredMessage = filteredMessage.Split(':')[1];
-                                chatTextBox.Invoke((MethodInvoker)delegate {
-                                // Running on the UI thread
-                                chatTextBox.Text += ("\n [Other User]: " + filteredMessage);
-                                });
-                        
-                            }
-                            if (message.Contains("MYMESSAGE #"))
-                            {
-                                filteredMessage = message.Split('#')[1];
-                                filteredMessage = filteredMessage.Split(':')[1];
-                                chatTextBox.Invoke((MethodInvoker)delegate {
-                                    // Running on the UI thread
-                                    chatTextBox.Text += ("\n [Me]: " + filteredMessage);
-                                });
-                            }
-
-
-                            //Add to chat box
-
-                            Console.WriteLine("Message added: " + message);
-                        }
+                            // Running on the UI thread
+                            messageText.ReadOnly = false;
+                        });
+                        chatTextBox.Invoke((MethodInvoker)delegate {
+                            // Running on the UI thread
+                            chatTextBox.Clear();
+                        });
                     }
+                    if (message.Contains("PRIVMSG #")) 
+                    {
+                        filteredMessage = message.Split('#')[1];
+                        filteredMessage = filteredMessage.Split(':')[1];
+                        chatTextBox.Invoke((MethodInvoker)delegate {
+                        // Running on the UI thread
+                        chatTextBox.Text += ("\n [Other User]: " + filteredMessage);
+                        });
+                        
+                    }
+                    if (message.Contains("MYMESSAGE #"))
+                    {
+                        filteredMessage = message.Split('#')[1];
+                        filteredMessage = filteredMessage.Split(':')[1];
+                        chatTextBox.Invoke((MethodInvoker)delegate {
+                            // Running on the UI thread
+                            chatTextBox.Text += ("\n [Me]: " + filteredMessage);
+                        });
+                    }
+
+                    //Add to chat box
+
+                    Console.WriteLine("Message added: " + message);
+                }
+            }
             
         }
 
         private void StudentForm_Load(object sender, EventArgs e)
         {
             this.Size = new Size(692, 505);
+            messageText.KeyUp += EnterForSendMessage;
+            //add method call to get problemsets from server 
         }
 
         private void label10_Click(object sender, EventArgs e)
@@ -113,12 +121,40 @@ namespace TSA_SOFTDEV
         {
 
         }
-
+        private void EnterForSendMessage(object sender, KeyEventArgs e)
+        {
+            if (!messageText.ReadOnly && e.KeyCode == Keys.Enter)
+            {
+                chat.SendPress(messageText.Text);
+                messageText.Text = "";
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+        }
         private void sendButton_Click(object sender, EventArgs e)
         {
-            
             chat.SendPress(messageText.Text);
             messageText.Text = "";
+        }
+
+        private void messageText_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void studentAssignments_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel8_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
