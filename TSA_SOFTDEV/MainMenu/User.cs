@@ -14,8 +14,9 @@ namespace MainMenu
         public String Classrooms { get; set; }
         public String Ranks { get; set; }
         public int TeamId { get; set; }
+        public int Id { get; set; }
 
-        public User(String n, String p, int po, String c, String r, int t)
+        public User(String n, String p, int po, String c, String r, int t, int i)
         {
             Name = n;
             Password = p;
@@ -23,6 +24,7 @@ namespace MainMenu
             Classrooms = c;
             Ranks = r;
             TeamId = t;
+            Id = i;
         }
     }
 }
