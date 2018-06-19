@@ -8,11 +8,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Collections.Concurrent;
+using System.Threading;
+
 
 namespace TSA_SOFTDEV
 {
     public partial class StudentForm : Form
     {
+        Chat chat;
         public StudentForm()
         {
             InitializeComponent();
@@ -22,10 +26,77 @@ namespace TSA_SOFTDEV
             teacherFormTab.SizeMode = TabSizeMode.Fixed;
 
             this.Controls.Add(teacherFormTab);
+
+            Console.WriteLine("SETUPCHAT");
+
+            this.chat = new Chat();
             // below code commented out because function has gone missing in the sea of git
             //List<User> users = Core.Server.Integration.ExecuteGetUsers();
 
             //studentLeaderboardText.Text = 
+            chatTextBox.Text += "LOADING...";
+            /*BackgroundWorker bw = new BackgroundWorker();
+            bw.WorkerReportsProgress = true;
+            //bw.DoWork +=
+            bw.ProgressChanged += updateChatBox();
+            bw.RunWorkerAsync();*/
+            var networkThread = new Thread(updateChatBox);
+            networkThread.Start();
+            
+            //Thread.Sleep(10000); //DEAL WITH THIS
+            //updateChatBox();
+        }
+
+        private void updateChatBox()
+        {
+                    while (true)
+                    {
+                        ConcurrentQueue<string> inQueue = chat.inQueue;
+                        List<string> listMessages = chat.messages;
+                        string message;
+                        Boolean m = inQueue.TryDequeue(out message);
+                        if (listMessages.Count > 0)
+                        {
+                            message = listMessages.ElementAt(0);
+                            listMessages.Remove(message);
+                            chat.messages.Remove(message);
+                            //FILTER
+                            string filteredMessage = message;
+                            if (message.Contains("End of /NAMES list")) //ONCE Loaded get rid of loaded sign
+                            {
+                                Console.WriteLine("LOADING SHOULD STOP");
+                                chatTextBox.Invoke((MethodInvoker)delegate {
+                                    // Running on the UI thread
+                                    chatTextBox.Clear();
+                                });
+                            }
+                            if (message.Contains("PRIVMSG #")) 
+                            {
+                                filteredMessage = message.Split('#')[1];
+                                filteredMessage = filteredMessage.Split(':')[1];
+                                chatTextBox.Invoke((MethodInvoker)delegate {
+                                // Running on the UI thread
+                                chatTextBox.Text += ("\n [Other User]: " + filteredMessage);
+                                });
+                        
+                            }
+                            if (message.Contains("MYMESSAGE #"))
+                            {
+                                filteredMessage = message.Split('#')[1];
+                                filteredMessage = filteredMessage.Split(':')[1];
+                                chatTextBox.Invoke((MethodInvoker)delegate {
+                                    // Running on the UI thread
+                                    chatTextBox.Text += ("\n [Me]: " + filteredMessage);
+                                });
+                            }
+
+
+                            //Add to chat box
+
+                            Console.WriteLine("Message added: " + message);
+                        }
+                    }
+            
         }
 
         private void StudentForm_Load(object sender, EventArgs e)
@@ -36,6 +107,18 @@ namespace TSA_SOFTDEV
         private void label10_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sendButton_Click(object sender, EventArgs e)
+        {
+            
+            chat.SendPress(messageText.Text);
+            messageText.Text = "";
         }
     }
 }
