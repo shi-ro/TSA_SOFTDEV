@@ -17,6 +17,9 @@ namespace TSA_SOFTDEV
     public partial class StudentForm : Form
     {
         Chat chat;
+        List<ProblemSet> problemSets = new List<ProblemSet>();
+        ProblemSet selectedSet = null;
+        bool solverOpen = false;
         public StudentForm()
         {
             InitializeComponent();
@@ -24,9 +27,6 @@ namespace TSA_SOFTDEV
             teacherFormTab.Size = new Size(this.Width - 30, this.Height-10); 
             teacherFormTab.ItemSize = new Size((int)(teacherFormTab.Width / 5) - 1, 41);
             teacherFormTab.SizeMode = TabSizeMode.Fixed;
-
-            List<ProblemSet> problemSets = new List<ProblemSet>();
-
             this.Controls.Add(teacherFormTab);
 
             Console.WriteLine("SETUPCHAT");
@@ -67,12 +67,14 @@ namespace TSA_SOFTDEV
                     if (message.Contains("End of /NAMES list")) //ONCE Loaded get rid of loaded sign
                     {
                         Console.WriteLine("LOADING SHOULD STOP");
-                        messageText.Invoke((MethodInvoker)delegate
+                        messageText.Invoke((MethodInvoker)delegate 
                         {
                             // Running on the UI thread
                             messageText.ReadOnly = false;
                         });
-                        chatTextBox.Invoke((MethodInvoker)delegate {
+
+                        chatTextBox.Invoke((MethodInvoker)delegate 
+                        {
                             // Running on the UI thread
                             chatTextBox.Clear();
                         });
@@ -109,7 +111,24 @@ namespace TSA_SOFTDEV
         {
             this.Size = new Size(692, 505);
             messageText.KeyUp += EnterForSendMessage;
-            //add method call to get problemsets from server 
+            LoadProblemSets();
+            listBox1.Items.Clear();
+            foreach(ProblemSet ps in problemSets)
+            {
+                listBox1.Items.Add(ps.Name);
+            }
+        }
+
+        private void LoadProblemSets()
+        {
+            // add method call to get problemsets from server
+            // and set them to the problem sets list here
+            LoadTempProblemSets();
+        }
+
+        private void LoadTempProblemSets()
+        {
+            problemSets.Add(new ProblemSet("Multi",5,"_ _","Basic multiplication",10,0));
         }
 
         private void label10_Click(object sender, EventArgs e)
@@ -155,6 +174,38 @@ namespace TSA_SOFTDEV
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int idx = listBox1.SelectedIndex;
+            if(idx < problemSets.Count && idx > -1)
+            {
+                selectedSet = problemSets[idx];
+                label8.Text = selectedSet.Name;
+                label11.Text = selectedSet.Points + "pts";
+                richTextBox5.Text = selectedSet.Description;
+                richTextBox7.Text = $"{selectedSet.Completed} of {selectedSet.Problems}";
+                button1.Enabled = true;
+            }
+        }
+        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if(selectedSet!=null)
+            {
+                Solver solver = new Solver(selectedSet);
+                solver.FormClosed += DoSolverClosed;
+                button1.Enabled = false;
+                solver.Show();
+                solverOpen = true;
+            }
+        }
+
+        private void DoSolverClosed(object sender, FormClosedEventArgs e)
+        { 
+            button1.Enabled = true;
+            solverOpen = false;
         }
     }
 }
