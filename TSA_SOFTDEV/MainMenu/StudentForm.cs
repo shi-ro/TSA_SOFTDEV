@@ -37,6 +37,7 @@ namespace TSA_SOFTDEV
 
             //studentLeaderboardText.Text = 
             chatTextBox.Text = "LOADING...";
+          
             /*BackgroundWorker bw = new BackgroundWorker();
             bw.WorkerReportsProgress = true;
             //bw.DoWork +=
@@ -155,6 +156,12 @@ namespace TSA_SOFTDEV
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void chatTextBox_TextChanged(object sender, EventArgs e)
+        {
+            chatTextBox.SelectionStart = chatTextBox.Text.Length;
+            chatTextBox.ScrollToCaret();
         }
     }
 }
