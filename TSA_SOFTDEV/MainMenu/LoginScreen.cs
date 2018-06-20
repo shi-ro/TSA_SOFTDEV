@@ -20,7 +20,7 @@ namespace MainMenu
         private void button1_Click(object sender, EventArgs e)
         {
             User bob = Core.Server.Integration.ExecuteGetUser("Bob test");
-            Console.WriteLine("bob's team is " + Core.Server.Integration.ExecuteGetUserTeam(bob.Name));
+            Console.WriteLine("bob's team name is " +  Core.Server.Integration.ExecuteGetUserTeam(bob.Name));
         }
     }
 }

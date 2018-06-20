@@ -10,21 +10,11 @@ namespace Core.Server
     public static class Integration
     {
         private static SqlConnection _connection = new SqlConnection("Server=tcp:softdevserver.database.windows.net,1433;Initial Catalog=SoftDevDB;Persist Security Info=False;User ID=serveradmin;Password=SoftDev!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-        
+
         public static String ExecuteGetUserTeam(String username)
         {
-            SqlCommand newCmd = new SqlCommand("SELECT Users.TeamId FROM Users WHERE User.Name = '" + username + "'", _connection);
-            newCmd.CommandType = CommandType.Text;
-
-            _connection.Close();
-
+            int teamid = Core.Server.Integration.ExecuteGetUser(username).TeamId;
             String teamname = "";
-            int teamid = 0;
-
-
-            _connection.Open();
-            teamid = (int)newCmd.ExecuteScalar();
-            _connection.Close();
 
             SqlCommand scndCmd = new SqlCommand("SELECT Teams.TeamName FROM Teams WHERE  Teams.Id = " + teamid, _connection);
             scndCmd.CommandType = CommandType.Text;
@@ -38,6 +28,7 @@ namespace Core.Server
                     teamname = reader[0].ToString();
                 }
                 reader.Close();
+                _connection.Close();
             }
             catch (Exception ex)
             {
@@ -73,6 +64,7 @@ namespace Core.Server
                     userList.Add(new User(reader[0].ToString(), reader[1].ToString(), (int)reader[2], reader[3].ToString(), reader[4].ToString(), (int)reader[5], (int)reader[6]));
                 }
                 reader.Close();
+                _connection.Close();
             }
             catch (Exception ex)
             {
@@ -86,12 +78,6 @@ namespace Core.Server
         public static void ExecuteAddUser(User bob) //add a user object to the sql server
         {
 
-            // ExecuteQuery($"INSERT INTO[dbo].[Users] VALUES('{bob.getName()}', '{bob.getPassword()}', {bob.getPoints()}, '{bob.getClassrooms()}', '{bob.getRanks()}', {bob.getTeamId()})");
-
-            //
-            //          ABOVE (Recomended code) BELOW (Actual code) 
-            //
-
             SqlCommand cmdNew = new SqlCommand("INSERT INTO[dbo].[Users] VALUES('" + bob.Name + "', '" + bob.Password + "', " + bob.Points + ", '" + bob.Classrooms + "', '" + bob.Ranks + "', " + bob.TeamId + ")", _connection);
             cmdNew.CommandType = CommandType.Text;
             _connection.Open();
@@ -101,20 +87,6 @@ namespace Core.Server
 
         public static User ExecuteGetUser(string name) //using a name, get a user
         {
-
-            //SqlDataReader reader = ExecuteRead($"SELECT Users.Password, Users.Points, Users.Classrooms, Users.Ranks, Users.TeamId FROM Users where Users.Name = '{name}'");
-            //User userToReturn = null;
-            //while (reader.Read())
-            //{
-            //   userToReturn = new User(name, $"{reader[0]}", (int)reader[1], $"{reader[2]}", $"{reader[3]}", (int)reader[4]);
-            //}
-            //reader.Close();
-            //_connection.Close();
-            //return userToReturn;
-
-            //
-            //          ABOVE (Reccomended code) BELOW (Actual code) 
-            //
 
             SqlCommand cmdNew = new SqlCommand("SELECT Users.Password, Users.Points, Users.Classrooms, Users.Ranks, Users.TeamId, Users.Id FROM Users where Users.Name = '" + name + "'", _connection);
             cmdNew.CommandType = CommandType.Text;
@@ -129,6 +101,7 @@ namespace Core.Server
                     userToReturn = new User(name, reader[0] + "", (int)reader[1], reader[2] + "", reader[3] + "", (int)reader[4], (int)reader[5]);
                 }
                 reader.Close();
+                _connection.Close();
             }
             catch (Exception ex)
             {
