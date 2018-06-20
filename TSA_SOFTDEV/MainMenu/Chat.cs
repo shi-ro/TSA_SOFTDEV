@@ -43,7 +43,7 @@ namespace MainMenu
         public Chat()
         {
             this.user = "DANIELA";
-            this.nick = "by834rrbyiqcrcqzwirqwcziubyqcriub"; //Get user name
+            this.nick = "bfkbqewheqwbjk"; //Get user name
             this.channel = "#Mathedonia_TEAM1"; //replace with actual Team ID
             this.server = "chat.freenode.net";
             this.port = "6667";
@@ -84,7 +84,8 @@ namespace MainMenu
             writer.Flush();
             while (socket.Connected)
             {
-                var line = reader.ReadLine();
+                var line = reader.ReadLine();   
+                if (line == null) { continue; }
                 Console.WriteLine(line);
                 inQueue.Enqueue(line);
                 messages.Add(line);
