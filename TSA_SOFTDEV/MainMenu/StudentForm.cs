@@ -37,6 +37,7 @@ namespace TSA_SOFTDEV
 
             //studentLeaderboardText.Text = 
             chatTextBox.Text = "LOADING...";
+          
             /*BackgroundWorker bw = new BackgroundWorker();
             bw.WorkerReportsProgress = true;
             //bw.DoWork +=
@@ -111,6 +112,7 @@ namespace TSA_SOFTDEV
         {
             this.Size = new Size(692, 505);
             messageText.KeyUp += EnterForSendMessage;
+            chatTextBox.TextChanged += chatTextBox_TextChanged;
             LoadProblemSets();
             listBox1.Items.Clear();
             foreach(ProblemSet ps in problemSets)
@@ -175,7 +177,7 @@ namespace TSA_SOFTDEV
         {
 
         }
-
+        
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             int idx = listBox1.SelectedIndex;
@@ -203,9 +205,14 @@ namespace TSA_SOFTDEV
         }
 
         private void DoSolverClosed(object sender, FormClosedEventArgs e)
-        { 
+        {
             button1.Enabled = true;
             solverOpen = false;
+        }
+        private void chatTextBox_TextChanged(object sender, EventArgs e)
+        {
+            chatTextBox.SelectionStart = chatTextBox.Text.Length;
+            chatTextBox.ScrollToCaret();
         }
     }
 }

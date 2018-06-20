@@ -324,7 +324,7 @@
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button1
-            // 
+            //
             this.button1.Enabled = false;
             this.button1.Location = new System.Drawing.Point(3, 122);
             this.button1.Name = "button1";
