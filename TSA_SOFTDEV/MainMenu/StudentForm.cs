@@ -99,13 +99,10 @@ namespace TSA_SOFTDEV
                             chatTextBox.Text += ("\n [Me]: " + filteredMessage);
                         });
                     }
-
                     //Add to chat box
-
                     Console.WriteLine("Message added: " + message);
                 }
             }
-            
         }
 
         private void StudentForm_Load(object sender, EventArgs e)
@@ -130,7 +127,7 @@ namespace TSA_SOFTDEV
 
         private void LoadTempProblemSets()
         {
-            problemSets.Add(new ProblemSet("Multi",5,"_ _","Basic multiplication",10,0));
+            problemSets.Add(new ProblemSet("Multi",5, "indefinite integral of sqrt(_)", "Basic multiplication",10,0));
         }
 
         private void label10_Click(object sender, EventArgs e)
@@ -209,6 +206,7 @@ namespace TSA_SOFTDEV
             button1.Enabled = true;
             solverOpen = false;
         }
+
         private void chatTextBox_TextChanged(object sender, EventArgs e)
         {
             chatTextBox.SelectionStart = chatTextBox.Text.Length;

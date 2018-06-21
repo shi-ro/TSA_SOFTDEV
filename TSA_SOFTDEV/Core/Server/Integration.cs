@@ -35,8 +35,6 @@ namespace Core.Server
                 Console.WriteLine("=========================");
                 Console.WriteLine(ex);
             }
-
-
             return teamname;
         }
         

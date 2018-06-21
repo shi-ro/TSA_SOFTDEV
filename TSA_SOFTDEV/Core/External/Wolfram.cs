@@ -21,25 +21,32 @@ namespace Core.External
         /// <returns>result of the query from wolfram api</returns>
         public static string GetSolution(string query)
         {
-            Console.WriteLine($"[DBG]     : calling wolfram for response to : {query}");
-            // set request url and parameters
-            WebRequest req = WebRequest.Create($"{URL}?appid={KEY}&i={query}%3f");
-            req.Credentials = CredentialCache.DefaultCredentials;
-            // send request
-            HttpWebResponse resp = (HttpWebResponse)req.GetResponse(); 
-            Console.WriteLine($"[WLF] STT : {resp.StatusDescription}");
-            // default return value
-            string result = "err"; 
-            // read response data
-            using (Stream dat = resp.GetResponseStream())
+            try
             {
-                using (StreamReader reader = new StreamReader(dat))
+                Console.WriteLine($"[DBG]     : calling wolfram for response to : {query}");
+                // set request url and parameters
+                WebRequest req = WebRequest.Create($"{URL}?appid={KEY}&i={query}%3f");
+                req.Credentials = CredentialCache.DefaultCredentials;
+                // send request
+                HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
+                Console.WriteLine($"[WLF] STT : {resp.StatusDescription}");
+                // default return value
+                string result = "err";
+                // read response data
+                using (Stream dat = resp.GetResponseStream())
                 {
-                    // set read data to a var
-                    result = (reader.ReadToEnd()); 
+                    using (StreamReader reader = new StreamReader(dat))
+                    {
+                        // set read data to a var
+                        result = (reader.ReadToEnd());
+                    }
                 }
+                return result; // return response data
+            } catch (Exception e)
+            {
+                return "++ERROR++";
             }
-            return result; // return response data
+            
         }
 
         /// <summary>

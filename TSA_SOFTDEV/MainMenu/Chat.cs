@@ -114,7 +114,6 @@ namespace MainMenu
         }
         public void joinChannel()
         {
-
             string channel = "TEAM1"; //INSERT CHANNEL NAME
             Console.WriteLine("ChannelName:" + channel);
             outQueue.Enqueue("JOIN #" + channel);
