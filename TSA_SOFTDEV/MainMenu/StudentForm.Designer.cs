@@ -385,14 +385,21 @@
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button1
+<<<<<<< HEAD
             // 
             this.button1.Location = new System.Drawing.Point(8, 292);
             this.button1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+=======
+            //
+            this.button1.Enabled = false;
+            this.button1.Location = new System.Drawing.Point(3, 122);
+>>>>>>> b6167bafc213769d80ca8006cd3abd0d97fb0608
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(544, 128);
             this.button1.TabIndex = 0;
             this.button1.Text = "Start";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // tableLayoutPanel7
             // 
@@ -432,6 +439,7 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(643, 724);
             this.listBox1.TabIndex = 1;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // studentTeam
             // 
@@ -504,7 +512,6 @@
             this.chatTextBox.Size = new System.Drawing.Size(1713, 772);
             this.chatTextBox.TabIndex = 3;
             this.chatTextBox.Text = "";
-            this.chatTextBox.TextChanged += new System.EventHandler(this.chatTextBox_TextChanged);
             // 
             // sendButton
             // 
