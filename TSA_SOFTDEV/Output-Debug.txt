@@ -1,0 +1,181 @@
+﻿'MainMenu.exe' (CLR v4.0.30319: DefaultDomain): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_32\mscorlib\v4.0_4.0.0.0__b77a5c561934e089\mscorlib.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'MainMenu.exe' (CLR v4.0.30319: DefaultDomain): Loaded 'C:\Users\thali\TSA_SOFTDEV\TSA_SOFTDEV\MainMenu\bin\Debug\MainMenu.exe'. Symbols loaded.
+'MainMenu.exe' (CLR v4.0.30319: MainMenu.exe): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Windows.Forms\v4.0_4.0.0.0__b77a5c561934e089\System.Windows.Forms.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'MainMenu.exe' (CLR v4.0.30319: MainMenu.exe): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System\v4.0_4.0.0.0__b77a5c561934e089\System.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'MainMenu.exe' (CLR v4.0.30319: MainMenu.exe): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Drawing\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Drawing.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'MainMenu.exe' (CLR v4.0.30319: MainMenu.exe): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Core\v4.0_4.0.0.0__b77a5c561934e089\System.Core.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'MainMenu.exe' (CLR v4.0.30319: MainMenu.exe): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Configuration\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Configuration.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'MainMenu.exe' (CLR v4.0.30319: MainMenu.exe): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Xml\v4.0_4.0.0.0__b77a5c561934e089\System.Xml.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+SETUPCHAT
+'MainMenu.exe' (CLR v4.0.30319: MainMenu.exe): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_32\System.Data\v4.0_4.0.0.0__b77a5c561934e089\System.Data.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'MainMenu.exe' (CLR v4.0.30319: MainMenu.exe): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_32\System.Transactions\v4.0_4.0.0.0__b77a5c561934e089\System.Transactions.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'MainMenu.exe' (CLR v4.0.30319: MainMenu.exe): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_32\System.EnterpriseServices\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.EnterpriseServices.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'MainMenu.exe' (CLR v4.0.30319: MainMenu.exe): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_32\System.EnterpriseServices\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.EnterpriseServices.Wrapper.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+Connected
+:weber.freenode.net NOTICE * :*** Looking up your hostname...
+Message added: :weber.freenode.net NOTICE * :*** Looking up your hostname...
+:weber.freenode.net NOTICE * :*** Checking Ident
+:weber.freenode.net NOTICE * :*** Found your hostname
+Message added: :weber.freenode.net NOTICE * :*** Checking Ident
+Message added: :weber.freenode.net NOTICE * :*** Found your hostname
+'MainMenu.exe' (CLR v4.0.30319: MainMenu.exe): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Runtime.Caching\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Runtime.Caching.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+:weber.freenode.net NOTICE * :*** No Ident response
+Message added: :weber.freenode.net NOTICE * :*** No Ident response
+:weber.freenode.net 001 bfkbqewheqwbjk :Welcome to the freenode Internet Relay Chat Network bfkbqewheqwbjk
+:weber.freenode.net 002 bfkbqewheqwbjk :Your host is weber.freenode.net[162.213.39.42/6667], running version ircd-seven-1.1.5
+Message added: :weber.freenode.net 001 bfkbqewheqwbjk :Welcome to the freenode Internet Relay Chat Network bfkbqewheqwbjk
+Message added: :weber.freenode.net 002 bfkbqewheqwbjk :Your host is weber.freenode.net[162.213.39.42/6667], running version ircd-seven-1.1.5
+:weber.freenode.net 003 bfkbqewheqwbjk :This server was created Wed Nov 15 2017 at 23:44:06 UTC
+:weber.freenode.net 004 bfkbqewheqwbjk weber.freenode.net ircd-seven-1.1.5 DOQRSZaghilopswz CFILMPQSbcefgijklmnopqrstvz bkloveqjfI
+:weber.freenode.net 005 bfkbqewheqwbjk CHANTYPES=# EXCEPTS INVEX CHANMODES=eIbq,k,flj,CFLMPQScgimnprstz CHANLIMIT=#:120 PREFIX=(ov)@+ MAXLIST=bqeI:100 MODES=4 NETWORK=freenode KNOCK STATUSMSG=@+ CALLERID=g :are supported by this server
+:weber.freenode.net 005 bfkbqewheqwbjk CASEMAPPING=rfc1459 CHARSET=ascii NICKLEN=16 CHANNELLEN=50 TOPICLEN=390 ETRACE CPRIVMSG CNOTICE DEAF=D MONITOR=100 FNC TARGMAX=NAMES:1,LIST:1,KICK:1,WHOIS:1,PRIVMSG:4,NOTICE:4,ACCEPT:,MONITOR: :are supported by this server
+Ping message dealt with
+Message added: :weber.freenode.net 003 bfkbqewheqwbjk :This server was created Wed Nov 15 2017 at 23:44:06 UTC
+Message added: :weber.freenode.net 004 bfkbqewheqwbjk weber.freenode.net ircd-seven-1.1.5 DOQRSZaghilopswz CFILMPQSbcefgijklmnopqrstvz bkloveqjfI
+Message added: :weber.freenode.net 005 bfkbqewheqwbjk CHANTYPES=# EXCEPTS INVEX CHANMODES=eIbq,k,flj,CFLMPQScgimnprstz CHANLIMIT=#:120 PREFIX=(ov)@+ MAXLIST=bqeI:100 MODES=4 NETWORK=freenode KNOCK STATUSMSG=@+ CALLERID=g :are supported by this server
+Message added: :weber.freenode.net 005 bfkbqewheqwbjk CASEMAPPING=rfc1459 CHARSET=ascii NICKLEN=16 CHANNELLEN=50 TOPICLEN=390 ETRACE CPRIVMSG CNOTICE DEAF=D MONITOR=100 FNC TARGMAX=NAMES:1,LIST:1,KICK:1,WHOIS:1,PRIVMSG:4,NOTICE:4,ACCEPT:,MONITOR: :are supported by this server
+:weber.freenode.net 005 bfkbqewheqwbjk EXTBAN=$,ajrxz WHOX CLIENTVER=3.0 SAFELIST ELIST=CTU :are supported by this server
+:weber.freenode.net 251 bfkbqewheqwbjk :There are 115 users and 80681 invisible on 34 servers
+Message added: :weber.freenode.net 005 bfkbqewheqwbjk EXTBAN=$,ajrxz WHOX CLIENTVER=3.0 SAFELIST ELIST=CTU :are supported by this server
+Message added: :weber.freenode.net 251 bfkbqewheqwbjk :There are 115 users and 80681 invisible on 34 servers
+:weber.freenode.net 252 bfkbqewheqwbjk 32 :IRC Operators online
+:weber.freenode.net 253 bfkbqewheqwbjk 13 :unknown connection(s)
+Message added: :weber.freenode.net 252 bfkbqewheqwbjk 32 :IRC Operators online
+Message added: :weber.freenode.net 253 bfkbqewheqwbjk 13 :unknown connection(s)
+:weber.freenode.net 254 bfkbqewheqwbjk 45298 :channels formed
+:weber.freenode.net 255 bfkbqewheqwbjk :I have 4090 clients and 1 servers
+Message added: :weber.freenode.net 254 bfkbqewheqwbjk 45298 :channels formed
+Message added: :weber.freenode.net 255 bfkbqewheqwbjk :I have 4090 clients and 1 servers
+:weber.freenode.net 265 bfkbqewheqwbjk 4090 5989 :Current local users 4090, max 5989
+:weber.freenode.net 266 bfkbqewheqwbjk 80796 96965 :Current global users 80796, max 96965
+Message added: :weber.freenode.net 265 bfkbqewheqwbjk 4090 5989 :Current local users 4090, max 5989
+Message added: :weber.freenode.net 266 bfkbqewheqwbjk 80796 96965 :Current global users 80796, max 96965
+:weber.freenode.net 250 bfkbqewheqwbjk :Highest connection count: 5990 (5989 clients) (1108065 connections received)
+:weber.freenode.net 375 bfkbqewheqwbjk :- weber.freenode.net Message of the Day - 
+:weber.freenode.net 372 bfkbqewheqwbjk :- Welcome to weber.freenode.net in California, USA.
+:weber.freenode.net 372 bfkbqewheqwbjk :- Thanks to https://www.cloudsigma.com/ for sponsoring
+Message added: :weber.freenode.net 250 bfkbqewheqwbjk :Highest connection count: 5990 (5989 clients) (1108065 connections received)
+Message added: :weber.freenode.net 375 bfkbqewheqwbjk :- weber.freenode.net Message of the Day - 
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- Welcome to weber.freenode.net in California, USA.
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- Thanks to https://www.cloudsigma.com/ for sponsoring
+:weber.freenode.net 372 bfkbqewheqwbjk :- this server!
+:weber.freenode.net 372 bfkbqewheqwbjk :-  
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- this server!
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :-  
+:weber.freenode.net 372 bfkbqewheqwbjk :- WEBER, DAVID M. (1952-), an American fantasy and scifi
+:weber.freenode.net 372 bfkbqewheqwbjk :- author. Best known for his 'Honor Harrington' series, his
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- WEBER, DAVID M. (1952-), an American fantasy and scifi
+:weber.freenode.net 372 bfkbqewheqwbjk :- works span several genres, including alternate history,
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- author. Best known for his 'Honor Harrington' series, his
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- works span several genres, including alternate history,
+:weber.freenode.net 372 bfkbqewheqwbjk :- epic fantasy, military scifi and space opera. He's also
+:weber.freenode.net 372 bfkbqewheqwbjk :- done wargame design mainly for the StarFire tabletop
+:weber.freenode.net 372 bfkbqewheqwbjk :- boardgame series, a job which later evolved into the novel,
+:weber.freenode.net 372 bfkbqewheqwbjk :- 'Insurrection' (collaboration with Steve White, published
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- epic fantasy, military scifi and space opera. He's also
+:weber.freenode.net 372 bfkbqewheqwbjk :- in 1990).
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- done wargame design mainly for the StarFire tabletop
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- boardgame series, a job which later evolved into the novel,
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- 'Insurrection' (collaboration with Steve White, published
+:weber.freenode.net 372 bfkbqewheqwbjk :-  
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- in 1990).
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :-  
+:weber.freenode.net 372 bfkbqewheqwbjk :- Welcome to freenode - supporting the free and open source
+:weber.freenode.net 372 bfkbqewheqwbjk :- software communities since 1998.
+:weber.freenode.net 372 bfkbqewheqwbjk :-  
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- Welcome to freenode - supporting the free and open source
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- software communities since 1998.
+:weber.freenode.net 372 bfkbqewheqwbjk :- By connecting to freenode you indicate that you have read and
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :-  
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- By connecting to freenode you indicate that you have read and
+:weber.freenode.net 372 bfkbqewheqwbjk :- accept our policies and guidelines as set out on https://freenode.net
+:weber.freenode.net 372 bfkbqewheqwbjk :-  
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- accept our policies and guidelines as set out on https://freenode.net
+:weber.freenode.net 372 bfkbqewheqwbjk :- In the event that you observe behaviour that contravenes our policies,
+:weber.freenode.net 372 bfkbqewheqwbjk :- please notify a volunteer staff member via private message, or send us an
+:weber.freenode.net 372 bfkbqewheqwbjk :- e-mail to complaints@freenode.net -- we will do our best to address the
+:weber.freenode.net 372 bfkbqewheqwbjk :- situation within a reasonable period of time, and we may request further
+:weber.freenode.net 372 bfkbqewheqwbjk :- information or, as appropriate, involve other parties such as channel operators 
+:weber.freenode.net 372 bfkbqewheqwbjk :- Group Contacts representing an on-topic group.
+:weber.freenode.net 372 bfkbqewheqwbjk :-  
+:weber.freenode.net 372 bfkbqewheqwbjk :- freenode runs an open proxy scanner.
+:weber.freenode.net 372 bfkbqewheqwbjk :-  
+:weber.freenode.net 372 bfkbqewheqwbjk :- If you are looking for assistance, you will be able to find a list of
+:weber.freenode.net 372 bfkbqewheqwbjk :- volunteer staff using the '/who freenode/staff/*' command, and you may
+:weber.freenode.net 372 bfkbqewheqwbjk :- message any of us at any time. Please note that freenode predominantly
+:weber.freenode.net 372 bfkbqewheqwbjk :- provides assistance via private message, and while we have a network
+:weber.freenode.net 372 bfkbqewheqwbjk :- channel the primary venue for support requests is via private message to
+:weber.freenode.net 372 bfkbqewheqwbjk :- a member of the volunteer staff team.
+:weber.freenode.net 372 bfkbqewheqwbjk :-  
+:weber.freenode.net 372 bfkbqewheqwbjk :- From time to time, volunteer staff may send server-wide notices relating to
+:weber.freenode.net 372 bfkbqewheqwbjk :- the project, or the communities that we host. The majority of such notices
+:weber.freenode.net 372 bfkbqewheqwbjk :- will be sent as wallops, and you can '/mode <yournick> +w' to ensure that you
+:weber.freenode.net 372 bfkbqewheqwbjk :- do not miss them. Important messages relating to the freenode project, including
+:weber.freenode.net 372 bfkbqewheqwbjk :- notices of upcoming maintenance and other scheduled downtime will be issued as
+:weber.freenode.net 372 bfkbqewheqwbjk :- global notices.
+:weber.freenode.net 372 bfkbqewheqwbjk :-  
+:weber.freenode.net 372 bfkbqewheqwbjk :- Representing an on-topic project? Don't forget to register, more information
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :-  
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- In the event that you observe behaviour that contravenes our policies,
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- please notify a volunteer staff member via private message, or send us an
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- e-mail to complaints@freenode.net -- we will do our best to address the
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- situation within a reasonable period of time, and we may request further
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- information or, as appropriate, involve other parties such as channel operators 
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- Group Contacts representing an on-topic group.
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :-  
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- freenode runs an open proxy scanner.
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- If you are looking for assistance, you will be able to find a list of
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- volunteer staff using the '/who freenode/staff/*' command, and you may
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- message any of us at any time. Please note that freenode predominantly
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- provides assistance via private message, and while we have a network
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- channel the primary venue for support requests is via private message to
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- a member of the volunteer staff team.
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :-  
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- From time to time, volunteer staff may send server-wide notices relating to
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- the project, or the communities that we host. The majority of such notices
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- will be sent as wallops, and you can '/mode <yournick> +w' to ensure that you
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- do not miss them. Important messages relating to the freenode project, including
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- notices of upcoming maintenance and other scheduled downtime will be issued as
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- global notices.
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- Representing an on-topic project? Don't forget to register, more information
+:weber.freenode.net 372 bfkbqewheqwbjk :- can be found on the https://freenode.net website under "Group Registration".
+:weber.freenode.net 372 bfkbqewheqwbjk :-  
+:weber.freenode.net 372 bfkbqewheqwbjk :- freenode organises an annual conference, and we would like to extend our
+:weber.freenode.net 372 bfkbqewheqwbjk :- thanks to the attendees, exhibitors and speakers who made freenode #live 2017
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- can be found on the https://freenode.net website under "Group Registration".
+:weber.freenode.net 372 bfkbqewheqwbjk :- possible. And of course, our generous sponsors: Bytemark, Canonical (Ubuntu),
+:weber.freenode.net 372 bfkbqewheqwbjk :- Falanx Cyber Security, Private Internet Access and Yubico for footing the bill.
+:weber.freenode.net 372 bfkbqewheqwbjk :-  
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :-  
+:weber.freenode.net 372 bfkbqewheqwbjk :- Thank you also to our server sponsors for the sustained support in keeping the
+:weber.freenode.net 372 bfkbqewheqwbjk :- network going for close to two decades.
+:weber.freenode.net 372 bfkbqewheqwbjk :-  
+:weber.freenode.net 372 bfkbqewheqwbjk :- freenode #live returns to Bristol, UK on November 3rd-4th 2018. Our Call for
+:weber.freenode.net 372 bfkbqewheqwbjk :- Proposals is live at https://freenode.live and open until July 31, 2018. If 
+:weber.freenode.net 372 bfkbqewheqwbjk :- you are interested in sponsoring this event, please send an e-mail to
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- freenode organises an annual conference, and we would like to extend our
+:weber.freenode.net 372 bfkbqewheqwbjk :- sponsor@freenode.live
+:weber.freenode.net 372 bfkbqewheqwbjk :-  
+:weber.freenode.net 372 bfkbqewheqwbjk :- Thank you for using freenode!
+:weber.freenode.net 372 bfkbqewheqwbjk :-  
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- thanks to the attendees, exhibitors and speakers who made freenode #live 2017
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- possible. And of course, our generous sponsors: Bytemark, Canonical (Ubuntu),
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- Falanx Cyber Security, Private Internet Access and Yubico for footing the bill.
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :-  
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- Thank you also to our server sponsors for the sustained support in keeping the
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- network going for close to two decades.
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- freenode #live returns to Bristol, UK on November 3rd-4th 2018. Our Call for
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- Proposals is live at https://freenode.live and open until July 31, 2018. If 
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- you are interested in sponsoring this event, please send an e-mail to
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- sponsor@freenode.live
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :-  
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :- Thank you for using freenode!
+:weber.freenode.net 372 bfkbqewheqwbjk :-  
+:weber.freenode.net 376 bfkbqewheqwbjk :End of /MOTD command.
+:bfkbqewheqwbjk MODE bfkbqewheqwbjk :+i
+Message added: :weber.freenode.net 372 bfkbqewheqwbjk :-  
+Message added: :weber.freenode.net 376 bfkbqewheqwbjk :End of /MOTD command.
+Message added: :bfkbqewheqwbjk MODE bfkbqewheqwbjk :+i
+:NickServ!NickServ@services. NOTICE bfkbqewheqwbjk :bfkbqewheqwbjk is not a registered nickname.
+Message added: :NickServ!NickServ@services. NOTICE bfkbqewheqwbjk :bfkbqewheqwbjk is not a registered nickname.
+The program '[13532] MainMenu.exe' has exited with code -1 (0xffffffff).

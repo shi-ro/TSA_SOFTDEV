@@ -17,6 +17,7 @@ namespace TSA_SOFTDEV
     public partial class StudentForm : Form
     {
         Chat chat;
+        List<User> sortedUsers = new List<User>();
         List<ProblemSet> problemSets = new List<ProblemSet>();
         ProblemSet selectedSet = null;
         bool solverOpen = false;
@@ -45,9 +46,69 @@ namespace TSA_SOFTDEV
             bw.RunWorkerAsync();*/
             var networkThread = new Thread(updateChatBox);
             networkThread.Start();
-            
+
             //Thread.Sleep(10000); //DEAL WITH THIS
             //updateChatBox();
+
+
+
+                
+            //***THALIAS CODE HERE and yes i actually did code it -_-
+
+
+            List<User> users = Core.Server.Integration.ExecuteGetUsers();
+            //users.Sort();
+            //Using lambda to sort
+            //User Leaderboard
+            sortedUsers = users.OrderByDescending(x => x.Points).ToList();
+            int count = 1;
+            for (int i = 0; i < sortedUsers.Count(); i++)
+            {
+                ListViewItem lv1 = new ListViewItem(count.ToString());
+                ListViewItem lv2 = new ListViewItem(count.ToString());
+                lv1.SubItems.Add(sortedUsers[i].Name);
+                lv2.SubItems.Add(sortedUsers[i].Name);
+                lv1.SubItems.Add((sortedUsers[i].Points).ToString());
+                lv2.SubItems.Add((sortedUsers[i].Points).ToString());
+                listView1.Items.Add(lv1);
+                //listView3.Items.Add(lv2);
+
+                if (i < sortedUsers.Count() - 1)
+                {
+                    if (sortedUsers[i].Points == sortedUsers[i + 1].Points)
+                    {
+                        count += 0;
+                    }
+                    else
+                    {
+                        count++;
+                    }
+                }
+                else
+                {
+                    if (sortedUsers[i].Points == sortedUsers[sortedUsers.Count()-1].Points)
+                    {
+                        count += 0;
+                    }
+                    else
+                    {
+                        count++;
+                    }
+                }
+            }
+
+            //Core.Server.Integration.ExecuteGetUserTeam();
+            //team leaderboard
+            for (int i =0; i < users.Count(); i++)
+            {
+
+            }
+
+
+            //names.Add(Core.Server.Integration.ExecuteGetUsers());
+
+            //User bob = Core.Server.Integration.ExecuteGetUser("Bob test");
+            //Console.WriteLine("bob's team is " + Core.Server.Integration.ExecuteGetUserTeam(bob.Name));
         }
 
         private void updateChatBox()
@@ -211,6 +272,36 @@ namespace TSA_SOFTDEV
         {
             chatTextBox.SelectionStart = chatTextBox.Text.Length;
             chatTextBox.ScrollToCaret();
+        }
+
+        private void studentLeaderboardText_TextChanged(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            /*
+            int count = 1;
+            for (int i = 0; i < sortedUsers.Count(); i++)
+            {  
+                ListViewItem lv1 = new ListViewItem(count.ToString());
+                lv1.SubItems.Add(sortedUsers[i].Name);
+                lv1.SubItems.Add((sortedUsers[i].Points).ToString());
+                listView1.Items.Add(lv1);
+            }
+            */
+        }
+
+        private void listView2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

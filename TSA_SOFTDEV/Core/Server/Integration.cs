@@ -11,12 +11,12 @@ namespace Core.Server
     {
         private static SqlConnection _connection = new SqlConnection("Server=tcp:softdevserver.database.windows.net,1433;Initial Catalog=SoftDevDB;Persist Security Info=False;User ID=serveradmin;Password=SoftDev!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
 
-        public static String ExecuteGetUserTeam(String username)
+        public static Team ExecuteGetUserTeam(String username)
         {
             int teamid = Core.Server.Integration.ExecuteGetUser(username).TeamId;
-            String teamname = "";
+            Team userteam = null;
 
-            SqlCommand scndCmd = new SqlCommand("SELECT Teams.TeamName FROM Teams WHERE  Teams.Id = " + teamid, _connection);
+            SqlCommand scndCmd = new SqlCommand("SELECT Teams.Id, Teams.TeamName, Teams.Users, Teams.Points FROM Teams WHERE  Teams.Id = " + teamid, _connection);
             scndCmd.CommandType = CommandType.Text;
 
             try
@@ -25,7 +25,7 @@ namespace Core.Server
                 SqlDataReader reader = scndCmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    teamname = reader[0].ToString();
+                    userteam = new Team(reader[1] + "", (int)reader[3], reader[2] + "", (int)reader[0]);
                 }
                 reader.Close();
                 _connection.Close();
@@ -35,7 +35,7 @@ namespace Core.Server
                 Console.WriteLine("=========================");
                 Console.WriteLine(ex);
             }
-            return teamname;
+            return userteam;
         }
         
 
