@@ -48,6 +48,12 @@
   <ItemGroup>
     <Compile Include="BitmapTex.cs" />
     <Compile Include="Chat.cs" />
+    <Compile Include="CreateAccountScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateAccountScreen.Designer.cs">
+      <DependentUpon>CreateAccountScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,9 @@
     </Compile>
     <Compile Include="Team.cs" />
     <Compile Include="User.cs" />
+    <EmbeddedResource Include="CreateAccountScreen.resx">
+      <DependentUpon>CreateAccountScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginScreen.resx">
       <DependentUpon>LoginScreen.cs</DependentUpon>
     </EmbeddedResource>
