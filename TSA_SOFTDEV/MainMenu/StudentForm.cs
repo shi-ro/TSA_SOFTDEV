@@ -188,7 +188,7 @@ namespace TSA_SOFTDEV
 
         private void LoadTempProblemSets()
         {
-            problemSets.Add(new ProblemSet("Multi",5, "indefinite integral of sqrt(_)", "Basic multiplication",10,0));
+            problemSets.Add(new ProblemSet("Multi",5, "Basic multiplication", "indefinite integral of sqrt(_)",1,"","0,10"));
         }
 
         private void label10_Click(object sender, EventArgs e)
@@ -245,7 +245,6 @@ namespace TSA_SOFTDEV
                 label8.Text = selectedSet.Name;
                 label11.Text = selectedSet.Points + "pts";
                 richTextBox5.Text = selectedSet.Description;
-                richTextBox7.Text = $"{selectedSet.Completed} of {selectedSet.Problems}";
                 button1.Enabled = true;
             }
         }
