@@ -16,7 +16,7 @@ namespace MainMenu
         public int TeamId { get; set; }
         public int Id { get; set; }
 
-        public Student(String n, String p, int po, String c, String r, int t, int i)
+        public Student(String n, String p, int po, String c, String r, int t)
         {
             Name = n;
             Password = p;
@@ -24,7 +24,13 @@ namespace MainMenu
             Classrooms = c;
             Ranks = r;
             TeamId = t;
-            Id = i;
+
+            
+        }
+
+        public void setStudentId()
+        {
+            Id = Core.Server.Integration.ExecuteGetStudentId(this);
         }
     }
 }

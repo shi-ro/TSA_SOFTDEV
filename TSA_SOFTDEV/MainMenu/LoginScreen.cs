@@ -23,13 +23,15 @@ namespace MainMenu
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //Student bob = Core.Server.Integration.ExecuteGetStudent("Bob test");
-            //Console.WriteLine("bob's team name is: " +  Core.Server.Integration.ExecuteGetStudentTeam(bob.Name).Users);
+            //Teacher s = new Teacher("Sturtevant", "calc", "1", "1", )
+
+
+            TryLogin();
         }
 
         private void LoginScreen_Load(object sender, EventArgs e)
         {
-            //Core.Server.Integration.ExecuteAddProblemset("SQL DAT TEST",5,1,"_-_","","-1,10","Testing SQL server problemset addition ( but its subtraction )");
+
         }
 
         private void TryLogin()
