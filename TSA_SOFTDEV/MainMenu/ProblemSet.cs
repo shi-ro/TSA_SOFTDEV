@@ -12,17 +12,26 @@ namespace MainMenu
         public int Points { get; set; }
         public string Formula { get; set; }
         public string Description { get; set; }
-        public int Problems { get; set; }
-        public int Completed { get; set; }
+        public bool UsesFormula { get; set; }
+        public string[] Values { get; set; }
+        public int MaxVal { get; set; }
+        public int MinVal { get; set; }
 
-        public ProblemSet(string name, int points, string formula, string description, int problems, int completed)
+        public ProblemSet(string name, int points,string description, string formula, int usesFormula, string values, string randomRange)
         {
             Name = name;
             Points = points;
-            Formula = formula;
             Description = description;
-            Problems = problems;
-            Completed = completed;
+            UsesFormula = usesFormula==1?true:false;
+            MinVal = Int32.Parse(randomRange.Split(',')[0]);
+            MaxVal = Int32.Parse(randomRange.Split(',')[1]);
+            if (UsesFormula)
+            {
+                Formula = formula;
+            } else
+            {
+                Values = values.Split(',');
+            }
         }
     }
 }

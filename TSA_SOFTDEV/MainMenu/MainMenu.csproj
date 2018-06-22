@@ -96,7 +96,7 @@
       <DependentUpon>TeacherLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Team.cs" />
-    <Compile Include="User.cs" />
+    <Compile Include="Student.cs" />
     <EmbeddedResource Include="CreateAccountScreen.resx">
       <DependentUpon>CreateAccountScreen.cs</DependentUpon>
     </EmbeddedResource>
