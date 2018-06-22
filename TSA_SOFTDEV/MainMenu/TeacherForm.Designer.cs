@@ -157,7 +157,7 @@
             this.richTextBox9.Name = "richTextBox9";
             this.richTextBox9.Size = new System.Drawing.Size(250, 251);
             this.richTextBox9.TabIndex = 2;
-            this.richTextBox9.Text = "";
+            this.richTextBox9.Text = "none";
             // 
             // button19
             // 
@@ -209,7 +209,8 @@
             this.richTextBox10.Name = "richTextBox10";
             this.richTextBox10.Size = new System.Drawing.Size(237, 350);
             this.richTextBox10.TabIndex = 6;
-            this.richTextBox10.Text = "";
+            this.richTextBox10.Text = "Class Name :   Period 1\nClass ID : 23468790\nStudents :   \n\tJhon doe\n\tMatthew doe\n" +
+    "\tDaniela joe";
             // 
             // label13
             // 
@@ -524,6 +525,12 @@
             // 
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 24;
+            this.listBox1.Items.AddRange(new object[] {
+            "Period 1",
+            "Period 2",
+            "Period 3",
+            "Period 6",
+            "Afterschool"});
             this.listBox1.Location = new System.Drawing.Point(3, 26);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(113, 244);
