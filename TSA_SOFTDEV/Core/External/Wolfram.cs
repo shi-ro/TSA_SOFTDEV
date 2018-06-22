@@ -46,7 +46,6 @@ namespace Core.External
             {
                 return "++ERROR++";
             }
-            
         }
 
         /// <summary>

@@ -12,17 +12,22 @@ namespace MainMenu
         public int Points { get; set; }
         public string Formula { get; set; }
         public string Description { get; set; }
-        public int Problems { get; set; }
-        public int Completed { get; set; }
-
-        public ProblemSet(string name, int points, string formula, string description, int problems, int completed)
+        public bool UsesFormula { get; set; }
+        public string[] Values { get; set; }
+        
+        public ProblemSet(string name, int points,string description, string formula, int usesFormula, string values)
         {
             Name = name;
             Points = points;
-            Formula = formula;
             Description = description;
-            Problems = problems;
-            Completed = completed;
+            UsesFormula = usesFormula==1?true:false;
+            if(UsesFormula)
+            {
+                Formula = formula;
+            } else
+            {
+                Values = values.Split(',');
+            }
         }
     }
 }

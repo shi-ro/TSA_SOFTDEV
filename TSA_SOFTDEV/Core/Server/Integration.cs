@@ -40,7 +40,7 @@ namespace Core.Server
         
         public static List<User> ExecuteGetUsers() //return a list of all the user objects
         {
-            SqlCommand cmdGetCount = new SqlCommand("SELECT count(*) FROM Users", _connection);
+            SqlCommand cmdGetCount = new SqlCommand("SELECT count(*) FROM Students", _connection);
             cmdGetCount.CommandType = CommandType.Text;
             _connection.Open();
 
@@ -50,7 +50,7 @@ namespace Core.Server
 
             List<User> userList = new List<User>((int)numUsers);
 
-            SqlCommand cmdAllUsers = new SqlCommand("SELECT Users.Name, Users.Password, Users.Points, Users.Classrooms, Users.Ranks, Users.TeamId, Users.Id FROM Users", _connection);
+            SqlCommand cmdAllUsers = new SqlCommand("SELECT Students.Name, Students.Password, Students.Points, Students.Classrooms, Students.Ranks, Students.TeamId, Students.Id FROM Students", _connection);
             cmdAllUsers.CommandType = CommandType.Text;
             try
             {
@@ -100,7 +100,7 @@ namespace Core.Server
         public static User ExecuteGetUser(string name) //using a name, get a user
         {
 
-            SqlCommand cmdNew = new SqlCommand("SELECT Users.Password, Users.Points, Users.Classrooms, Users.Ranks, Users.TeamId, Users.Id FROM Users where Users.Name = '" + name + "'", _connection);
+            SqlCommand cmdNew = new SqlCommand("SELECT Students.Password, Students.Points, Students.Classrooms, Students.Ranks, Students.TeamId, Students.Id FROM Students where Students.Name = '" + name + "'", _connection);
             cmdNew.CommandType = CommandType.Text;
             User userToReturn = null;
             try

@@ -53,34 +53,30 @@ namespace MainMenu
             LoadProblem(_currentProblem);
         }
 
+
+
         private void SendAnswer()
         {
             string attempt = messageText.Text;
             messageText.Text = "";
             bool nextProblem = false;
-            if (_currentProblem.CompareAnswer(attempt))
+
+            // 
+            Thread thread = new Thread(() => 
             {
-                nextProblem = true;   
-            } else
+                bool ans = _currentProblem.CompareAnswer(attempt);
+            });
+
+
+            if (_problemQueue.Count <= _additive / 2)
             {
-                _attempts++;
-                if(_attempts >= _allotted)
+                for (int i = _problemQueue.Count; i < _additive; i++)
                 {
-                    nextProblem = true;
+                    _problemQueue.Enqueue(new Problem(FormatQuestion(_problemSet.Formula)));
                 }
             }
-            if(nextProblem)
-            {
-                if (_problemQueue.Count <= _additive / 2)
-                {
-                    for (int i = _problemQueue.Count; i < _additive; i++)
-                    {
-                        _problemQueue.Enqueue(new Problem(FormatQuestion(_problemSet.Formula)));
-                    }
-                }
-                _currentProblem = _problemQueue.Dequeue();
-                LoadProblem(_currentProblem);
-            }
+            _currentProblem = _problemQueue.Dequeue();
+            LoadProblem(_currentProblem);
         }
 
         private void EnterPress(object sender, KeyEventArgs e)

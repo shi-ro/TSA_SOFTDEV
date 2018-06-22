@@ -48,8 +48,8 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(13, 13);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 44.90644F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55.09356F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 31.39293F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 68.60707F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(735, 481);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -66,13 +66,13 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(729, 148);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(729, 144);
             this.tableLayoutPanel2.TabIndex = 4;
             // 
             // messageText
             // 
             this.messageText.Font = new System.Drawing.Font("Comic Sans MS", 13F);
-            this.messageText.Location = new System.Drawing.Point(1, 114);
+            this.messageText.Location = new System.Drawing.Point(1, 110);
             this.messageText.Margin = new System.Windows.Forms.Padding(1);
             this.messageText.Name = "messageText";
             this.messageText.Size = new System.Drawing.Size(598, 32);
@@ -81,7 +81,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Comic Sans MS", 13F);
-            this.button1.Location = new System.Drawing.Point(605, 116);
+            this.button1.Location = new System.Drawing.Point(605, 112);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(121, 29);
             this.button1.TabIndex = 6;
@@ -93,7 +93,7 @@
             // 
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(596, 107);
+            this.pictureBox1.Size = new System.Drawing.Size(596, 103);
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
             // 
@@ -103,10 +103,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBox1.Font = new System.Drawing.Font("Comic Sans MS", 13F);
-            this.richTextBox1.Location = new System.Drawing.Point(3, 218);
+            this.richTextBox1.Location = new System.Drawing.Point(3, 153);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(729, 260);
+            this.richTextBox1.Size = new System.Drawing.Size(729, 325);
             this.richTextBox1.TabIndex = 3;
             this.richTextBox1.Text = "";
             // 
