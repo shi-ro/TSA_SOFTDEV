@@ -23,6 +23,7 @@ namespace Core.Server
             return (int)id;
         }
 
+
         public static void ExecuteAddTeacher(Teacher sturt)
         {
             SqlCommand cmdNew = new SqlCommand("INSERT INTO[dbo].[Teachers] VALUES('" + sturt.Name + "', '" + sturt.Password + "', '" + sturt.Classrooms + "', '" + sturt.SavedProblemSets + "')", _connection);
