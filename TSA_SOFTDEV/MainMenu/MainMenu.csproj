@@ -48,6 +48,12 @@
   <ItemGroup>
     <Compile Include="BitmapTex.cs" />
     <Compile Include="Chat.cs" />
+    <Compile Include="ClassManagerScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClassManagerScreen.Designer.cs">
+      <DependentUpon>ClassManagerScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreateAccountScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +103,9 @@
     </Compile>
     <Compile Include="Team.cs" />
     <Compile Include="Student.cs" />
+    <EmbeddedResource Include="ClassManagerScreen.resx">
+      <DependentUpon>ClassManagerScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreateAccountScreen.resx">
       <DependentUpon>CreateAccountScreen.cs</DependentUpon>
     </EmbeddedResource>

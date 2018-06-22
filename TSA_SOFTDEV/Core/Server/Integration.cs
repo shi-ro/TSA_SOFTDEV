@@ -11,14 +11,48 @@ namespace Core.Server
     {
         private static SqlConnection _connection = new SqlConnection("Server=tcp:softdevserver.database.windows.net,1433;Initial Catalog=SoftDevDB;Persist Security Info=False;User ID=serveradmin;Password=SoftDev!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
 
+        public static int ExecuteGetTeacherId(Student smith)
+        {
+            SqlCommand cmdNew = new SqlCommand("SELECT Teachers.Id FROM Teachers WHERE Teachers.[Name] = '" + smith.Name + "'", _connection);
+            cmdNew.CommandType = CommandType.Text;
+
+            _connection.Open();
+            var id = cmdNew.ExecuteScalar();
+            _connection.Close();
+
+            return (int)id;
+        }
+
+        public static void ExecuteAddTeacher(Teacher sturt)
+        {
+            SqlCommand cmdNew = new SqlCommand("INSERT INTO[dbo].[Teachers] VALUES('" + sturt.Name + "', '" + sturt.Password + "', '" + sturt.Classrooms + "', '" + sturt.SavedProblemSets + "')", _connection);
+            cmdNew.CommandType = CommandType.Text;
+
+            _connection.Open();
+            cmdNew.ExecuteNonQuery();
+            _connection.Close();
+        }
+
         public static List<ProblemSet> ExecuteGetTeacherProblemsets(string teacherName) //
         {
             return null;
         }
 
-        public static ProblemSet ExecuteGetProblemsetById(string id) // 
+        public static ProblemSet ExecuteGetProblemSetById(string id) // 
         {
             return null;
+        }
+
+        public static int ExecuteGetProblemSetIdByName(String name)
+        {
+            SqlCommand cmdNew = new SqlCommand("SELECT ProblemSets.Id FROM ProblemSets WHERE ProblemSets.[Name] = '" + name + "'", _connection);
+            cmdNew.CommandType = CommandType.Text;
+
+            _connection.Open();
+            var id = (int)cmdNew.ExecuteScalar();
+            _connection.Close();
+
+            return id;
         }
 
         public static void ExecuteAddProblemSet(String name, int points, int usesFormula, String formula, String values, String rr, String description) // additional params for creation here
@@ -70,7 +104,7 @@ namespace Core.Server
 
             List<Student> userList = new List<Student>((int)numUsers);
 
-            SqlCommand cmdAllUsers = new SqlCommand("SELECT Students.Name, Students.Password, Students.Points, Students.Classrooms, Students.Ranks, Students.TeamId, Students.Id FROM Students", _connection);
+            SqlCommand cmdAllUsers = new SqlCommand("SELECT Students.Name, Students.Password, Students.Points, Students.Classrooms, Students.Ranks, Students.TeamId FROM Students", _connection);
             cmdAllUsers.CommandType = CommandType.Text;
             try
             {
@@ -78,7 +112,7 @@ namespace Core.Server
                 SqlDataReader reader = cmdAllUsers.ExecuteReader();
                 while (reader.Read())
                 {
-                    userList.Add(new Student(reader[0].ToString(), reader[1].ToString(), (int)reader[2], reader[3].ToString(), reader[4].ToString(), (int)reader[5], (int)reader[6]));
+                    userList.Add(new Student(reader[0].ToString(), reader[1].ToString(), (int)reader[2], reader[3].ToString(), reader[4].ToString(), (int)reader[5]));
                 }
                 reader.Close();
                 _connection.Close();
@@ -100,14 +134,29 @@ namespace Core.Server
 
             SqlCommand cmdNew = new SqlCommand("INSERT INTO[dbo].[Students] VALUES('" + bob.Name + "', '" + bob.Password + "', " + bob.Points + ", '" + bob.Classrooms + "', '" + bob.Ranks + "', " + bob.TeamId + ")", _connection);
             cmdNew.CommandType = CommandType.Text;
+
             _connection.Open();
             cmdNew.ExecuteNonQuery();
             _connection.Close();
+
+            bob.setStudentId();
         }
         
+        public static int ExecuteGetStudentId(Student bob)
+        {
+            SqlCommand cmdNew = new SqlCommand("SELECT Students.Id FROM Students WHERE Students.[Name] = '" + bob.Name + "'", _connection);
+            cmdNew.CommandType = CommandType.Text;
+
+            _connection.Open();
+            var id = cmdNew.ExecuteScalar();
+            _connection.Close();
+
+            return (int)id;
+        }
+
         public static Student ExecuteGetStudent(string name) //using a name, get a user
         {
-            SqlCommand cmdNew = new SqlCommand("SELECT Students.Password, Students.Points, Students.Classrooms, Students.Ranks, Students.TeamId, Students.Id FROM Students where Students.[Name] = '" + name + "'", _connection);
+            SqlCommand cmdNew = new SqlCommand("SELECT Students.Password, Students.Points, Students.Classrooms, Students.Ranks, Students.TeamId FROM Students where Students.[Name] = '" + name + "'", _connection);
             cmdNew.CommandType = CommandType.Text;
             Student userToReturn = null;
             try
@@ -116,7 +165,7 @@ namespace Core.Server
                 SqlDataReader reader = cmdNew.ExecuteReader();
                 while (reader.Read())
                 {
-                    userToReturn = new Student(name, reader[0] + "", (int)reader[1], reader[2] + "", reader[3] + "", (int)reader[4], (int)reader[5]);
+                    userToReturn = new Student(name, reader[0] + "", (int)reader[1], reader[2] + "", reader[3] + "", (int)reader[4]);
                 }
                 reader.Close();
             }

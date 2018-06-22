@@ -14,13 +14,14 @@ namespace MainMenu
         public String SavedProblemSets { get; set; }
         public int Id { get; set; }
 
-        public Teacher(String n, String p, String c, String s, int i)
+        public Teacher(String n, String p, String c, String s)
         {
             Name = n;
             Password = p;
             Classrooms = c;
             SavedProblemSets = s;
-            Id = i;
+
+            //Id = i;
         }
 
         public void saveProblemSet(String name)
