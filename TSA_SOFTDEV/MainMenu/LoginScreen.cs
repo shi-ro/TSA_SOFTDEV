@@ -29,7 +29,7 @@ namespace MainMenu
 
         private void LoginScreen_Load(object sender, EventArgs e)
         {
-            Core.Server.Integration.ExecuteAddProblemset("SQL DAT TEST",5,1,"_-_","","-1,10","Testing SQL server problemset addition ( but its subtraction )");
+            //Core.Server.Integration.ExecuteAddProblemset("SQL DAT TEST",5,1,"_-_","","-1,10","Testing SQL server problemset addition ( but its subtraction )");
         }
 
         private void TryLogin()
