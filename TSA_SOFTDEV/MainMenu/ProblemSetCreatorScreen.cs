@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace MainMenu
 {
-    public partial class ClassManagerScreen : Form
+    public partial class ProblemSetCreatorScreen : Form
     {
-        public ClassManagerScreen()
+        public ProblemSetCreatorScreen()
         {
             InitializeComponent();
-        }
-
-        private void tableLayoutPanel4_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }
