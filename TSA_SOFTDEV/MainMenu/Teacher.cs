@@ -20,8 +20,6 @@ namespace MainMenu
             Password = p;
             Classrooms = c;
             SavedProblemSets = s;
-
-            //Id = i;
         }
 
         public void saveProblemSet(String name)
