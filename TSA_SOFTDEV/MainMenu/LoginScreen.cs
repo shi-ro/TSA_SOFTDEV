@@ -13,6 +13,7 @@ namespace MainMenu
 {
     public partial class LoginScreen : Form
     {
+        StudentForm openForm = null;
         public LoginScreen()
         {
             InitializeComponent();
@@ -24,6 +25,7 @@ namespace MainMenu
         {
             //User bob = Core.Server.Integration.ExecuteGetUser("Bob test");
             //Console.WriteLine("bob's team is " +  Core.Server.Integration.ExecuteGetUserTeam(bob.Name).Users);
+
             TryLogin();
         }
 
@@ -41,10 +43,16 @@ namespace MainMenu
                 // check if password is correct
                 if(textBox2.Text == user.Password)
                 {
+                    if(openForm!=null)
+                    {
+                        openForm.Close();
+                    }
                     // password is correct
                     StudentForm form = new StudentForm();
                     // open student form
                     form.Show();
+                    // minimize login
+                    this.WindowState = FormWindowState.Minimized;
                 }
                 else
                 {

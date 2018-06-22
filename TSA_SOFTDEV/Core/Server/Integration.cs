@@ -72,17 +72,17 @@ namespace Core.Server
             return userList;
         }
 
-        public static List<ProblemSet> ExecuteGetClassProblemsets()
+        public static List<ProblemSet> ExecuteGetClassProblemsets() //
         {
             return null;
         }
 
-        public static ProblemSet ExecuteGetProblemsetByName(string name)
+        public static ProblemSet ExecuteGetProblemsetByName(string name) // 
         {
             return null;
         }
 
-        public static void ExecuteAddProblemset()//additional params here
+        public static void ExecuteAddProblemset() // additional params for creation here
         {
 
         }
@@ -113,13 +113,13 @@ namespace Core.Server
                     userToReturn = new User(name, reader[0] + "", (int)reader[1], reader[2] + "", reader[3] + "", (int)reader[4], (int)reader[5]);
                 }
                 reader.Close();
-                _connection.Close();
             }
             catch (Exception ex)
             {
                 Console.WriteLine("=========================");
                 Console.WriteLine(ex);
             }
+            _connection.Close();
             return userToReturn;
         }
 
