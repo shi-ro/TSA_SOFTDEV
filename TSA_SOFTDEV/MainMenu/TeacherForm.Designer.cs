@@ -157,7 +157,7 @@
             this.richTextBox9.Name = "richTextBox9";
             this.richTextBox9.Size = new System.Drawing.Size(250, 251);
             this.richTextBox9.TabIndex = 2;
-            this.richTextBox9.Text = "none";
+            this.richTextBox9.Text = "Basic Multiplication\nBasic Subtraction\nStraight into Calculus";
             // 
             // button19
             // 
