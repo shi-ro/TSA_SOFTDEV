@@ -36,14 +36,36 @@ namespace Core.Server
             sturt.setTeacherId();
         }
 
-        public static List<ProblemSet> ExecuteGetTeacherProblemsets(string teacherName) //
+        public static List<ProblemSet> ExecuteGetTeacherProblemSets(string teacherName) //
         {
             return null;
         }
 
         public static ProblemSet ExecuteGetProblemSetById(string id) // 
         {
-            return null;
+            SqlCommand cmdNew = new SqlCommand("SELECT ProblemSets.[Name], ProblemSets.Points, ProblemSets.UsesFormula, ProblemSets.Formula, ProblemSets.Values, ProblemSets.RandomRange, ProblemSets.Description FROM ProblemSets WHERE ProblemSets.Id = " + id, _connection);
+            cmdNew.CommandType = CommandType.Text;
+
+            ProblemSet setToReturn = null;
+
+            try
+            {
+                _connection.Open();
+                SqlDataReader reader = cmdNew.ExecuteReader();
+                while (reader.Read())
+                {
+                    setToReturn = new ProblemSet(reader[0] + "", (int)reader[1], reader[6] + "", reader[3] + "", (int)reader[2], reader[4] + "", reader[5] + "");
+                }
+                reader.Close();
+                _connection.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("=========================");
+                Console.WriteLine(ex);
+            }
+
+            return setToReturn;
         }
 
         public static int ExecuteGetProblemSetIdByName(String name)
