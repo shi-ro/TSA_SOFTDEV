@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Teacher_form;
 using TSA_SOFTDEV;
 
 namespace MainMenu
@@ -17,7 +18,7 @@ namespace MainMenu
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginScreen());
+            Application.Run(new TeacherForm());
         }
     }
 }

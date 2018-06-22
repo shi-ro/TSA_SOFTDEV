@@ -71,13 +71,14 @@ namespace Core.Server
 
             return userList;
         }
+        
 
-        public static List<ProblemSet> ExecuteGetClassProblemsets() //
+        public static List<ProblemSet> ExecuteGetTeacherProblemsets(string teacherName) //
         {
             return null;
         }
-
-        public static ProblemSet ExecuteGetProblemsetByName(string name) // 
+        
+        public static ProblemSet ExecuteGetProblemsetById(string id) // 
         {
             return null;
         }
