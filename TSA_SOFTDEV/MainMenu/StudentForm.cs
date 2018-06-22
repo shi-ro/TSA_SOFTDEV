@@ -17,7 +17,7 @@ namespace TSA_SOFTDEV
     public partial class StudentForm : Form
     {
         Chat chat;
-        List<User> sortedUsers = new List<User>();
+        List<Student> sortedUsers = new List<Student>();
         List<ProblemSet> problemSets = new List<ProblemSet>();
         ProblemSet selectedSet = null;
         bool solverOpen = false;
@@ -56,7 +56,7 @@ namespace TSA_SOFTDEV
             //***THALIAS CODE HERE and yes i actually did code it -_-
 
 
-            List<User> users = Core.Server.Integration.ExecuteGetUsers();
+            List<Student> users = Core.Server.Integration.ExecuteGetStudents();
             //users.Sort();
             //Using lambda to sort
             //User Leaderboard

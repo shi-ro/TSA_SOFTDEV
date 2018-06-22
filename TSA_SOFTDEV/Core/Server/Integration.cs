@@ -10,10 +10,10 @@ namespace Core.Server
     public static class Integration
     {
         private static SqlConnection _connection = new SqlConnection("Server=tcp:softdevserver.database.windows.net,1433;Initial Catalog=SoftDevDB;Persist Security Info=False;User ID=serveradmin;Password=SoftDev!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-
-        public static Team ExecuteGetUserTeam(String username)
+        
+        public static Team ExecuteGetStudentTeam(String username)
         {
-            int teamid = Core.Server.Integration.ExecuteGetUser(username).TeamId;
+            int teamid = Core.Server.Integration.ExecuteGetStudent(username).TeamId;
             Team userteam = null;
 
             SqlCommand scndCmd = new SqlCommand("SELECT Teams.Id, Teams.TeamName, Teams.Users, Teams.Points FROM Teams WHERE  Teams.Id = " + teamid, _connection);
@@ -38,7 +38,7 @@ namespace Core.Server
             return userteam;
         }
         
-        public static List<User> ExecuteGetUsers() //return a list of all the user objects
+        public static List<Student> ExecuteGetStudents() //return a list of all the user objects
         {
             SqlCommand cmdGetCount = new SqlCommand("SELECT count(*) FROM Users", _connection);
             cmdGetCount.CommandType = CommandType.Text;
@@ -48,7 +48,7 @@ namespace Core.Server
 
             _connection.Close();
 
-            List<User> userList = new List<User>((int)numUsers);
+            List<Student> userList = new List<Student>((int)numUsers);
 
             SqlCommand cmdAllUsers = new SqlCommand("SELECT Users.Name, Users.Password, Users.Points, Users.Classrooms, Users.Ranks, Users.TeamId, Users.Id FROM Users", _connection);
             cmdAllUsers.CommandType = CommandType.Text;
@@ -58,7 +58,7 @@ namespace Core.Server
                 SqlDataReader reader = cmdAllUsers.ExecuteReader();
                 while (reader.Read())
                 {
-                    userList.Add(new User(reader[0].ToString(), reader[1].ToString(), (int)reader[2], reader[3].ToString(), reader[4].ToString(), (int)reader[5], (int)reader[6]));
+                    userList.Add(new Student(reader[0].ToString(), reader[1].ToString(), (int)reader[2], reader[3].ToString(), reader[4].ToString(), (int)reader[5], (int)reader[6]));
                 }
                 reader.Close();
                 _connection.Close();
@@ -72,22 +72,7 @@ namespace Core.Server
             return userList;
         }
 
-        public static List<ProblemSet> ExecuteGetClassProblemsets() //
-        {
-            return null;
-        }
-
-        public static ProblemSet ExecuteGetProblemsetByName(string name) // 
-        {
-            return null;
-        }
-
-        public static void ExecuteAddProblemset() // additional params for creation here
-        {
-
-        }
-
-        public static void ExecuteAddUser(User bob) //add a user object to the sql server
+        public static void ExecuteAddStudent(Student bob) //add a user object to the sql server
         {
 
             SqlCommand cmdNew = new SqlCommand("INSERT INTO[dbo].[Users] VALUES('" + bob.Name + "', '" + bob.Password + "', " + bob.Points + ", '" + bob.Classrooms + "', '" + bob.Ranks + "', " + bob.TeamId + ")", _connection);
@@ -96,21 +81,20 @@ namespace Core.Server
             cmdNew.ExecuteNonQuery();
             _connection.Close();
         }
-
-        public static User ExecuteGetUser(string name) //using a name, get a user
+        
+        public static Student ExecuteGetStudent(string name) //using a name, get a user
         {
 
-            SqlCommand cmdNew = new SqlCommand("SELECT Users.Password, Users.Points, Users.Classrooms, Users.Ranks, Users.TeamId, Users.Id FROM Users where Users.Name = '" + name + "'", _connection);
+            SqlCommand cmdNew = new SqlCommand("SELECT Students.Password, Students.Points, Students.Classrooms, Students.Ranks, Students.TeamId, Students.Id FROM Students where Students.[Name] = '" + name + "'", _connection);
             cmdNew.CommandType = CommandType.Text;
-            User userToReturn = null;
+            Student userToReturn = null;
             try
             {
                 _connection.Open();
                 SqlDataReader reader = cmdNew.ExecuteReader();
                 while (reader.Read())
                 {
-                    Console.WriteLine("well dude the reader has some reading to do");
-                    userToReturn = new User(name, reader[0] + "", (int)reader[1], reader[2] + "", reader[3] + "", (int)reader[4], (int)reader[5]);
+                    userToReturn = new Student(name, reader[0] + "", (int)reader[1], reader[2] + "", reader[3] + "", (int)reader[4], (int)reader[5]);
                 }
                 reader.Close();
             }
