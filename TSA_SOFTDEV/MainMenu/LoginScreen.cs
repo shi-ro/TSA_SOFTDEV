@@ -36,7 +36,7 @@ namespace MainMenu
 
         private void TryLogin()
         {
-            User user = Core.Server.Integration.ExecuteGetUser(textBox1.Text);
+            Student user = Core.Server.Integration.ExecuteGetStudent(textBox1.Text);
             if(user!=null)
             {
                 // student exists
