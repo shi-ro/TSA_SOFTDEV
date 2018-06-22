@@ -23,8 +23,9 @@ namespace MainMenu
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //Teacher s = new Teacher("Sturtevant", "calc", "1", "1", )
-
+            Teacher s = new Teacher("Sturtevant", "calc", "1", "1");
+            Core.Server.Integration.ExecuteAddTeacher(s);
+            Console.WriteLine("Sturt's sql id is: " + s.Id);
 
             TryLogin();
         }
