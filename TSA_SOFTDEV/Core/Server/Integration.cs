@@ -21,9 +21,14 @@ namespace Core.Server
             return null;
         }
 
-        public static void ExecuteAddProblemset() // additional params for creation here
+        public static void ExecuteAddProblemset(String name, int points, int usesFormula, String formula, String values, String rr, String description) // additional params for creation here
         {
+            SqlCommand cmdNew = new SqlCommand("INSERT INTO[dbo].[ProblemSets] VALUES('" + name + "', " + points + ", " + usesFormula + ", '" + formula + "', " + values + ", '" + rr + "', '" + description + "')", _connection);
+            cmdNew.CommandType = CommandType.Text;
 
+            _connection.Open();
+            cmdNew.ExecuteNonQuery();
+            _connection.Close();
         }
 
         public static Team ExecuteGetStudentTeam(String username)
@@ -93,7 +98,7 @@ namespace Core.Server
         public static void ExecuteAddStudent(Student bob) //add a user object to the sql server
         {
 
-            SqlCommand cmdNew = new SqlCommand("INSERT INTO[dbo].[Users] VALUES('" + bob.Name + "', '" + bob.Password + "', " + bob.Points + ", '" + bob.Classrooms + "', '" + bob.Ranks + "', " + bob.TeamId + ")", _connection);
+            SqlCommand cmdNew = new SqlCommand("INSERT INTO[dbo].[Students] VALUES('" + bob.Name + "', '" + bob.Password + "', " + bob.Points + ", '" + bob.Classrooms + "', '" + bob.Ranks + "', " + bob.TeamId + ")", _connection);
             cmdNew.CommandType = CommandType.Text;
             _connection.Open();
             cmdNew.ExecuteNonQuery();

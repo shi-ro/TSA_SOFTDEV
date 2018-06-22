@@ -22,5 +22,10 @@ namespace MainMenu
             SavedProblemSets = s;
             Id = i;
         }
+
+        public void saveProblemSet(String name)
+        {
+
+        }
     }
 }

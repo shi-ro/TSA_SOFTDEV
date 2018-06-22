@@ -23,10 +23,8 @@ namespace MainMenu
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //User bob = Core.Server.Integration.ExecuteGetUser("Bob test");
-            //Console.WriteLine("bob's team is " +  Core.Server.Integration.ExecuteGetUserTeam(bob.Name).Users);
-
-            TryLogin();
+            //Student bob = Core.Server.Integration.ExecuteGetStudent("Bob test");
+            //Console.WriteLine("bob's team name is: " +  Core.Server.Integration.ExecuteGetStudentTeam(bob.Name).Users);
         }
 
         private void LoginScreen_Load(object sender, EventArgs e)
