@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MainMenu
 {
-    public class User
+    public class Student
     {
         public String Name { get; set; }
         public String Password { get; set; }
@@ -16,7 +16,7 @@ namespace MainMenu
         public int TeamId { get; set; }
         public int Id { get; set; }
 
-        public User(String n, String p, int po, String c, String r, int t, int i)
+        public Student(String n, String p, int po, String c, String r, int t, int i)
         {
             Name = n;
             Password = p;
