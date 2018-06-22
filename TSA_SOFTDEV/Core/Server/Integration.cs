@@ -21,7 +21,7 @@ namespace Core.Server
             return null;
         }
 
-        public static void ExecuteAddProblemset(String name, int points, int usesFormula, String formula, String values, String rr, String description) // additional params for creation here
+        public static void ExecuteAddProblemSet(String name, int points, int usesFormula, String formula, String values, String rr, String description) // additional params for creation here
         {
             SqlCommand cmdNew = new SqlCommand("INSERT INTO[dbo].[ProblemSets] VALUES('" + name + "', " + points + ", " + usesFormula + ", '" + formula + "', " + values + ", '" + rr + "', '" + description + "')", _connection);
             cmdNew.CommandType = CommandType.Text;
