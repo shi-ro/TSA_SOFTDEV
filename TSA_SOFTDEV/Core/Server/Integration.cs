@@ -38,7 +38,6 @@ namespace Core.Server
             return userteam;
         }
         
-
         public static List<User> ExecuteGetUsers() //return a list of all the user objects
         {
             SqlCommand cmdGetCount = new SqlCommand("SELECT count(*) FROM Users", _connection);
@@ -71,6 +70,21 @@ namespace Core.Server
             }
 
             return userList;
+        }
+
+        public static List<ProblemSet> ExecuteGetClassProblemsets()
+        {
+            return null;
+        }
+
+        public static ProblemSet ExecuteGetProblemsetByName(string name)
+        {
+            return null;
+        }
+
+        public static void ExecuteAddProblemset()//additional params here
+        {
+
         }
 
         public static void ExecuteAddUser(User bob) //add a user object to the sql server

@@ -20,6 +20,8 @@ namespace MainMenu
         private int _additive = 10;
         private SolverMode _mode = SolverMode.Limited;
         private BitmapTex _tex;
+        private int _attempts = 0;
+        private int _allotted = 3;
         public Solver(ProblemSet problemSet)
         {
             InitializeComponent();
@@ -54,17 +56,31 @@ namespace MainMenu
         private void SendAnswer()
         {
             string attempt = messageText.Text;
-            _currentProblem.CompareAnswer(attempt);
             messageText.Text = "";
-            if (_problemQueue.Count <= _additive / 2)
+            bool nextProblem = false;
+            if (_currentProblem.CompareAnswer(attempt))
             {
-                for (int i = _problemQueue.Count; i < _additive; i++)
+                nextProblem = true;   
+            } else
+            {
+                _attempts++;
+                if(_attempts >= _allotted)
                 {
-                    _problemQueue.Enqueue(new Problem(FormatQuestion(_problemSet.Formula)));
+                    nextProblem = true;
                 }
             }
-            _currentProblem = _problemQueue.Dequeue();
-            LoadProblem(_currentProblem);
+            if(nextProblem)
+            {
+                if (_problemQueue.Count <= _additive / 2)
+                {
+                    for (int i = _problemQueue.Count; i < _additive; i++)
+                    {
+                        _problemQueue.Enqueue(new Problem(FormatQuestion(_problemSet.Formula)));
+                    }
+                }
+                _currentProblem = _problemQueue.Dequeue();
+                LoadProblem(_currentProblem);
+            }
         }
 
         private void EnterPress(object sender, KeyEventArgs e)

@@ -48,8 +48,8 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(13, 13);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.22453F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 67.77547F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 44.90644F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55.09356F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(735, 481);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -103,10 +103,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBox1.Font = new System.Drawing.Font("Comic Sans MS", 13F);
-            this.richTextBox1.Location = new System.Drawing.Point(3, 157);
+            this.richTextBox1.Location = new System.Drawing.Point(3, 218);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(729, 321);
+            this.richTextBox1.Size = new System.Drawing.Size(729, 260);
             this.richTextBox1.TabIndex = 3;
             this.richTextBox1.Text = "";
             // 

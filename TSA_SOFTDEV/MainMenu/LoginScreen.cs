@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TSA_SOFTDEV;
 
 namespace MainMenu
 {
@@ -15,12 +16,59 @@ namespace MainMenu
         public LoginScreen()
         {
             InitializeComponent();
+            textBox1.KeyDown += EnterForAccount;
+            textBox2.KeyDown += EnterForAccount;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            User bob = Core.Server.Integration.ExecuteGetUser("Bob test");
-            Console.WriteLine("bob's team is " +  Core.Server.Integration.ExecuteGetUserTeam(bob.Name).Users);
+            //User bob = Core.Server.Integration.ExecuteGetUser("Bob test");
+            //Console.WriteLine("bob's team is " +  Core.Server.Integration.ExecuteGetUserTeam(bob.Name).Users);
+            TryLogin();
+        }
+
+        private void LoginScreen_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TryLogin()
+        {
+            User user = Core.Server.Integration.ExecuteGetUser(textBox1.Text);
+            if(user!=null)
+            {
+                // student exists
+                // check if password is correct
+                if(textBox2.Text == user.Password)
+                {
+                    // password is correct
+                    StudentForm form = new StudentForm();
+                    // open student form
+                    form.Show();
+                }
+                else
+                {
+                    errorText.Text = "Incorrect password";
+                }
+            } else
+            {
+                errorText.Text = "Please specify a valid username";
+            }
+        }
+
+        private void EnterForAccount(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                TryLogin();
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
