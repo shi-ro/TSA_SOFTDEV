@@ -11,7 +11,7 @@ namespace Core.Server
     {
         private static SqlConnection _connection = new SqlConnection("Server=tcp:softdevserver.database.windows.net,1433;Initial Catalog=SoftDevDB;Persist Security Info=False;User ID=serveradmin;Password=SoftDev!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
 
-        public static int ExecuteGetTeacherId(Student smith)
+        public static int ExecuteGetTeacherId(Teacher smith)
         {
             SqlCommand cmdNew = new SqlCommand("SELECT Teachers.Id FROM Teachers WHERE Teachers.[Name] = '" + smith.Name + "'", _connection);
             cmdNew.CommandType = CommandType.Text;
@@ -32,6 +32,8 @@ namespace Core.Server
             _connection.Open();
             cmdNew.ExecuteNonQuery();
             _connection.Close();
+
+            sturt.setTeacherId();
         }
 
         public static List<ProblemSet> ExecuteGetTeacherProblemsets(string teacherName) //

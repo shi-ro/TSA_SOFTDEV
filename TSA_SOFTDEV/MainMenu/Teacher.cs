@@ -22,6 +22,11 @@ namespace MainMenu
             SavedProblemSets = s;
         }
 
+        public void setTeacherId()
+        {
+            Id = Core.Server.Integration.ExecuteGetTeacherId(this);
+        }
+
         public void saveProblemSet(String name)
         {
 
