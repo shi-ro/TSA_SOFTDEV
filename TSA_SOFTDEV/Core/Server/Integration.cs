@@ -10,8 +10,21 @@ namespace Core.Server
     public static class Integration
     {
         private static SqlConnection _connection = new SqlConnection("Server=tcp:softdevserver.database.windows.net,1433;Initial Catalog=SoftDevDB;Persist Security Info=False;User ID=serveradmin;Password=SoftDev!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-        
 
+        public static List<ProblemSet> ExecuteGetTeacherProblemsets(string teacherName) //
+        {
+            return null;
+        }
+
+        public static ProblemSet ExecuteGetProblemsetById(string id) // 
+        {
+            return null;
+        }
+
+        public static void ExecuteAddProblemset() // additional params for creation here
+        {
+
+        }
 
         public static Team ExecuteGetStudentTeam(String username)
         {
@@ -75,20 +88,7 @@ namespace Core.Server
         }
         
         
-        public static List<ProblemSet> ExecuteGetTeacherProblemsets(string teacherName) //
-        {
-            return null;
-        }
         
-        public static ProblemSet ExecuteGetProblemsetById(string id) // 
-        {
-            return null;
-        }
-
-        public static void ExecuteAddProblemset() // additional params for creation here
-        {
-
-        }
         
         public static void ExecuteAddStudent(Student bob) //add a user object to the sql server
         {
