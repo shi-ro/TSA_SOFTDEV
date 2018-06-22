@@ -18,6 +18,7 @@ namespace MainMenu
         {
             Name = n;
             Password = p;
+            //this string is here so i can remove it later (andrey)
             Classrooms = c;
             SavedProblemSets = s;
         }
