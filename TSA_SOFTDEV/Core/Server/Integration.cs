@@ -97,8 +97,7 @@ namespace Core.Server
 
         public static Classroom ExecuteGetClassroomById(int id)
         {
-            SqlCommand cmdNew = new SqlCommand()
-
+            SqlCommand cmdNew = new SqlCommand();
             return null;
         }
 
