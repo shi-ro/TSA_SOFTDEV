@@ -39,6 +39,7 @@ namespace Core.Server
                 Console.WriteLine("=========================");
                 Console.WriteLine(ex);
             }
+            if (toReturn == null) { return null; }
             toReturn.setTeacherId();
             return toReturn;
         }
