@@ -11,7 +11,7 @@ namespace MainMenu
         public String Name { get; set; }
         public int Id { get; set; }
         public String Students { get; set; }
-
+        
         public Team(String name, String stud, int i)
         {
             Name = name;

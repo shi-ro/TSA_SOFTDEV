@@ -704,9 +704,9 @@
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(1);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.042553F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90.95744F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(174, 376);
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.222812F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 91.77719F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(174, 377);
             this.tableLayoutPanel3.TabIndex = 10;
             // 
             // label1
@@ -714,7 +714,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.label1.Location = new System.Drawing.Point(59, 5);
+            this.label1.Location = new System.Drawing.Point(59, 4);
             this.label1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 23);
@@ -752,9 +752,9 @@
             // 
             this.listBox5.FormattingEnabled = true;
             this.listBox5.ItemHeight = 24;
-            this.listBox5.Location = new System.Drawing.Point(3, 36);
+            this.listBox5.Location = new System.Drawing.Point(3, 34);
             this.listBox5.Name = "listBox5";
-            this.listBox5.Size = new System.Drawing.Size(168, 316);
+            this.listBox5.Size = new System.Drawing.Size(168, 340);
             this.listBox5.TabIndex = 2;
             // 
             // label10

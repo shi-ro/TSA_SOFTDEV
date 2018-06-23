@@ -16,6 +16,7 @@ namespace Teacher_form
         private List<Classroom> _classrooms = new List<Classroom>();
         private List<ProblemSet> _allProblemSets = new List<ProblemSet>();
         private List<ProblemSet> _savedProblemSets = new List<ProblemSet>();
+        private List<Team> _allTeams = new List<Team>();
         private Problem _currentlySelectedProblemSet;
         private Classroom _currentlySelectedClassrom;
         public bool setCreatorOpened = false;
@@ -28,6 +29,64 @@ namespace Teacher_form
             teacherFormTab.ItemSize = new Size((int)(teacherFormTab.Width/4) - 1, 41);
             teacherFormTab.SizeMode = TabSizeMode.Fixed;
             this.Controls.Add(teacherFormTab);
+            LoadAllTeams();
+            LoadAllProblemSets();
+        }
+
+        private void LoadTeacherClassrooms()
+        {
+            //call server method
+
+            //update listbox
+            if (_classrooms.Count > 0)
+            {
+                foreach (Classroom cs in _classrooms)
+                {
+                    listBox1.Items.Add(cs.Name);
+                }
+            }
+        }
+
+        private void LoadSavedProblemSets()
+        {
+            //call server method
+
+            //update listbox
+            if (_savedProblemSets.Count > 0)
+            {
+                foreach (ProblemSet ps in _savedProblemSets)
+                {
+                    listBox3.Items.Add(ps.Name);
+                }
+            }
+        }
+
+        private void LoadAllTeams()
+        {
+            //call server method
+
+            //update listbox
+            if(_allTeams.Count>0)
+            {
+                foreach(Team t in _allTeams)
+                {
+                    listBox5.Items.Add(t.Name);
+                }
+            }
+        }
+
+        private void LoadAllProblemSets()
+        {
+            //call server method
+
+            //update listbox
+            if (_allProblemSets.Count > 0)
+            {
+                foreach(ProblemSet ps in _allProblemSets)
+                {
+                    listBox2.Items.Add(ps.Name);
+                }
+            }
         }
 
         private void classTab_Click(object sender, EventArgs e)
@@ -37,6 +96,7 @@ namespace Teacher_form
 
         private void TeacherForm_Load(object sender, EventArgs e)
         {
+
             Size = new Size(692, 505); // 484);
         }
 
