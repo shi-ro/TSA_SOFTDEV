@@ -13,13 +13,7 @@ namespace Core.Server
         
         public static bool Connected()
         {
-            return Core.External.Wolfram.Connected();
-            //return ($"{_connection.State}")!="Closed";
-        }
-
-        private static void ConnectionMessageEvent(object sender, SqlInfoMessageEventArgs e)
-        {
-            Console.WriteLine($"MESSAGE EVENT ERRORS : {e.Message}");
+            return External.Wolfram.Connected();
         }
 
         public static Teacher ExecuteGetTeacherByStudent(Student bob)
@@ -58,6 +52,7 @@ namespace Core.Server
                 Console.WriteLine(ex);
             }
 
+            if (toReturn == null) { return null; }
             toReturn.setTeacherId();
 
             return toReturn;
@@ -78,7 +73,7 @@ namespace Core.Server
 
         public static void ExecuteAddTeacher(Teacher sturt)
         {
-            SqlCommand cmdNew = new SqlCommand("INSERT INTO[dbo].[Teachers] VALUES('" + sturt.Name + "', '" + sturt.Password + "', '" + sturt.Classrooms + "', '" + sturt.SavedProblemSets + "')", _connection);
+            SqlCommand cmdNew = new SqlCommand("INSERT INTO [dbo].[Teachers] VALUES('" + sturt.Name + "', '" + sturt.Password + "', '" + sturt.Classrooms + "', '" + sturt.SavedProblemSets + "')", _connection);
             cmdNew.CommandType = CommandType.Text;
 
             _connection.Open();
@@ -121,9 +116,7 @@ namespace Core.Server
         {
             SqlCommand cmdNew = new SqlCommand("SELECT ProblemSets.[Name], ProblemSets.Points, ProblemSets.UsesFormula, ProblemSets.Formula, ProblemSets.[Values], ProblemSets.RandomRange, ProblemSets.Description FROM ProblemSets WHERE ProblemSets.Id = " + id, _connection);
             cmdNew.CommandType = CommandType.Text;
-
             ProblemSet setToReturn = null;
-
             try
             {
                 _connection.Open();
@@ -226,9 +219,6 @@ namespace Core.Server
 
             return userList;
         }
-        
-        
-        
         
         public static void ExecuteAddStudent(Student bob) //add a user object to the sql server
         {

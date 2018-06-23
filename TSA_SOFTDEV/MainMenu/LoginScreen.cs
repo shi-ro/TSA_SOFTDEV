@@ -38,18 +38,19 @@ namespace MainMenu
             if(Core.Server.Integration.Connected())
             {
                 Student user = Core.Server.Integration.ExecuteGetStudent(textBox1.Text);
-                if (user!=null)
+                Teacher user2 = Core.Server.Integration.ExecuteGetTeacher(textBox1.Text);
+                if (user!=null||user2!=null)
                 {
                     // student exists
                     // check if password is correct
-                    if (textBox2.Text == user.Password)
+                    if (textBox2.Text == user.Password || textBox2.Text == user2.Password)
                     {
                         if (openForm != null)
                         {
                             openForm.Close();
                         }
                         // password is correct
-                        StudentForm form = new StudentForm();
+                        StudentForm form = new StudentForm(user);
                         // open student form
                         form.Show();
                         // minimize login
