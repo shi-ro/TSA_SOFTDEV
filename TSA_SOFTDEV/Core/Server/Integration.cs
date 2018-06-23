@@ -95,10 +95,31 @@ namespace Core.Server
 
         }
 
-        public static Classroom ExecuteGetClassroomById(int id)
+        public static Classroom ExecuteGetClassroom(int id)
         {
-            SqlCommand cmdNew = new SqlCommand();
-            return null;
+            SqlCommand cmdNew = new SqlCommand("SELECT Classrooms.[Name], Classrooms.Teacher, Classrooms.Students FROM Classrooms WHERE Classrooms.Id = " + id, _connection);
+            cmdNew.CommandType = CommandType.Text;
+
+            Classroom toReturn = null;
+
+            try
+            {
+                _connection.Open();
+                SqlDataReader reader = cmdNew.ExecuteReader();
+                while (reader.Read())
+                {
+                    toReturn = new Classroom(reader[0] + "", reader[1] + "", reader[2] + "", id);
+                }
+                reader.Close();
+                _connection.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("=========================");
+                Console.WriteLine(ex);
+            }
+
+            return toReturn;
         }
 
         public static Student ExecuteGetStudentById(int id)
