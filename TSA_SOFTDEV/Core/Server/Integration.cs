@@ -18,8 +18,6 @@ namespace Core.Server
 
         public static int ExecuteGetClassroomId(Classroom math)
         {
-            
-
             return 0;
         }
 

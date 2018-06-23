@@ -13,6 +13,7 @@ namespace Teacher_form
 {
     public partial class TeacherForm : Form
     {
+        public bool setCreatorOpened = false;
         public Teacher teacher;
         public TeacherForm(Teacher teacher)
         {
@@ -31,7 +32,21 @@ namespace Teacher_form
 
         private void TeacherForm_Load(object sender, EventArgs e)
         {
-            this.Size = new Size(692, 505); // 484);
+            Size = new Size(692, 505); // 484);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (!setCreatorOpened)
+            {
+                ProblemSetCreatorScreen problemSetCreator = new ProblemSetCreatorScreen();
+                problemSetCreator.FormClosed += (object se, FormClosedEventArgs ei) =>
+                {
+                    setCreatorOpened = false;
+                };
+                setCreatorOpened = true;
+                problemSetCreator.Show();
+            }
         }
     }
 }
