@@ -94,6 +94,7 @@ namespace Core.Server
 
         public static Classroom ExecuteGetClassroom(int id)
         {
+            var e = _connection.State;
             SqlCommand cmdNew = new SqlCommand("SELECT Classrooms.[Name], Classrooms.Teacher, Classrooms.Students FROM Classrooms WHERE Classrooms.Id = " + id, _connection);
             cmdNew.CommandType = CommandType.Text;
 
@@ -166,8 +167,8 @@ namespace Core.Server
             }
             _connection.Close();
             if (toReturn == null) { return null; }
+            toReturn.Initialize();
             toReturn.setTeacherId();
-
             return toReturn;
         }
 
@@ -422,7 +423,6 @@ namespace Core.Server
                     }
                 }
                 reader.Close();
-                _connection.Close();
                 return obj;
             }
             catch (Exception ex)
@@ -430,6 +430,7 @@ namespace Core.Server
                 Console.WriteLine("SS=========================SS");
                 Console.WriteLine(ex);
             }
+            _connection.Close();
             return null;
         }
     }
