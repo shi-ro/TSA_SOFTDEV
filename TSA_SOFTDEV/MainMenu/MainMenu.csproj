@@ -61,6 +61,7 @@
     <Compile Include="CreateAccountScreen.Designer.cs">
       <DependentUpon>CreateAccountScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extentions.cs" />
     <Compile Include="LoginScreen.cs">
       <SubType>Form</SubType>
     </Compile>

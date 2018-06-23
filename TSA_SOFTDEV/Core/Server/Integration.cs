@@ -26,6 +26,40 @@ namespace Core.Server
 
         }
 
+        public static object[] ExecuteGetObject(string fromStr, string paramaters, string by, object byParam, bool isString = true)
+        {
+            var param = isString ? $"'{byParam}'":byParam;
+            var st = paramaters.Replace(",",$",{fromStr}.");
+            st = fromStr+"." + st;
+            var command = $"SELECT {st} FROM {fromStr} WHERE {fromStr}.{by} = {param}";
+            Console.WriteLine(">>>>> "+command);
+            SqlCommand cmdNew = new SqlCommand(command, _connection);
+            cmdNew.CommandType = CommandType.Text;
+
+            try
+            {
+                _connection.Open();
+                SqlDataReader reader = cmdNew.ExecuteReader();
+                object[] obj = new object[reader.FieldCount];
+                while (reader.Read())
+                {
+                    for(int i = 0; i < reader.FieldCount; i++)
+                    {
+                        obj[i] = reader[i];
+                    }
+                }
+                reader.Close();
+                _connection.Close();
+                return obj;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("SS=========================SS");
+                Console.WriteLine(ex);
+            }
+            return null;
+        }
+
         public static Student ExecuteGetStudentById(int id)
         {
             SqlCommand cmdNew = new SqlCommand("SELECT Students.[Name] FROM Students WHERE Students.Id = " + id, _connection);
@@ -35,7 +69,7 @@ namespace Core.Server
             String n = cmdNew.ExecuteNonQuery() + "";
             _connection.Close();
 
-            return Core.Server.Integration.ExecuteGetStudent(n);
+            return ExecuteGetStudent(n);
         }
 
         public static Teacher ExecuteGetTeacherByStudent(Student bob)
@@ -70,7 +104,7 @@ namespace Core.Server
             }
             catch (Exception ex)
             {
-                Console.WriteLine("=========================");
+                Console.WriteLine("DD=========================DD");
                 Console.WriteLine(ex);
             }
 
@@ -125,7 +159,7 @@ namespace Core.Server
             }
             catch (Exception ex)
             {
-                Console.WriteLine("=========================");
+                Console.WriteLine("FF=========================FF");
                 Console.WriteLine(ex);
             }
 
@@ -152,7 +186,7 @@ namespace Core.Server
             }
             catch (Exception ex)
             {
-                Console.WriteLine("=========================");
+                Console.WriteLine("GG=========================GG");
                 Console.WriteLine(ex);
             }
 
@@ -202,7 +236,7 @@ namespace Core.Server
             }
             catch (Exception ex)
             {
-                Console.WriteLine("=========================");
+                Console.WriteLine("HH=========================HH");
                 Console.WriteLine(ex);
             }
             return userteam;
@@ -235,7 +269,7 @@ namespace Core.Server
             }
             catch (Exception ex)
             {
-                Console.WriteLine("=========================");
+                Console.WriteLine("JJ=========================JJ");
                 Console.WriteLine(ex);
             }
 

@@ -75,7 +75,10 @@
             this.button9 = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
+            this.listBox4 = new System.Windows.Forms.ListBox();
+            this.listBox5 = new System.Windows.Forms.ListBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.teacherFormTab.SuspendLayout();
             this.classTab.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -93,6 +96,7 @@
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            this.tableLayoutPanel11.SuspendLayout();
             this.SuspendLayout();
             // 
             // teacherFormTab
@@ -544,6 +548,7 @@
             // 
             // teamTab
             // 
+            this.teamTab.Controls.Add(this.tableLayoutPanel11);
             this.teamTab.Controls.Add(this.tableLayoutPanel6);
             this.teamTab.Controls.Add(this.tableLayoutPanel4);
             this.teamTab.Controls.Add(this.tableLayoutPanel3);
@@ -562,13 +567,13 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.Controls.Add(this.label3, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.richTextBox2, 0, 1);
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(378, 197);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(378, 180);
             this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(1);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.04348F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 86.95652F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(266, 180);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(266, 197);
             this.tableLayoutPanel6.TabIndex = 12;
             // 
             // label3
@@ -576,7 +581,7 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.label3.Location = new System.Drawing.Point(86, 0);
+            this.label3.Location = new System.Drawing.Point(86, 1);
             this.label3.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(93, 23);
@@ -585,10 +590,10 @@
             // 
             // richTextBox2
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(1, 24);
+            this.richTextBox2.Location = new System.Drawing.Point(1, 26);
             this.richTextBox2.Margin = new System.Windows.Forms.Padding(1);
             this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(264, 155);
+            this.richTextBox2.Size = new System.Drawing.Size(264, 169);
             this.richTextBox2.TabIndex = 2;
             this.richTextBox2.Text = "";
             // 
@@ -604,9 +609,9 @@
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(1);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 24.35233F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75.64767F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(266, 193);
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.58031F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 83.41969F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(266, 177);
             this.tableLayoutPanel4.TabIndex = 11;
             // 
             // label2
@@ -614,7 +619,7 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.label2.Location = new System.Drawing.Point(75, 11);
+            this.label2.Location = new System.Drawing.Point(75, 3);
             this.label2.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(115, 23);
@@ -630,7 +635,7 @@
             this.tableLayoutPanel5.Controls.Add(this.button8, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.button10, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.button9, 0, 1);
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(1, 47);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(1, 30);
             this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(1);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 2;
@@ -641,7 +646,7 @@
             // 
             // button11
             // 
-            this.button11.BackColor = System.Drawing.Color.Silver;
+            this.button11.BackColor = System.Drawing.Color.White;
             this.button11.Font = new System.Drawing.Font("Comic Sans MS", 10F);
             this.button11.Location = new System.Drawing.Point(133, 73);
             this.button11.Margin = new System.Windows.Forms.Padding(1);
@@ -653,7 +658,7 @@
             // 
             // button8
             // 
-            this.button8.BackColor = System.Drawing.Color.Silver;
+            this.button8.BackColor = System.Drawing.Color.White;
             this.button8.Font = new System.Drawing.Font("Comic Sans MS", 10F);
             this.button8.Location = new System.Drawing.Point(1, 1);
             this.button8.Margin = new System.Windows.Forms.Padding(1);
@@ -665,7 +670,7 @@
             // 
             // button10
             // 
-            this.button10.BackColor = System.Drawing.Color.Silver;
+            this.button10.BackColor = System.Drawing.Color.White;
             this.button10.Font = new System.Drawing.Font("Comic Sans MS", 10F);
             this.button10.Location = new System.Drawing.Point(133, 1);
             this.button10.Margin = new System.Windows.Forms.Padding(1);
@@ -677,7 +682,7 @@
             // 
             // button9
             // 
-            this.button9.BackColor = System.Drawing.Color.Silver;
+            this.button9.BackColor = System.Drawing.Color.White;
             this.button9.Font = new System.Drawing.Font("Comic Sans MS", 10F);
             this.button9.Location = new System.Drawing.Point(1, 73);
             this.button9.Margin = new System.Windows.Forms.Padding(1);
@@ -693,14 +698,14 @@
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.listBox5, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.richTextBox1, 0, 1);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(12, 1);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(1);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.80124F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.19876F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.042553F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90.95744F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(174, 376);
             this.tableLayoutPanel3.TabIndex = 10;
             // 
@@ -709,21 +714,60 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.label1.Location = new System.Drawing.Point(59, 10);
+            this.label1.Location = new System.Drawing.Point(59, 5);
             this.label1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 23);
             this.label1.TabIndex = 1;
             this.label1.Text = "Teams";
             // 
-            // richTextBox1
+            // tableLayoutPanel11
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(1, 45);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(1);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(172, 297);
-            this.richTextBox1.TabIndex = 2;
-            this.richTextBox1.Text = "";
+            this.tableLayoutPanel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.tableLayoutPanel11.ColumnCount = 1;
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel11.Controls.Add(this.label10, 0, 0);
+            this.tableLayoutPanel11.Controls.Add(this.listBox4, 0, 1);
+            this.tableLayoutPanel11.Location = new System.Drawing.Point(199, 0);
+            this.tableLayoutPanel11.Margin = new System.Windows.Forms.Padding(1);
+            this.tableLayoutPanel11.Name = "tableLayoutPanel11";
+            this.tableLayoutPanel11.RowCount = 2;
+            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.510638F));
+            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 91.48936F));
+            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel11.Size = new System.Drawing.Size(167, 378);
+            this.tableLayoutPanel11.TabIndex = 15;
+            // 
+            // listBox4
+            // 
+            this.listBox4.FormattingEnabled = true;
+            this.listBox4.ItemHeight = 24;
+            this.listBox4.Location = new System.Drawing.Point(3, 35);
+            this.listBox4.Name = "listBox4";
+            this.listBox4.Size = new System.Drawing.Size(161, 340);
+            this.listBox4.TabIndex = 1;
+            // 
+            // listBox5
+            // 
+            this.listBox5.FormattingEnabled = true;
+            this.listBox5.ItemHeight = 24;
+            this.listBox5.Location = new System.Drawing.Point(3, 36);
+            this.listBox5.Name = "listBox5";
+            this.listBox5.Size = new System.Drawing.Size(168, 316);
+            this.listBox5.TabIndex = 2;
+            // 
+            // label10
+            // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Comic Sans MS", 12F);
+            this.label10.Location = new System.Drawing.Point(17, 4);
+            this.label10.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(132, 23);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "Students in team";
             // 
             // TeacherForm
             // 
@@ -763,6 +807,8 @@
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
+            this.tableLayoutPanel11.ResumeLayout(false);
+            this.tableLayoutPanel11.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -786,7 +832,6 @@
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
@@ -817,5 +862,9 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.RichTextBox richTextBox5;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
+        private System.Windows.Forms.ListBox listBox4;
+        private System.Windows.Forms.ListBox listBox5;
+        private System.Windows.Forms.Label label10;
     }
 }
