@@ -21,7 +21,7 @@ namespace Core.Server
             return 0;
         }
 
-        public static void ExecuteAddClassroom()
+        public static void ExecuteAddClassroom(String name)
         {
 
         }
