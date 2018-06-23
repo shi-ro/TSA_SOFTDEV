@@ -16,6 +16,40 @@ namespace Core.Server
             return External.Wolfram.Connected();
         }
 
+        public static List<ProblemSet> ExecuteGetAllProblemSets()
+        {
+            SqlCommand cmdOne = new SqlCommand("SELECT count(*) FROM ProblemSets", _connection);
+            cmdOne.CommandType = CommandType.Text;
+
+            _connection.Open();
+            int num = (int)cmdOne.ExecuteScalar();
+            _connection.Close();
+
+            List<ProblemSet> allSets = new List<ProblemSet>(num);
+
+            SqlCommand cmdTwo = new SqlCommand("SELECT ProblemSets.[Name], ProblemSets.Points, ProblemSets.UsesFormula, ProblemSets.Formula, ProblemSets.[Values], ProblemSets.RandomRange, ProblemSets.Description FROM ProblemSets", _connection);
+            cmdTwo.CommandType = CommandType.Text;
+            
+            try
+            {
+                _connection.Open();
+                SqlDataReader reader = cmdTwo.ExecuteReader();
+                while (reader.Read())
+                {
+                    allSets.Add(new ProblemSet(reader[0] + "", (int)reader[1], reader[6] + "", reader[3] + "", (int)reader[2], reader[4] + "", reader[5] + ""));
+                }
+                reader.Close();
+                _connection.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("GG=========================GG");
+                Console.WriteLine(ex);
+            }
+
+            return allSets;
+        }
+
         public static List<Team> ExecuteGetAllTeams()
         {
             SqlCommand cmdOne = new SqlCommand("SELECT count(*) FROM Teams", _connection);
