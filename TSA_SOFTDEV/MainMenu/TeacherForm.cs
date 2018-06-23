@@ -13,6 +13,11 @@ namespace Teacher_form
 {
     public partial class TeacherForm : Form
     {
+        private List<Classroom> _classrooms = new List<Classroom>();
+        private List<ProblemSet> _allProblemSets = new List<ProblemSet>();
+        private List<ProblemSet> _savedProblemSets = new List<ProblemSet>();
+        private Problem _currentlySelectedProblemSet;
+        private Classroom _currentlySelectedClassrom;
         public bool setCreatorOpened = false;
         public Teacher teacher;
         public TeacherForm(Teacher teacher)
