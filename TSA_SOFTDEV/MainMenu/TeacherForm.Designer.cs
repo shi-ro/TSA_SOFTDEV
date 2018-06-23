@@ -63,6 +63,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.richTextBox4 = new System.Windows.Forms.RichTextBox();
             this.teamTab = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.listBox4 = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
@@ -74,11 +77,8 @@
             this.button10 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
-            this.listBox4 = new System.Windows.Forms.ListBox();
             this.listBox5 = new System.Windows.Forms.ListBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.teacherFormTab.SuspendLayout();
             this.classTab.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -92,11 +92,11 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.teamTab.SuspendLayout();
+            this.tableLayoutPanel11.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            this.tableLayoutPanel11.SuspendLayout();
             this.SuspendLayout();
             // 
             // teacherFormTab
@@ -437,6 +437,7 @@
             this.button1.TabIndex = 7;
             this.button1.Text = "Save";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label7
             // 
@@ -458,6 +459,7 @@
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(144, 292);
             this.listBox2.TabIndex = 1;
+            this.listBox2.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
             // 
             // leaderboardTab
             // 
@@ -558,6 +560,45 @@
             this.teamTab.TabIndex = 3;
             this.teamTab.Text = "Teams";
             this.teamTab.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel11
+            // 
+            this.tableLayoutPanel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.tableLayoutPanel11.ColumnCount = 1;
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel11.Controls.Add(this.label10, 0, 0);
+            this.tableLayoutPanel11.Controls.Add(this.listBox4, 0, 1);
+            this.tableLayoutPanel11.Location = new System.Drawing.Point(199, 0);
+            this.tableLayoutPanel11.Margin = new System.Windows.Forms.Padding(1);
+            this.tableLayoutPanel11.Name = "tableLayoutPanel11";
+            this.tableLayoutPanel11.RowCount = 2;
+            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.510638F));
+            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 91.48936F));
+            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel11.Size = new System.Drawing.Size(167, 378);
+            this.tableLayoutPanel11.TabIndex = 15;
+            // 
+            // label10
+            // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Comic Sans MS", 12F);
+            this.label10.Location = new System.Drawing.Point(17, 4);
+            this.label10.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(132, 23);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "Students in team";
+            // 
+            // listBox4
+            // 
+            this.listBox4.FormattingEnabled = true;
+            this.listBox4.ItemHeight = 24;
+            this.listBox4.Location = new System.Drawing.Point(3, 35);
+            this.listBox4.Name = "listBox4";
+            this.listBox4.Size = new System.Drawing.Size(161, 340);
+            this.listBox4.TabIndex = 1;
             // 
             // tableLayoutPanel6
             // 
@@ -709,6 +750,16 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(174, 377);
             this.tableLayoutPanel3.TabIndex = 10;
             // 
+            // listBox5
+            // 
+            this.listBox5.FormattingEnabled = true;
+            this.listBox5.ItemHeight = 24;
+            this.listBox5.Location = new System.Drawing.Point(3, 34);
+            this.listBox5.Name = "listBox5";
+            this.listBox5.Size = new System.Drawing.Size(168, 340);
+            this.listBox5.TabIndex = 2;
+            this.listBox5.SelectedIndexChanged += new System.EventHandler(this.listBox5_SelectedIndexChanged);
+            // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -720,54 +771,6 @@
             this.label1.Size = new System.Drawing.Size(55, 23);
             this.label1.TabIndex = 1;
             this.label1.Text = "Teams";
-            // 
-            // tableLayoutPanel11
-            // 
-            this.tableLayoutPanel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.tableLayoutPanel11.ColumnCount = 1;
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel11.Controls.Add(this.label10, 0, 0);
-            this.tableLayoutPanel11.Controls.Add(this.listBox4, 0, 1);
-            this.tableLayoutPanel11.Location = new System.Drawing.Point(199, 0);
-            this.tableLayoutPanel11.Margin = new System.Windows.Forms.Padding(1);
-            this.tableLayoutPanel11.Name = "tableLayoutPanel11";
-            this.tableLayoutPanel11.RowCount = 2;
-            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.510638F));
-            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 91.48936F));
-            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel11.Size = new System.Drawing.Size(167, 378);
-            this.tableLayoutPanel11.TabIndex = 15;
-            // 
-            // listBox4
-            // 
-            this.listBox4.FormattingEnabled = true;
-            this.listBox4.ItemHeight = 24;
-            this.listBox4.Location = new System.Drawing.Point(3, 35);
-            this.listBox4.Name = "listBox4";
-            this.listBox4.Size = new System.Drawing.Size(161, 340);
-            this.listBox4.TabIndex = 1;
-            // 
-            // listBox5
-            // 
-            this.listBox5.FormattingEnabled = true;
-            this.listBox5.ItemHeight = 24;
-            this.listBox5.Location = new System.Drawing.Point(3, 34);
-            this.listBox5.Name = "listBox5";
-            this.listBox5.Size = new System.Drawing.Size(168, 340);
-            this.listBox5.TabIndex = 2;
-            // 
-            // label10
-            // 
-            this.label10.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.label10.Location = new System.Drawing.Point(17, 4);
-            this.label10.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(132, 23);
-            this.label10.TabIndex = 0;
-            this.label10.Text = "Students in team";
             // 
             // TeacherForm
             // 
@@ -800,6 +803,8 @@
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
             this.teamTab.ResumeLayout(false);
+            this.tableLayoutPanel11.ResumeLayout(false);
+            this.tableLayoutPanel11.PerformLayout();
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
@@ -807,8 +812,6 @@
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            this.tableLayoutPanel11.ResumeLayout(false);
-            this.tableLayoutPanel11.PerformLayout();
             this.ResumeLayout(false);
 
         }

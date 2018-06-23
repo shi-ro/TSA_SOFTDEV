@@ -17,8 +17,9 @@ namespace Teacher_form
         private List<ProblemSet> _allProblemSets = new List<ProblemSet>();
         private List<ProblemSet> _savedProblemSets = new List<ProblemSet>();
         private List<Team> _allTeams = new List<Team>();
-        private Problem _currentlySelectedProblemSet;
+        private ProblemSet _currentlySelectedProblemSet;
         private Classroom _currentlySelectedClassrom;
+        private Team _currentlySelectedTeam;
         public bool setCreatorOpened = false;
         public Teacher teacher;
         public TeacherForm(Teacher teacher)
@@ -29,6 +30,7 @@ namespace Teacher_form
             teacherFormTab.ItemSize = new Size((int)(teacherFormTab.Width/4) - 1, 41);
             teacherFormTab.SizeMode = TabSizeMode.Fixed;
             this.Controls.Add(teacherFormTab);
+            _savedProblemSets = teacher.SavedProblemSets;
             LoadAllTeams();
             LoadAllProblemSets();
         }
@@ -64,9 +66,9 @@ namespace Teacher_form
         private void LoadAllTeams()
         {
             //call server method
-
+            _allTeams = Core.Server.Integration.ExecuteGetAllTeams();
             //update listbox
-            if(_allTeams.Count>0)
+            if (_allTeams.Count>0)
             {
                 foreach(Team t in _allTeams)
                 {
@@ -78,7 +80,7 @@ namespace Teacher_form
         private void LoadAllProblemSets()
         {
             //call server method
-
+            _allProblemSets = Core.Server.Integration.ExecuteGetAllProblemSets();
             //update listbox
             if (_allProblemSets.Count > 0)
             {
@@ -112,6 +114,37 @@ namespace Teacher_form
                 setCreatorOpened = true;
                 problemSetCreator.Show();
             }
+        }
+
+        private void listBox5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(listBox5.SelectedIndex>=0)
+            {
+                _currentlySelectedTeam = _allTeams[listBox5.SelectedIndex];
+                //load students in team
+
+                //load team stats
+            }
+        }
+
+        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBox2.SelectedIndex >= 0)
+            {
+                _currentlySelectedProblemSet = _allProblemSets[listBox2.SelectedIndex];
+                //load set stats
+                string stats = "";
+                stats += $"Name : {_currentlySelectedProblemSet.Name}\n";
+                stats += $"Point Worth : {_currentlySelectedProblemSet.Points}\n";
+                stats += $"Description : \n\t{_currentlySelectedProblemSet.Description}\n";
+                richTextBox5.Text = "";
+                richTextBox5.Text = stats;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

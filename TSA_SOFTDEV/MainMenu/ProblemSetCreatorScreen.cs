@@ -34,6 +34,7 @@ namespace MainMenu
                 }
             }
             Core.Server.Integration.ExecuteAddProblemSet(textBox2.Text,(int)numericUpDown1.Value,checkBox1.Checked?1:0,textBox1.Text,combined,$"{numericUpDown2.Value},{numericUpDown3.Value}",richTextBox1.Text);
+            Close();
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -76,6 +77,11 @@ namespace MainMenu
         {
             checkBox1.Checked = !checkBox2.Checked;
             ChangeEnabledItems();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

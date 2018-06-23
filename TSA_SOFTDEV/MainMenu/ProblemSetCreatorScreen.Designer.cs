@@ -48,6 +48,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
@@ -231,10 +232,10 @@
             // 
             this.button2.BackColor = System.Drawing.Color.White;
             this.button2.Font = new System.Drawing.Font("Comic Sans MS", 13F);
-            this.button2.Location = new System.Drawing.Point(43, 533);
+            this.button2.Location = new System.Drawing.Point(156, 533);
             this.button2.Margin = new System.Windows.Forms.Padding(1);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(335, 46);
+            this.button2.Size = new System.Drawing.Size(222, 46);
             this.button2.TabIndex = 21;
             this.button2.Text = "Create";
             this.button2.UseVisualStyleBackColor = false;
@@ -308,12 +309,26 @@
             0,
             0});
             // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.White;
+            this.button3.Font = new System.Drawing.Font("Comic Sans MS", 13F);
+            this.button3.Location = new System.Drawing.Point(43, 533);
+            this.button3.Margin = new System.Windows.Forms.Padding(1);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(99, 46);
+            this.button3.TabIndex = 26;
+            this.button3.Text = "Close";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // ProblemSetCreatorScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(424, 589);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.numericUpDown3);
             this.Controls.Add(this.label6);
@@ -367,5 +382,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.NumericUpDown numericUpDown3;
+        private System.Windows.Forms.Button button3;
     }
 }

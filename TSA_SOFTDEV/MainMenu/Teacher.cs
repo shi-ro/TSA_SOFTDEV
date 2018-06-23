@@ -10,16 +10,24 @@ namespace MainMenu
     {
         public String Name { get; set; }
         public String Password { get; set; }
-        public String Classrooms { get; set; }
-        public String SavedProblemSets { get; set; }
+        public List<Classroom> Classrooms { get; set; }
+        public List<ProblemSet> SavedProblemSets { get; set; }
         public int Id { get; set; }
 
-        public Teacher(String name, String password, String classrooms, String savedProblemSets)
+        public Teacher(String name, String password, String classrooms, String s)
         {
             Name = name;
             Password = password;
-            Classrooms = classrooms;
-            SavedProblemSets = savedProblemSets;
+            string[] cls = classrooms.Split(',');
+            for(int i = 0; i < cls.Length; i++)
+            {
+                //Classrooms.Add(Core.Server.Integration.));
+            }
+            string[] sve = s.Split(',');
+            for (int i = 0; i < sve.Length; i++)
+            {
+                SavedProblemSets.Add(Core.Server.Integration.ExecuteGetProblemSetById(cls[i]));
+            }
         }
 
         public void setTeacherId()
