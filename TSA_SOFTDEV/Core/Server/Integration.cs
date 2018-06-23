@@ -36,8 +36,10 @@ namespace Core.Server
             sturt.setTeacherId();
         }
 
-        public static List<ProblemSet> ExecuteGetTeacherProblemSets(string teacherName) //
+        public static List<ProblemSet> ExecuteGetTeacherProblemSets(int teacherid) //
         {
+            //string[] stringArray = sturt.Split(',');
+
             return null;
         }
 
