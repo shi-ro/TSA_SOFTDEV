@@ -22,6 +22,7 @@ namespace TSA_SOFTDEV
         Team team;
         List<Student> teammates;
         List<Student> sortedUsers = new List<Student>();
+        List<Team> sortedTeams = new List<Team>();
         List<ProblemSet> problemSets = new List<ProblemSet>();
         ProblemSet selectedSet = null;
         bool solverOpen = false;
@@ -30,12 +31,13 @@ namespace TSA_SOFTDEV
             InitializeComponent();
             s = student;
             string name = s.Name;
-
+            
             team = Core.Server.Integration.ExecuteGetStudentTeam(name);
-            string teammateIDs = team.Students;
-            teammates = getTeamMembers(teammateIDs);
+            //string teammateIDs = team.Students;
+            
 
             t = Core.Server.Integration.ExecuteGetTeacherByStudent(s);
+            
             this.Size = new Size(692, 505);
             teacherFormTab.Size = new Size(this.Width - 30, this.Height - 10);
             teacherFormTab.ItemSize = new Size((int)(teacherFormTab.Width / 5) - 1, 41);
@@ -51,15 +53,52 @@ namespace TSA_SOFTDEV
             var networkThread = new Thread(updateChatBox);
             networkThread.Start();
 
-            studentLeaderboard();
+            DoStudentLeaderboard();
 
             //names.Add(Core.Server.Integration.ExecuteGetUsers());
 
             //User bob = Core.Server.Integration.ExecuteGetUser("Bob test");
             //Console.WriteLine("bob's team is " + Core.Server.Integration.ExecuteGetUserTeam(bob.Name));
         }
-        //private void teamLeaderboard();
-        private void studentLeaderboard()
+        private void DoTeamLeaderboard()
+        {
+            List<Team> allTeams = Core.Server.Integration.ExecuteGetAllTeams();
+            List<int> TeamScoreList = new List<int>();
+            sortedTeams = allTeams.OrderByDescending(x => x.score).ToList();
+            int count = 1;
+            for (int i = 0; i < allTeams.Count; i++)
+            {
+                ListViewItem lv1 = new ListViewItem(count.ToString());
+                //ListViewItem lv2 = new ListViewItem(count.ToString());
+                lv1.SubItems.Add(sortedUsers[i].Name);
+                //lv2.SubItems.Add(sortedUsers[i].Name);
+                lv1.SubItems.Add((sortedUsers[i].Points).ToString());
+                //lv2.SubItems.Add((sortedUsers[i].Points).ToString());
+                listView1.Items.Add(lv1);
+                if (i < sortedUsers.Count() - 1)
+                {
+                    if (sortedTeams[i].score == sortedTeams[i + 1].score)
+                    {
+                        count += 0;
+                    }
+                    else
+                    {
+                        count++;
+                    }
+                }
+                else
+                {
+                    if (sortedTeams[i].score == sortedTeams[sortedTeams.Count() - 1].score)
+                        count += 0;
+                    else
+                    {
+                        count++;
+                    }
+                }
+            }
+            
+        }
+        private void DoStudentLeaderboard()
         {
             List<Student> users = Core.Server.Integration.ExecuteGetStudents();
             sortedUsers = users.OrderByDescending(x => x.Points).ToList();
@@ -100,17 +139,7 @@ namespace TSA_SOFTDEV
             //Core.Server.Integration.ExecuteGetUserTeam();
             //team leaderboard
         }
-        private List<Student> getTeamMembers(string team)
-        {
-            String[] IDstring = team.Split(',');
-            List<Student> students = new List<Student>();
-            for (int i = 0; i < IDstring.Length; i++)
-            {
-                students.Add(Core.Server.Integration.ExecuteGetStudentById(Int32.Parse(IDstring[i])));
-
-            }
-            return students;
-        }
+        
         private void updateChatBox()
         {
             while (true)

@@ -21,10 +21,10 @@ namespace MainMenu
             string[] cls = classrooms.Split(',');
             for (int i = 0; i < cls.Length; i++)
             {
-                Classrooms.Add(Core.Server.Integration.ExecuteGetClassroomById(cls[i]));
-        }
-        string[] sve = s.Split(',');
-            for (int i = 0; i<sve.Length; i++)
+                Classrooms.Add(Core.Server.Integration.ExecuteGetClassroom(Int32.Parse(cls[i])));
+            }
+            string[] sve = s.Split(',');
+            for (int i = 0; i < sve.Length; i++)
             {
                 SavedProblemSets.Add(Core.Server.Integration.ExecuteGetProblemSetById(sve[i]));
             }
