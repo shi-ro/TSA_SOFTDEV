@@ -16,6 +16,41 @@ namespace Core.Server
             return External.Wolfram.Connected();
         }
 
+        public static List<Team> ExecuteGetAllTeams()
+        {
+            SqlCommand cmdOne = new SqlCommand("SELECT count(*) FROM Teams", _connection);
+            cmdOne.CommandType = CommandType.Text;
+
+            _connection.Open();
+            int num = (int)cmdOne.ExecuteScalar();
+            _connection.Close();
+
+            List<Team> allTeams = new List<Team>(num);
+
+            SqlCommand cmdTwo = new SqlCommand("SELECT Teams.Id, Teams.[Name], Teams.Students FROM Teams", _connection);
+            cmdTwo.CommandType = CommandType.Text;
+
+            try
+            {
+                _connection.Open();
+                SqlDataReader reader = cmdTwo.ExecuteReader();
+                while (reader.Read())
+                {
+                    allTeams.Add(new Team(reader[1] + "", reader[2] + "", (int)reader[0]));
+                }
+                reader.Close();
+                _connection.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("JJ=========================JJ");
+                Console.WriteLine(ex);
+            }
+
+
+            return allTeams;
+        }
+
         public static int ExecuteGetClassroomId(Classroom math)
         {
             return 0;
@@ -26,39 +61,7 @@ namespace Core.Server
 
         }
 
-        public static object[] ExecuteGetObject(string fromStr, string paramaters, string by, object byParam, bool isString = true)
-        {
-            var param = isString ? $"'{byParam}'":byParam;
-            var st = paramaters.Replace(",",$",{fromStr}.");
-            st = fromStr+"." + st;
-            var command = $"SELECT {st} FROM {fromStr} WHERE {fromStr}.{by} = {param}";
-            Console.WriteLine(">>>>> "+command);
-            SqlCommand cmdNew = new SqlCommand(command, _connection);
-            cmdNew.CommandType = CommandType.Text;
-
-            try
-            {
-                _connection.Open();
-                SqlDataReader reader = cmdNew.ExecuteReader();
-                object[] obj = new object[reader.FieldCount];
-                while (reader.Read())
-                {
-                    for(int i = 0; i < reader.FieldCount; i++)
-                    {
-                        obj[i] = reader[i];
-                    }
-                }
-                reader.Close();
-                _connection.Close();
-                return obj;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("SS=========================SS");
-                Console.WriteLine(ex);
-            }
-            return null;
-        }
+        
 
         public static Student ExecuteGetStudentById(int id)
         {
@@ -220,7 +223,7 @@ namespace Core.Server
             int teamid = Core.Server.Integration.ExecuteGetStudent(username).TeamId;
             Team userteam = null;
 
-            SqlCommand scndCmd = new SqlCommand("SELECT Teams.Id, Teams.TeamName, Teams.Users, Teams.Points FROM Teams WHERE  Teams.Id = " + teamid, _connection);
+            SqlCommand scndCmd = new SqlCommand("SELECT Teams.Id, Teams.[Name], Teams.Students FROM Teams WHERE  Teams.Id = " + teamid, _connection);
             scndCmd.CommandType = CommandType.Text;
 
             try
@@ -229,7 +232,7 @@ namespace Core.Server
                 SqlDataReader reader = scndCmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    userteam = new Team(reader[1] + "", (int)reader[3], reader[2] + "", (int)reader[0]);
+                    userteam = new Team(reader[1] + "", reader[2] + "", (int)reader[0]);
                 }
                 reader.Close();
                 _connection.Close();
@@ -342,6 +345,40 @@ namespace Core.Server
             _connection.Open();
             SqlDataReader reader = cmdNew.ExecuteReader();
             return reader;
+        }
+
+        public static object[] ExecuteGetObject(string fromStr, string paramaters, string by, object byParam, bool isString = true)
+        {
+            var param = isString ? $"'{byParam}'" : byParam;
+            var st = paramaters.Replace(",", $",{fromStr}.");
+            st = fromStr + "." + st;
+            var command = $"SELECT {st} FROM {fromStr} WHERE {fromStr}.{by} = {param}";
+            Console.WriteLine(">>>>> " + command);
+            SqlCommand cmdNew = new SqlCommand(command, _connection);
+            cmdNew.CommandType = CommandType.Text;
+
+            try
+            {
+                _connection.Open();
+                SqlDataReader reader = cmdNew.ExecuteReader();
+                object[] obj = new object[reader.FieldCount];
+                while (reader.Read())
+                {
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        obj[i] = reader[i];
+                    }
+                }
+                reader.Close();
+                _connection.Close();
+                return obj;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("SS=========================SS");
+                Console.WriteLine(ex);
+            }
+            return null;
         }
     }
 }

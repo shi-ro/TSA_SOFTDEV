@@ -10,12 +10,12 @@ namespace MainMenu
     {
         public String Name { get; set; }
         public int Id { get; set; }
-        public String Users { get; set; }
-
-        public Team(String n, String u, int i)
+        public String Students { get; set; }
+        
+        public Team(String name, String stud, int i)
         {
-            Name = n;
-            Users = u;
+            Name = name;
+            Students = stud;
             Id = i;
         }
     }
