@@ -54,6 +54,7 @@
     <Compile Include="ClassManagerScreen.Designer.cs">
       <DependentUpon>ClassManagerScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classroom.cs" />
     <Compile Include="CreateAccountScreen.cs">
       <SubType>Form</SubType>
     </Compile>

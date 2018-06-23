@@ -562,13 +562,13 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.Controls.Add(this.label3, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.richTextBox2, 0, 1);
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(254, 197);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(378, 197);
             this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(1);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.04348F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 86.95652F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(390, 180);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(266, 180);
             this.tableLayoutPanel6.TabIndex = 12;
             // 
             // label3
@@ -576,7 +576,7 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.label3.Location = new System.Drawing.Point(148, 0);
+            this.label3.Location = new System.Drawing.Point(86, 0);
             this.label3.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(93, 23);
@@ -588,7 +588,7 @@
             this.richTextBox2.Location = new System.Drawing.Point(1, 24);
             this.richTextBox2.Margin = new System.Windows.Forms.Padding(1);
             this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(388, 155);
+            this.richTextBox2.Size = new System.Drawing.Size(264, 155);
             this.richTextBox2.TabIndex = 2;
             this.richTextBox2.Text = "";
             // 
@@ -600,13 +600,13 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel5, 0, 1);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(254, 1);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(378, 1);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(1);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 24.35233F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75.64767F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(390, 193);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(266, 193);
             this.tableLayoutPanel4.TabIndex = 11;
             // 
             // label2
@@ -614,7 +614,7 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.label2.Location = new System.Drawing.Point(137, 11);
+            this.label2.Location = new System.Drawing.Point(75, 11);
             this.label2.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(115, 23);
@@ -636,17 +636,17 @@
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(388, 145);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(264, 145);
             this.tableLayoutPanel5.TabIndex = 2;
             // 
             // button11
             // 
             this.button11.BackColor = System.Drawing.Color.Silver;
             this.button11.Font = new System.Drawing.Font("Comic Sans MS", 10F);
-            this.button11.Location = new System.Drawing.Point(195, 73);
+            this.button11.Location = new System.Drawing.Point(133, 73);
             this.button11.Margin = new System.Windows.Forms.Padding(1);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(192, 54);
+            this.button11.Size = new System.Drawing.Size(130, 54);
             this.button11.TabIndex = 8;
             this.button11.Text = "Remove Team";
             this.button11.UseVisualStyleBackColor = false;
@@ -658,7 +658,7 @@
             this.button8.Location = new System.Drawing.Point(1, 1);
             this.button8.Margin = new System.Windows.Forms.Padding(1);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(192, 54);
+            this.button8.Size = new System.Drawing.Size(130, 54);
             this.button8.TabIndex = 5;
             this.button8.Text = "Add Student";
             this.button8.UseVisualStyleBackColor = false;
@@ -667,10 +667,10 @@
             // 
             this.button10.BackColor = System.Drawing.Color.Silver;
             this.button10.Font = new System.Drawing.Font("Comic Sans MS", 10F);
-            this.button10.Location = new System.Drawing.Point(195, 1);
+            this.button10.Location = new System.Drawing.Point(133, 1);
             this.button10.Margin = new System.Windows.Forms.Padding(1);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(192, 54);
+            this.button10.Size = new System.Drawing.Size(130, 54);
             this.button10.TabIndex = 7;
             this.button10.Text = "Add Team";
             this.button10.UseVisualStyleBackColor = false;
@@ -682,7 +682,7 @@
             this.button9.Location = new System.Drawing.Point(1, 73);
             this.button9.Margin = new System.Windows.Forms.Padding(1);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(192, 54);
+            this.button9.Size = new System.Drawing.Size(130, 54);
             this.button9.TabIndex = 6;
             this.button9.Text = "Remove Student";
             this.button9.UseVisualStyleBackColor = false;
@@ -701,7 +701,7 @@
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.80124F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.19876F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(225, 376);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(174, 376);
             this.tableLayoutPanel3.TabIndex = 10;
             // 
             // label1
@@ -709,7 +709,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.label1.Location = new System.Drawing.Point(85, 10);
+            this.label1.Location = new System.Drawing.Point(59, 10);
             this.label1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 23);
@@ -721,7 +721,7 @@
             this.richTextBox1.Location = new System.Drawing.Point(1, 45);
             this.richTextBox1.Margin = new System.Windows.Forms.Padding(1);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(223, 297);
+            this.richTextBox1.Size = new System.Drawing.Size(172, 297);
             this.richTextBox1.TabIndex = 2;
             this.richTextBox1.Text = "";
             // 
