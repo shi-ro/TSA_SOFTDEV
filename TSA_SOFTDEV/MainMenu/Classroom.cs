@@ -21,9 +21,9 @@ namespace MainMenu
             Id = id;
         }
 
-        public void setStudentId()
+        public void setClassroomId()
         {
-            Id = //Core.Server.Integration.ExecuteGetStudentId(this);
+            Id = 0; //Core.Server.Integration.ExecuteGetStudentId(this);
         }
     }
 }

@@ -23,6 +23,11 @@ namespace Core.Server
             return 0;
         }
 
+        public static void ExecuteAddClassroom()
+        {
+
+        }
+
         public static Student ExecuteGetStudentById(int id)
         {
             SqlCommand cmdNew = new SqlCommand("SELECT Students.[Name] FROM Students WHERE Students.Id = " + id, _connection);
