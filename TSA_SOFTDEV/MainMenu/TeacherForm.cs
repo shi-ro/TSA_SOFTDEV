@@ -16,11 +16,13 @@ namespace Teacher_form
         private List<Classroom> _classrooms = new List<Classroom>();
         private List<ProblemSet> _allProblemSets = new List<ProblemSet>();
         private List<ProblemSet> _savedProblemSets = new List<ProblemSet>();
+        private List<Student> _studentsInTeam = new List<Student>();
         private List<Team> _allTeams = new List<Team>();
         private ProblemSet _currentlySelectedProblemSet;
         private Classroom _currentlySelectedClassrom;
         private Team _currentlySelectedTeam;
         public bool setCreatorOpened = false;
+        public bool addStudentOpened = false;
         public Teacher teacher;
         public TeacherForm(Teacher teacher)
         {
@@ -99,7 +101,6 @@ namespace Teacher_form
 
         private void TeacherForm_Load(object sender, EventArgs e)
         {
-
             Size = new Size(692, 505); // 484);
         }
 
@@ -146,6 +147,29 @@ namespace Teacher_form
         private void button1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            if(!addStudentOpened)
+            {
+                AddStudentScreen addStudent = new AddStudentScreen();
+                addStudent.FormClosing += (object sn, FormClosingEventArgs ei) => 
+                {
+                    if(addStudent.ReturnedStudent!=null)
+                    {
+                        // add student
+                    }
+                };
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            if(listBox4.Items.Count >= 0)
+            {
+
+            }
         }
     }
 }
