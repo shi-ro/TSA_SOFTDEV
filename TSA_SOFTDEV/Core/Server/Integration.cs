@@ -16,6 +16,25 @@ namespace Core.Server
             return External.Wolfram.Connected();
         }
 
+        public static int ExecuteGetClassroomId(Classroom math)
+        {
+            
+
+            return 0;
+        }
+
+        public static Student ExecuteGetStudentById(int id)
+        {
+            SqlCommand cmdNew = new SqlCommand("SELECT Students.[Name] FROM Students WHERE Students.Id = " + id, _connection);
+            cmdNew.CommandType = CommandType.Text;
+
+            _connection.Open();
+            String n = cmdNew.ExecuteNonQuery() + "";
+            _connection.Close();
+
+            return Core.Server.Integration.ExecuteGetStudent(n);
+        }
+
         public static Teacher ExecuteGetTeacherByStudent(Student bob)
         {
             SqlCommand cmdNew = new SqlCommand("SELECT Teacher.[Name] FROM Teachers WHERE Teachers.Classrooms = '" + bob.Classrooms + "'", _connection);
