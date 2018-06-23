@@ -23,7 +23,7 @@ namespace MainMenu
 
         public void setClassroomId()
         {
-            Id = 0; //Core.Server.Integration.ExecuteGetStudentId(this);
+            Id = 0;
         }
     }
 }
