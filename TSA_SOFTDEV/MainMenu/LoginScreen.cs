@@ -23,7 +23,7 @@ namespace MainMenu
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            List<ProblemSet> problems = Core.Server.Integration.ExecuteGetTeacherProblemSets(1);
 
             TryLogin();
         }

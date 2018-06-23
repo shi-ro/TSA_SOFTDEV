@@ -22,9 +22,21 @@ namespace Core.Server
             Console.WriteLine($"MESSAGE EVENT ERRORS : {e.Message}");
         }
 
+        public static Teacher ExecuteGetTeacherByStudent(Student bob)
+        {
+            SqlCommand cmdNew = new SqlCommand("SELECT Teacher.[Name] FROM Teachers WHERE Teachers.Classrooms = '" + bob.Classrooms + "'", _connection);
+            cmdNew.CommandType = CommandType.Text;
+
+            _connection.Open();
+            String name = cmdNew.ExecuteNonQuery() + "";
+            _connection.Close();
+
+            return Core.Server.Integration.ExecuteGetTeacher(name);
+        }
+
         public static Teacher ExecuteGetTeacher(String name)
         {
-            SqlCommand cmdNew = new SqlCommand("SELECT Teachers.[Name], Teachers.Password, Teachers.Classrooms, Teachers.ProblemSets WHERE Teachers.[Name] = '" + name + "'", _connection);
+            SqlCommand cmdNew = new SqlCommand("SELECT Teachers.[Name], Teachers.Password, Teachers.Classrooms, Teachers.ProblemSets FROM Teachers WHERE Teachers.[Name] = '" + name + "'", _connection);
             cmdNew.CommandType = CommandType.Text;
 
             Teacher toReturn = null;
@@ -45,6 +57,8 @@ namespace Core.Server
                 Console.WriteLine("=========================");
                 Console.WriteLine(ex);
             }
+
+            toReturn.setTeacherId();
 
             return toReturn;
         }
@@ -76,7 +90,29 @@ namespace Core.Server
 
         public static List<ProblemSet> ExecuteGetTeacherProblemSets(int teacherid) //
         {
-            //string[] stringArray = sturt.Split(',');
+            SqlCommand cmdString = new SqlCommand("SELECT Teachers.ProblemSets FROM Teachers WHERE Teachers.Id = " + teacherid, _connection);
+            cmdString.CommandType = CommandType.Text;
+
+            String problemsStringForm = "";
+
+            try
+            {
+                _connection.Open();
+                SqlDataReader reader = cmdString.ExecuteReader();
+                while (reader.Read())
+                {
+                    problemsStringForm = reader[0] + "";
+                }
+                reader.Close();
+                _connection.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("=========================");
+                Console.WriteLine(ex);
+            }
+
+            string[] stringArray = problemsStringForm.Split(',');
 
             return null;
         }
