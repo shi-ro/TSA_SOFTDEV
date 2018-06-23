@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MainMenu;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,8 +13,10 @@ namespace Teacher_form
 {
     public partial class TeacherForm : Form
     {
-        public TeacherForm()
+        public Teacher teacher;
+        public TeacherForm(Teacher teacher)
         {
+            this.teacher = teacher; 
             InitializeComponent();
             teacherFormTab.Size = new Size(this.Width - 30, this.Height);//615, 440);
             teacherFormTab.ItemSize = new Size((int)(teacherFormTab.Width/4) - 1, 41);

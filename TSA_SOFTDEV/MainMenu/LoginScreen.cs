@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Teacher_form;
 using TSA_SOFTDEV;
 
 namespace MainMenu
@@ -39,11 +40,11 @@ namespace MainMenu
             {
                 Student user = Core.Server.Integration.ExecuteGetStudent(textBox1.Text);
                 Teacher user2 = Core.Server.Integration.ExecuteGetTeacher(textBox1.Text);
-                if (user!=null||user2!=null)
+                if (user!=null)
                 {
                     // student exists
                     // check if password is correct
-                    if (textBox2.Text == user.Password || textBox2.Text == user2.Password)
+                    if (textBox2.Text == user.Password)
                     {
                         if (openForm != null)
                         {
@@ -52,6 +53,27 @@ namespace MainMenu
                         // password is correct
                         StudentForm form = new StudentForm(user);
                         // open student form
+                        form.Show();
+                        // minimize login
+                        this.WindowState = FormWindowState.Minimized;
+                    }
+                    else
+                    {
+                        errorText.Text = "Incorrect Uassword";
+                    }
+                } else if(user2 != null)
+                {
+                    // teacher exists
+                    // check if password is correct
+                    if (textBox2.Text == user2.Password)
+                    {
+                        if (openForm != null)
+                        {
+                            openForm.Close();
+                        }
+                        // password is correct
+                        TeacherForm form = new TeacherForm(user2);
+                        // open teacher form
                         form.Show();
                         // minimize login
                         this.WindowState = FormWindowState.Minimized;
