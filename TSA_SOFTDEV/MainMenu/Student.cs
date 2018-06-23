@@ -16,16 +16,14 @@ namespace MainMenu
         public int TeamId { get; set; }
         public int Id { get; set; }
 
-        public Student(String n, String p, int po, String c, String r, int t)
+        public Student(String name, String password, int points, String classrooms, String ranks, int teamId)
         {
-            Name = n;
-            Password = p;
-            Points = po;
-            Classrooms = c;
-            Ranks = r;
-            TeamId = t;
-
-            
+            Name = name;
+            Password = password;
+            Points = points;
+            Classrooms = classrooms;
+            Ranks = ranks;
+            TeamId = teamId;
         }
 
         public void setStudentId()
