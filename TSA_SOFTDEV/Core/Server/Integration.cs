@@ -95,7 +95,12 @@ namespace Core.Server
 
         }
 
-        
+        public static Classroom ExecuteGetClassroomById(int id)
+        {
+            SqlCommand cmdNew = new SqlCommand()
+
+            return null;
+        }
 
         public static Student ExecuteGetStudentById(int id)
         {
@@ -123,7 +128,7 @@ namespace Core.Server
 
         public static Teacher ExecuteGetTeacher(String name)
         {
-            SqlCommand cmdNew = new SqlCommand("SELECT Teachers.[Name], Teachers.Password, Teachers.Classrooms, Teachers.ProblemSets FROM Teachers WHERE Teachers.[Name] = '" + name + "'", _connection);
+            SqlCommand cmdNew = new SqlCommand("SELECT Teachers.[Name], Teachers.Password, Teachers.Classrooms, Teachers.SavedProblemSets FROM Teachers WHERE Teachers.[Name] = '" + name + "'", _connection);
             cmdNew.CommandType = CommandType.Text;
 
             Teacher toReturn = null;
@@ -178,7 +183,7 @@ namespace Core.Server
 
         public static List<ProblemSet> ExecuteGetTeacherProblemSets(int teacherid) //
         {
-            SqlCommand cmdString = new SqlCommand("SELECT Teachers.ProblemSets FROM Teachers WHERE Teachers.Id = " + teacherid, _connection);
+            SqlCommand cmdString = new SqlCommand("SELECT Teachers.SavedProblemSets FROM Teachers WHERE Teachers.Id = " + teacherid, _connection);
             cmdString.CommandType = CommandType.Text;
 
             String problemsStringForm = "";
