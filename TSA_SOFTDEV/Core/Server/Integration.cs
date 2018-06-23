@@ -13,13 +13,7 @@ namespace Core.Server
         
         public static bool Connected()
         {
-            return Core.External.Wolfram.Connected();
-            //return ($"{_connection.State}")!="Closed";
-        }
-
-        private static void ConnectionMessageEvent(object sender, SqlInfoMessageEventArgs e)
-        {
-            Console.WriteLine($"MESSAGE EVENT ERRORS : {e.Message}");
+            return External.Wolfram.Connected();
         }
 
         public static int ExecuteGetTeacherId(Teacher smith)

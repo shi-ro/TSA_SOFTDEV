@@ -46,7 +46,8 @@ namespace MainMenu
                 // connection exists
                 // check if username is already in use
                 Student user = Core.Server.Integration.ExecuteGetStudent(textBox1.Text);
-                if (user == null)
+                Teacher user2 = Core.Server.Integration.ExecuteGetTeacher(textBox1.Text);
+                if (user == null && user2 == null)
                 {
                     // username is not in use
                     // make sure passwords in two boxes match
@@ -59,8 +60,16 @@ namespace MainMenu
                         label3.Text = "";
                         UserName = textBox1.Text;
                         UserPassword = textBox2.Text;
-                        Student student = new Student(UserName, UserPassword, 0, "", "", 1);
-                        Core.Server.Integration.ExecuteAddStudent(student);
+                        if(checkBox1.Checked)
+                        {
+                            Teacher teacher = new Teacher(UserName, UserPassword, "", "");
+                            Core.Server.Integration.ExecuteAddTeacher(teacher);
+                        }
+                        else
+                        {
+                            Student student = new Student(UserName, UserPassword, 0, "", "", 1);
+                            Core.Server.Integration.ExecuteAddStudent(student);
+                        }
                         Close();
                     }
                     else
@@ -82,6 +91,11 @@ namespace MainMenu
         private void button2_Click(object sender, EventArgs e)
         {
             TryCreate();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
