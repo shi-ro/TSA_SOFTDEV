@@ -31,6 +31,7 @@ namespace Teacher_form
             teacherFormTab.SizeMode = TabSizeMode.Fixed;
             this.Controls.Add(teacherFormTab);
             _savedProblemSets = teacher.SavedProblemSets;
+            _classrooms = teacher.Classrooms;
             LoadAllTeams();
             LoadAllProblemSets();
         }

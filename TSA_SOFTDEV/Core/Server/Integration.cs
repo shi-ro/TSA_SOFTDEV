@@ -29,24 +29,23 @@ namespace Core.Server
 
             SqlCommand cmdTwo = new SqlCommand("SELECT ProblemSets.[Name], ProblemSets.Points, ProblemSets.UsesFormula, ProblemSets.Formula, ProblemSets.[Values], ProblemSets.RandomRange, ProblemSets.Description FROM ProblemSets", _connection);
             cmdTwo.CommandType = CommandType.Text;
-            
+
+            _connection.Open();
             try
             {
-                _connection.Open();
                 SqlDataReader reader = cmdTwo.ExecuteReader();
                 while (reader.Read())
                 {
                     allSets.Add(new ProblemSet(reader[0] + "", (int)reader[1], reader[6] + "", reader[3] + "", (int)reader[2], reader[4] + "", reader[5] + ""));
                 }
                 reader.Close();
-                _connection.Close();
             }
             catch (Exception ex)
             {
                 Console.WriteLine("GG=========================GG");
                 Console.WriteLine(ex);
             }
-
+            _connection.Close();
             return allSets;
         }
 
@@ -64,24 +63,22 @@ namespace Core.Server
             SqlCommand cmdTwo = new SqlCommand("SELECT Teams.Id, Teams.[Name], Teams.Students FROM Teams", _connection);
             cmdTwo.CommandType = CommandType.Text;
 
+            _connection.Open();
             try
             {
-                _connection.Open();
                 SqlDataReader reader = cmdTwo.ExecuteReader();
                 while (reader.Read())
                 {
                     allTeams.Add(new Team(reader[1] + "", reader[2] + "", (int)reader[0]));
                 }
                 reader.Close();
-                _connection.Close();
             }
             catch (Exception ex)
             {
                 Console.WriteLine("JJ=========================JJ");
                 Console.WriteLine(ex);
             }
-
-
+            _connection.Close();
             return allTeams;
         }
 
@@ -101,23 +98,22 @@ namespace Core.Server
             cmdNew.CommandType = CommandType.Text;
 
             Classroom toReturn = null;
-
+            _connection.Open();
             try
             {
-                _connection.Open();
                 SqlDataReader reader = cmdNew.ExecuteReader();
                 while (reader.Read())
                 {
                     toReturn = new Classroom(reader[0] + "", reader[1] + "", reader[2] + "", id);
                 }
                 reader.Close();
-                _connection.Close();
             }
             catch (Exception ex)
             {
                 Console.WriteLine("=========================");
                 Console.WriteLine(ex);
             }
+            _connection.Close();
 
             return toReturn;
         }
@@ -153,23 +149,22 @@ namespace Core.Server
 
             Teacher toReturn = null;
 
+            _connection.Open();
             try
             {
-                _connection.Open();
                 SqlDataReader reader = cmdNew.ExecuteReader();
                 while (reader.Read())
                 {
                     toReturn = new Teacher(reader[0] + "", reader[1] + "", reader[2] + "", reader[3] + "");
                 }
                 reader.Close();
-                _connection.Close();
             }
             catch (Exception ex)
             {
                 Console.WriteLine("DD=========================DD");
                 Console.WriteLine(ex);
             }
-
+            _connection.Close();
             if (toReturn == null) { return null; }
             toReturn.setTeacherId();
 
@@ -208,22 +203,22 @@ namespace Core.Server
 
             String problemsStringForm = "";
 
+            _connection.Open();
             try
             {
-                _connection.Open();
                 SqlDataReader reader = cmdString.ExecuteReader();
                 while (reader.Read())
                 {
                     problemsStringForm = reader[0] + "";
                 }
                 reader.Close();
-                _connection.Close();
             }
             catch (Exception ex)
             {
                 Console.WriteLine("FF=========================FF");
                 Console.WriteLine(ex);
             }
+            _connection.Close();
 
             string[] stringArray = problemsStringForm.Split(',');
 
@@ -235,22 +230,22 @@ namespace Core.Server
             SqlCommand cmdNew = new SqlCommand("SELECT ProblemSets.[Name], ProblemSets.Points, ProblemSets.UsesFormula, ProblemSets.Formula, ProblemSets.[Values], ProblemSets.RandomRange, ProblemSets.Description FROM ProblemSets WHERE ProblemSets.Id = " + id, _connection);
             cmdNew.CommandType = CommandType.Text;
             ProblemSet setToReturn = null;
+            _connection.Open();
             try
             {
-                _connection.Open();
                 SqlDataReader reader = cmdNew.ExecuteReader();
                 while (reader.Read())
                 {
                     setToReturn = new ProblemSet(reader[0] + "", (int)reader[1], reader[6] + "", reader[3] + "", (int)reader[2], reader[4] + "", reader[5] + "");
                 }
                 reader.Close();
-                _connection.Close();
             }
             catch (Exception ex)
             {
                 Console.WriteLine("GG=========================GG");
                 Console.WriteLine(ex);
             }
+            _connection.Close();
 
             return setToReturn;
         }
@@ -285,22 +280,22 @@ namespace Core.Server
             SqlCommand scndCmd = new SqlCommand("SELECT Teams.Id, Teams.[Name], Teams.Students FROM Teams WHERE  Teams.Id = " + teamid, _connection);
             scndCmd.CommandType = CommandType.Text;
 
+            _connection.Open();
             try
             {
-                _connection.Open();
                 SqlDataReader reader = scndCmd.ExecuteReader();
                 while (reader.Read())
                 {
                     userteam = new Team(reader[1] + "", reader[2] + "", (int)reader[0]);
                 }
                 reader.Close();
-                _connection.Close();
             }
             catch (Exception ex)
             {
                 Console.WriteLine("HH=========================HH");
                 Console.WriteLine(ex);
             }
+            _connection.Close();
             return userteam;
         }
         
@@ -318,23 +313,22 @@ namespace Core.Server
 
             SqlCommand cmdAllUsers = new SqlCommand("SELECT Students.Name, Students.Password, Students.Points, Students.Classrooms, Students.Ranks, Students.TeamId FROM Students", _connection);
             cmdAllUsers.CommandType = CommandType.Text;
+            _connection.Open();
             try
             {
-                _connection.Open();
                 SqlDataReader reader = cmdAllUsers.ExecuteReader();
                 while (reader.Read())
                 {
                     userList.Add(new Student(reader[0].ToString(), reader[1].ToString(), (int)reader[2], reader[3].ToString(), reader[4].ToString(), (int)reader[5]));
                 }
                 reader.Close();
-                _connection.Close();
             }
             catch (Exception ex)
             {
                 Console.WriteLine("JJ=========================JJ");
                 Console.WriteLine(ex);
             }
-
+            _connection.Close();
             return userList;
         }
         
@@ -368,9 +362,9 @@ namespace Core.Server
             SqlCommand cmdNew = new SqlCommand("SELECT Students.Password, Students.Points, Students.Classrooms, Students.Ranks, Students.TeamId FROM Students where Students.[Name] = '" + name + "'", _connection);
             cmdNew.CommandType = CommandType.Text;
             Student userToReturn = null;
+            _connection.Open();
             try
             {
-                _connection.Open();
                 SqlDataReader reader = cmdNew.ExecuteReader();
                 while (reader.Read())
                 {
@@ -415,10 +409,9 @@ namespace Core.Server
             Console.WriteLine(">>>>> " + command);
             SqlCommand cmdNew = new SqlCommand(command, _connection);
             cmdNew.CommandType = CommandType.Text;
-
+            _connection.Open();
             try
             {
-                _connection.Open();
                 SqlDataReader reader = cmdNew.ExecuteReader();
                 object[] obj = new object[reader.FieldCount];
                 while (reader.Read())
