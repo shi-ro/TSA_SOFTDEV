@@ -19,26 +19,26 @@ namespace MainMenu
             Name = name;
             Password = password;
             string[] cls = classrooms.Split(',');
-            for(int i = 0; i < cls.Length; i++)
+            for (int i = 0; i < cls.Length; i++)
             {
-                Classrooms.Add(Core.Server.Integration.ExecuteGetClassroomById(cls[i])));
-            }
-            string[] sve = s.Split(',');
-            for (int i = 0; i < sve.Length; i++)
+                Classrooms.Add(Core.Server.Integration.ExecuteGetClassroomById(cls[i]));
+        }
+        string[] sve = s.Split(',');
+            for (int i = 0; i<sve.Length; i++)
             {
                 SavedProblemSets.Add(Core.Server.Integration.ExecuteGetProblemSetById(sve[i]));
             }
-        }
+}
 
-        public void setTeacherId()
-        {
-            Id = Core.Server.Integration.ExecuteGetTeacherId(this);
-        }
+public void setTeacherId()
+{
+    Id = Core.Server.Integration.ExecuteGetTeacherId(this);
+}
 
-        public void saveProblemSet(String name)
-        {
+public void saveProblemSet(String name)
+{
 
-        }
+}
     }
 }
 

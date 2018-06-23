@@ -17,6 +17,10 @@ namespace TSA_SOFTDEV
     public partial class StudentForm : Form
     {
         Chat chat;
+        Student s;
+        Teacher t;
+        Team team;
+        List<Student> teammates;
         List<Student> sortedUsers = new List<Student>();
         List<ProblemSet> problemSets = new List<ProblemSet>();
         ProblemSet selectedSet = null;
@@ -24,8 +28,16 @@ namespace TSA_SOFTDEV
         public StudentForm(Student student)
         {
             InitializeComponent();
+            s = student;
+            string name = s.Name;
+
+            team = Core.Server.Integration.ExecuteGetStudentTeam(name);
+            string teammateIDs = team.Students;
+            teammates = getTeamMembers(teammateIDs);
+
+            t = Core.Server.Integration.ExecuteGetTeacherByStudent(s);
             this.Size = new Size(692, 505);
-            teacherFormTab.Size = new Size(this.Width - 30, this.Height-10); 
+            teacherFormTab.Size = new Size(this.Width - 30, this.Height - 10);
             teacherFormTab.ItemSize = new Size((int)(teacherFormTab.Width / 5) - 1, 41);
             teacherFormTab.SizeMode = TabSizeMode.Fixed;
             this.Controls.Add(teacherFormTab);
@@ -34,32 +46,22 @@ namespace TSA_SOFTDEV
 
             this.chat = new Chat();
             // below code commented out because function has gone missing in the sea of git
-            //List<User> users = Core.Server.Integration.ExecuteGetUsers();
 
-            //studentLeaderboardText.Text = 
             chatTextBox.Text = "LOADING...";
-          
-            /*BackgroundWorker bw = new BackgroundWorker();
-            bw.WorkerReportsProgress = true;
-            //bw.DoWork +=
-            bw.ProgressChanged += updateChatBox();
-            bw.RunWorkerAsync();*/
             var networkThread = new Thread(updateChatBox);
             networkThread.Start();
 
-            //Thread.Sleep(10000); //DEAL WITH THIS
-            //updateChatBox();
+            studentLeaderboard();
 
+            //names.Add(Core.Server.Integration.ExecuteGetUsers());
 
-
-                
-            //***THALIAS CODE HERE and yes i actually did code it -_-
-
-
+            //User bob = Core.Server.Integration.ExecuteGetUser("Bob test");
+            //Console.WriteLine("bob's team is " + Core.Server.Integration.ExecuteGetUserTeam(bob.Name));
+        }
+        //private void teamLeaderboard();
+        private void studentLeaderboard()
+        {
             List<Student> users = Core.Server.Integration.ExecuteGetStudents();
-            //users.Sort();
-            //Using lambda to sort
-            //User Leaderboard
             sortedUsers = users.OrderByDescending(x => x.Points).ToList();
             int count = 1;
             for (int i = 0; i < sortedUsers.Count(); i++)
@@ -86,10 +88,8 @@ namespace TSA_SOFTDEV
                 }
                 else
                 {
-                    if (sortedUsers[i].Points == sortedUsers[sortedUsers.Count()-1].Points)
-                    {
+                    if (sortedUsers[i].Points == sortedUsers[sortedUsers.Count() - 1].Points)
                         count += 0;
-                    }
                     else
                     {
                         count++;
@@ -99,18 +99,18 @@ namespace TSA_SOFTDEV
 
             //Core.Server.Integration.ExecuteGetUserTeam();
             //team leaderboard
-            for (int i =0; i < users.Count(); i++)
+        }
+        private List<Student> getTeamMembers(string team)
+        {
+            String[] IDstring = team.Split(',');
+            List<Student> students = new List<Student>();
+            for (int i = 0; i < IDstring.Length; i++)
             {
+                students.Add(Core.Server.Integration.ExecuteGetStudentById(Int32.Parse(IDstring[i])));
 
             }
-
-
-            //names.Add(Core.Server.Integration.ExecuteGetUsers());
-
-            //User bob = Core.Server.Integration.ExecuteGetUser("Bob test");
-            //Console.WriteLine("bob's team is " + Core.Server.Integration.ExecuteGetUserTeam(bob.Name));
+            return students;
         }
-
         private void updateChatBox()
         {
             while (true)
@@ -129,27 +129,27 @@ namespace TSA_SOFTDEV
                     if (message.Contains("End of /NAMES list")) //ONCE Loaded get rid of loaded sign
                     {
                         Console.WriteLine("LOADING SHOULD STOP");
-                        messageText.Invoke((MethodInvoker)delegate 
+                        messageText.Invoke((MethodInvoker)delegate
                         {
                             // Running on the UI thread
                             messageText.ReadOnly = false;
                         });
 
-                        chatTextBox.Invoke((MethodInvoker)delegate 
+                        chatTextBox.Invoke((MethodInvoker)delegate
                         {
                             // Running on the UI thread
                             chatTextBox.Clear();
                         });
                     }
-                    if (message.Contains("PRIVMSG #")) 
+                    if (message.Contains("PRIVMSG #"))
                     {
                         filteredMessage = message.Split('#')[1];
                         filteredMessage = filteredMessage.Split(':')[1];
                         chatTextBox.Invoke((MethodInvoker)delegate {
-                        // Running on the UI thread
-                        chatTextBox.Text += ("\n [Other User]: " + filteredMessage);
+                            // Running on the UI thread
+                            chatTextBox.Text += ("\n [Other User]: " + filteredMessage);
                         });
-                        
+
                     }
                     if (message.Contains("MYMESSAGE #"))
                     {
@@ -173,7 +173,7 @@ namespace TSA_SOFTDEV
             chatTextBox.TextChanged += chatTextBox_TextChanged;
             LoadProblemSets();
             listBox1.Items.Clear();
-            foreach(ProblemSet ps in problemSets)
+            foreach (ProblemSet ps in problemSets)
             {
                 listBox1.Items.Add(ps.Name);
             }
@@ -188,7 +188,7 @@ namespace TSA_SOFTDEV
 
         private void LoadTempProblemSets()
         {
-            problemSets.Add(new ProblemSet("Multi",5, "Basic multiplication", "indefinite integral of sqrt(_)",1,"","0,10"));
+            problemSets.Add(new ProblemSet("Multi", 5, "Basic multiplication", "indefinite integral of sqrt(_)", 1, "", "0,10"));
         }
 
         private void label10_Click(object sender, EventArgs e)
@@ -235,11 +235,11 @@ namespace TSA_SOFTDEV
         {
 
         }
-        
+
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             int idx = listBox1.SelectedIndex;
-            if(idx < problemSets.Count && idx > -1)
+            if (idx < problemSets.Count && idx > -1)
             {
                 selectedSet = problemSets[idx];
                 label8.Text = selectedSet.Name;
@@ -248,10 +248,10 @@ namespace TSA_SOFTDEV
                 button1.Enabled = true;
             }
         }
-        
+
         private void button1_Click(object sender, EventArgs e)
         {
-            if(selectedSet!=null)
+            if (selectedSet != null)
             {
                 Solver solver = new Solver(selectedSet);
                 solver.FormClosed += DoSolverClosed;
@@ -299,6 +299,21 @@ namespace TSA_SOFTDEV
         }
 
         private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel6_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void richTextBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void memberParticipationChart_Click(object sender, EventArgs e)
         {
 
         }
