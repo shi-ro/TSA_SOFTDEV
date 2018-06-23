@@ -18,7 +18,7 @@ namespace Core.Server
 
         public static Teacher ExecuteGetTeacher(String name)
         {
-            SqlCommand cmdNew = new SqlCommand("SELECT Teachers.[Name], Teachers.Password, Teachers.Classrooms, Teachers.ProblemSets WHERE Teachers.[Name] = '" + name + "'", _connection);
+            SqlCommand cmdNew = new SqlCommand("SELECT Teachers.[Name], Teachers.Password, Teachers.Classrooms, Teachers.ProblemSets FROM Teachers WHERE Teachers.[Name] = '" + name + "'", _connection);
             cmdNew.CommandType = CommandType.Text;
 
             Teacher toReturn = null;
@@ -39,7 +39,7 @@ namespace Core.Server
                 Console.WriteLine("=========================");
                 Console.WriteLine(ex);
             }
-
+            toReturn.setTeacherId();
             return toReturn;
         }
 
@@ -58,7 +58,7 @@ namespace Core.Server
 
         public static void ExecuteAddTeacher(Teacher sturt)
         {
-            SqlCommand cmdNew = new SqlCommand("INSERT INTO[dbo].[Teachers] VALUES('" + sturt.Name + "', '" + sturt.Password + "', '" + sturt.Classrooms + "', '" + sturt.SavedProblemSets + "')", _connection);
+            SqlCommand cmdNew = new SqlCommand("INSERT INTO [dbo].[Teachers] VALUES('" + sturt.Name + "', '" + sturt.Password + "', '" + sturt.Classrooms + "', '" + sturt.SavedProblemSets + "')", _connection);
             cmdNew.CommandType = CommandType.Text;
 
             _connection.Open();
@@ -79,9 +79,7 @@ namespace Core.Server
         {
             SqlCommand cmdNew = new SqlCommand("SELECT ProblemSets.[Name], ProblemSets.Points, ProblemSets.UsesFormula, ProblemSets.Formula, ProblemSets.[Values], ProblemSets.RandomRange, ProblemSets.Description FROM ProblemSets WHERE ProblemSets.Id = " + id, _connection);
             cmdNew.CommandType = CommandType.Text;
-
             ProblemSet setToReturn = null;
-
             try
             {
                 _connection.Open();
@@ -184,9 +182,6 @@ namespace Core.Server
 
             return userList;
         }
-        
-        
-        
         
         public static void ExecuteAddStudent(Student bob) //add a user object to the sql server
         {

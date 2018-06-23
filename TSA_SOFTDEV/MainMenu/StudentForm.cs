@@ -21,7 +21,7 @@ namespace TSA_SOFTDEV
         List<ProblemSet> problemSets = new List<ProblemSet>();
         ProblemSet selectedSet = null;
         bool solverOpen = false;
-        public StudentForm()
+        public StudentForm(Student student)
         {
             InitializeComponent();
             this.Size = new Size(692, 505);
