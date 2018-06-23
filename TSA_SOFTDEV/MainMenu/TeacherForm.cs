@@ -19,6 +19,7 @@ namespace Teacher_form
         private List<Team> _allTeams = new List<Team>();
         private Problem _currentlySelectedProblemSet;
         private Classroom _currentlySelectedClassrom;
+        private Team _currentlySelectedTeam;
         public bool setCreatorOpened = false;
         public Teacher teacher;
         public TeacherForm(Teacher teacher)
@@ -64,9 +65,9 @@ namespace Teacher_form
         private void LoadAllTeams()
         {
             //call server method
-
+            _allTeams = Core.Server.Integration.ExecuteGetAllTeams();
             //update listbox
-            if(_allTeams.Count>0)
+            if (_allTeams.Count>0)
             {
                 foreach(Team t in _allTeams)
                 {
@@ -111,6 +112,17 @@ namespace Teacher_form
                 };
                 setCreatorOpened = true;
                 problemSetCreator.Show();
+            }
+        }
+
+        private void listBox5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(listBox5.SelectedIndex>0)
+            {
+                _currentlySelectedTeam = _allTeams[listBox5.SelectedIndex];
+                //load students in team
+
+                //load team stats
             }
         }
     }
