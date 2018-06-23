@@ -9,15 +9,13 @@ namespace MainMenu
     public class Team
     {
         public String Name { get; set; }
-        public int Points { get; set; }
         public int Id { get; set; }
-        public String Users { get; set; }
+        public String Students { get; set; }
 
-        public Team(String n, int po, String u, int i)
+        public Team(String name, String stud, int i)
         {
-            Name = n;
-            Users = u;
-            Points = po;
+            Name = name;
+            Students = stud;
             Id = i;
         }
     }
