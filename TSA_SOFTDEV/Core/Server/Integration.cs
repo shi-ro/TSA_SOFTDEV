@@ -16,6 +16,28 @@ namespace Core.Server
             return External.Wolfram.Connected();
         }
 
+        public static List<Student> ExecuteGetStudentsInTeam(int teamid)
+        {
+            String students = "";
+            List<Student> listToReturn = null;
+
+            SqlCommand cmdOne = new SqlCommand("SELECT Teams.Students FROM Teams WHERE Teams.Id = " + teamid, _connection);
+            cmdOne.CommandType = CommandType.Text;
+
+            _connection.Open();
+            students = cmdOne.ExecuteNonQuery() + "";
+            _connection.Close();
+
+            String[] stringList = students.Split(',');
+
+            for(int i = 0; i < stringList.Length; i++)
+            {
+                listToReturn.Add(Core.Server.Integration.ExecuteGetStudent(stringList[i]));
+            }
+
+            return listToReturn;
+        }
+
         public static List<ProblemSet> ExecuteGetAllProblemSets()
         {
             SqlCommand cmdOne = new SqlCommand("SELECT count(*) FROM ProblemSets", _connection);
