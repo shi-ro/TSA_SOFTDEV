@@ -22,6 +22,33 @@ namespace Core.Server
             Console.WriteLine($"MESSAGE EVENT ERRORS : {e.Message}");
         }
 
+        public static Teacher ExecuteGetTeacher(String name)
+        {
+            SqlCommand cmdNew = new SqlCommand("SELECT Teachers.[Name], Teachers.Password, Teachers.Classrooms, Teachers.ProblemSets WHERE Teachers.[Name] = '" + name + "'", _connection);
+            cmdNew.CommandType = CommandType.Text;
+
+            Teacher toReturn = null;
+
+            try
+            {
+                _connection.Open();
+                SqlDataReader reader = cmdNew.ExecuteReader();
+                while (reader.Read())
+                {
+                    toReturn = new Teacher(reader[0] + "", reader[1] + "", reader[2] + "", reader[3] + "");
+                }
+                reader.Close();
+                _connection.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("=========================");
+                Console.WriteLine(ex);
+            }
+
+            return toReturn;
+        }
+
         public static int ExecuteGetTeacherId(Teacher smith)
         {
             SqlCommand cmdNew = new SqlCommand("SELECT Teachers.Id FROM Teachers WHERE Teachers.[Name] = '" + smith.Name + "'", _connection);
