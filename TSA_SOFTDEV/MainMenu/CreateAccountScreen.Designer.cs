@@ -122,6 +122,7 @@
             this.button2.TabIndex = 16;
             this.button2.Text = "Create Account";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -134,6 +135,7 @@
             this.button1.TabIndex = 17;
             this.button1.Text = "Cancel";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // CreateAccountScreen
             // 
@@ -150,7 +152,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox2);
-            this.Name = "CreateAccountScreen";
+            this.UserName = "CreateAccountScreen";
             this.Text = "Create Account";
             this.ResumeLayout(false);
             this.PerformLayout();

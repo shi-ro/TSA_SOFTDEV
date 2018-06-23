@@ -37,31 +37,39 @@ namespace MainMenu
 
         private void TryLogin()
         {
-            Student user = Core.Server.Integration.ExecuteGetStudent(textBox1.Text);
-            if(user!=null)
+            if(Core.Server.Integration.Connected())
             {
-                // student exists
-                // check if password is correct
-                if(textBox2.Text == user.Password)
+                Student user = Core.Server.Integration.ExecuteGetStudent(textBox1.Text);
+                if (user!=null)
                 {
-                    if(openForm!=null)
+                    // student exists
+                    // check if password is correct
+                    if (textBox2.Text == user.Password)
                     {
-                        openForm.Close();
+                        if (openForm != null)
+                        {
+                            openForm.Close();
+                        }
+                        // password is correct
+                        StudentForm form = new StudentForm();
+                        // open student form
+                        form.Show();
+                        // minimize login
+                        this.WindowState = FormWindowState.Minimized;
                     }
-                    // password is correct
-                    StudentForm form = new StudentForm();
-                    // open student form
-                    form.Show();
-                    // minimize login
-                    this.WindowState = FormWindowState.Minimized;
+                    else
+                    {
+                        errorText.Text = "Incorrect Uassword";
+                    }
                 }
                 else
                 {
-                    errorText.Text = "Incorrect password";
+                    errorText.Text = "Invalid Username";
                 }
-            } else
+            }
+            else
             {
-                errorText.Text = "Please specify a valid username";
+                errorText.Text = "Check Connection";
             }
         }
 
@@ -77,7 +85,22 @@ namespace MainMenu
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            Enabled = false;
+            CreateAccountScreen accountScreen = new CreateAccountScreen(textBox1.Text);
+            accountScreen.FormClosed += (object se, FormClosedEventArgs ei) => 
+            {
+                Enabled = true;
+            };
+            accountScreen.FormClosing += (object sen, FormClosingEventArgs eis) =>
+            {
+                if(accountScreen.UserName!=null&&accountScreen.UserPassword!=null)
+                {
+                    errorText.Text = "";
+                    textBox1.Text = accountScreen.UserName;
+                    textBox2.Text = accountScreen.UserPassword;
+                }
+            };
+            accountScreen.Show();
         }
     }
 }

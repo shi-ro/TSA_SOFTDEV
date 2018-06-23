@@ -10,6 +10,17 @@ namespace Core.Server
     public static class Integration
     {
         private static SqlConnection _connection = new SqlConnection("Server=tcp:softdevserver.database.windows.net,1433;Initial Catalog=SoftDevDB;Persist Security Info=False;User ID=serveradmin;Password=SoftDev!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+        
+        public static bool Connected()
+        {
+            return Core.External.Wolfram.Connected();
+            //return ($"{_connection.State}")!="Closed";
+        }
+
+        private static void ConnectionMessageEvent(object sender, SqlInfoMessageEventArgs e)
+        {
+            Console.WriteLine($"MESSAGE EVENT ERRORS : {e.Message}");
+        }
 
         public static int ExecuteGetTeacherId(Teacher smith)
         {
@@ -43,7 +54,7 @@ namespace Core.Server
 
         public static ProblemSet ExecuteGetProblemSetById(string id) // 
         {
-            SqlCommand cmdNew = new SqlCommand("SELECT ProblemSets.[Name], ProblemSets.Points, ProblemSets.UsesFormula, ProblemSets.Formula, ProblemSets.Values, ProblemSets.RandomRange, ProblemSets.Description FROM ProblemSets WHERE ProblemSets.Id = " + id, _connection);
+            SqlCommand cmdNew = new SqlCommand("SELECT ProblemSets.[Name], ProblemSets.Points, ProblemSets.UsesFormula, ProblemSets.Formula, ProblemSets.[Values], ProblemSets.RandomRange, ProblemSets.Description FROM ProblemSets WHERE ProblemSets.Id = " + id, _connection);
             cmdNew.CommandType = CommandType.Text;
 
             ProblemSet setToReturn = null;
