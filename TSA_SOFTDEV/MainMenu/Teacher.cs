@@ -20,7 +20,13 @@ namespace MainMenu
         {
             Name = name;
             Password = password;
-            string[] cls = classrooms.Split(',');
+            _classrooms = classrooms;
+            _s = s;
+        }
+
+        public void Initialize()
+        {
+            string[] cls = _classrooms.Split(',');
             for (int i = 0; i < cls.Length; i++)
             {
                 Classrooms.Add(Core.Server.Integration.ExecuteGetClassroom(Int32.Parse(cls[i])));

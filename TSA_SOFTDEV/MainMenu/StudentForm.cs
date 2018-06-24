@@ -69,32 +69,9 @@ namespace TSA_SOFTDEV
             for (int i = 0; i < allTeams.Count; i++)
             {
                 ListViewItem lv1 = new ListViewItem(count.ToString());
-                //ListViewItem lv2 = new ListViewItem(count.ToString());
-                lv1.SubItems.Add(sortedUsers[i].Name);
-                //lv2.SubItems.Add(sortedUsers[i].Name);
-                lv1.SubItems.Add((sortedUsers[i].Points).ToString());
-                //lv2.SubItems.Add((sortedUsers[i].Points).ToString());
-                listView1.Items.Add(lv1);
-                if (i < sortedUsers.Count() - 1)
-                {
-                    if (sortedTeams[i].score == sortedTeams[i + 1].score)
-                    {
-                        count += 0;
-                    }
-                    else
-                    {
-                        count++;
-                    }
-                }
-                else
-                {
-                    if (sortedTeams[i].score == sortedTeams[sortedTeams.Count() - 1].score)
-                        count += 0;
-                    else
-                    {
-                        count++;
-                    }
-                }
+                lv1.SubItems.Add(sortedTeams[i].Name);
+                lv1.SubItems.Add((sortedTeams[i].score).ToString());
+                listView2.Items.Add(lv1);
             }
             
         }
@@ -343,6 +320,21 @@ namespace TSA_SOFTDEV
         }
 
         private void memberParticipationChart_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel6_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void richTextBox2_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chart1_Click(object sender, EventArgs e)
         {
 
         }
