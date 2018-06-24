@@ -54,11 +54,50 @@ namespace TSA_SOFTDEV
             networkThread.Start();
 
             DoStudentLeaderboard();
+            ShowTeamMembers(student);
 
             //names.Add(Core.Server.Integration.ExecuteGetUsers());
 
             //User bob = Core.Server.Integration.ExecuteGetUser("Bob test");
             //Console.WriteLine("bob's team is " + Core.Server.Integration.ExecuteGetUserTeam(bob.Name));
+        }
+        private void ShowTeamMembers(Student student)
+        {
+            Team users = Core.Server.Integration.ExecuteGetStudentTeam(student.Name);
+            List<Student> teamList = users.studentsList;
+            int count = 1;
+            for (int i = 0; i < teamList.Count(); i++)
+            {
+                ListViewItem lv1 = new ListViewItem(count.ToString());
+                lv1.SubItems.Add(teamList[i].Name);
+                lv1.SubItems.Add((teamList[i].Points).ToString());
+                listView5.Items.Add(lv1);
+                //listView3.Items.Add(lv2);
+
+                if (i < sortedUsers.Count() - 1)
+                {
+                    if (teamList[i].Points == teamList[i + 1].Points)
+                    {
+                        count += 0;
+                    }
+                    else
+                    {
+                        count++;
+                    }
+                }
+                else
+                {
+                    if (teamList[i].Points == teamList[sortedUsers.Count() - 1].Points)
+                        count += 0;
+                    else
+                    {
+                        count++;
+                    }
+                }
+            }
+
+
+
         }
         private void DoTeamLeaderboard()
         {
