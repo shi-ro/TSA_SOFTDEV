@@ -58,7 +58,7 @@ namespace MainMenu
 
         private List<Student> getTeamMembers(string team) //insert teamID
         {
-            String[] IDstring = team.Split(',');
+            String[] IDstring = Students.Split(',');
             List<Student> students = new List<Student>();
             for (int i = 0; i < IDstring.Length; i++)
             {

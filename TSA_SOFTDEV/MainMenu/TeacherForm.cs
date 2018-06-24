@@ -18,6 +18,7 @@ namespace Teacher_form
         private List<ProblemSet> _allProblemSets = new List<ProblemSet>();
         private List<ProblemSet> _savedProblemSets = new List<ProblemSet>();
         private List<Student> _studentsInTeam = new List<Student>();
+        private List<Student> sortedStudents = new List<Student>();
         private List<Team> _allTeams = new List<Team>();
         private ProblemSet _currentlySelectedProblemSet;
         private Classroom _currentlySelectedClassrom;
@@ -302,7 +303,34 @@ namespace Teacher_form
                 stats += $"Teacher : {cur.TeacherName}\n";
                 stats += $"ID : {cur.Id}\n";
                 stats += $"Students : \n{cur.Students.Replace(",","\n\t")}\n";
+
+                classLeaderboard(cur);
             }
+        }
+        private void classLeaderboard(Classroom classroom)
+        {
+                String[] IDstring = classroom.Students.Split(',');
+                List<Student> students = new List<Student>();
+                for (int i = 0; i < IDstring.Length; i++)
+                {
+                    students.Add(Core.Server.Integration.ExecuteGetStudentById(Int32.Parse(IDstring[i])));
+                }
+                sortedStudents = students.OrderByDescending(x => x.Points).ToList();
+                int count = 1;
+                for (int i = 0; i < students.Count; i++)
+                {
+                    ListViewItem lv1 = new ListViewItem(count.ToString());
+                    string student = "";
+                    Console.WriteLine("COUNT: " + sortedStudents.Count);
+                    foreach (Student stu in sortedStudents)
+                    {
+                        student += stu.Name + ", ";
+                    }
+                    lv1.SubItems.Add(sortedStudents[i].Name + ": " + students);
+                    lv1.SubItems.Add((sortedStudents[i].Points).ToString());
+                    Console.WriteLine("SortedStudents TEACHER Students: " + students);
+                    Console.WriteLine("SortedStudents TEACHER: " + sortedStudents[i].Name);
+                }
         }
 
         private void button11_Click(object sender, EventArgs e)
