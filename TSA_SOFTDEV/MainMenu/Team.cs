@@ -15,12 +15,19 @@ namespace MainMenu
         public int score;
         public double weightParticipation;
 
+        public Team(String name, String stud)
+        {
+            Name = name;
+            Students = stud;
+            weightParticipation = .6;
+        }
+
         public Team(String name, String stud, int i)
         {
             Name = name;
             Students = stud;
-            Id = i;
             weightParticipation = .6;
+            Id = i;
         }
 
         public void Initialize()
@@ -29,9 +36,29 @@ namespace MainMenu
             score = calculateScore();
         }
 
+        public void setId()
+        {
+            Id = Core.Server.Integration.ExecuteGetTeamId(this);
+        }
+
+        public void addStudent(Student bob)
+        {
+            if (Students.Equals(""))
+            {
+                Students += bob.Name;
+            }
+            else
+            {
+                Students += ("," + bob.Name);
+            }
+
+            studentsList.Add(bob);
+            Core.Server.Integration.ExecuteAddStudentToTeam(this);
+        }
+
         private List<Student> getTeamMembers(string team) //insert teamID
         {
-            String[] IDstring = team.Split(',');
+            String[] IDstring = Students.Split(',');
             List<Student> students = new List<Student>();
             for (int i = 0; i < IDstring.Length; i++)
             {
@@ -50,7 +77,6 @@ namespace MainMenu
 
             }
             int avgPercent = 1 / teammates.Count;
-            double buffer = .05;
             double totalDisplacement = 0;
             for (int i = 0; i < teammates.Count; i++)
             {

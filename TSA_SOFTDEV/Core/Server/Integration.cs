@@ -16,6 +16,127 @@ namespace Core.Server
             return External.Wolfram.Connected();
         }
 
+        public static void ExecuteAddStudentToClassroom(Classroom cls)
+        {
+            SqlCommand cmdNew = new SqlCommand("UPDATE Classrooms SET Classrooms.Students = '" + cls.Students + "' WHERE Id = " + cls.Id + ";", _connection);
+            cmdNew.CommandType = CommandType.Text;
+
+            _connection.Open();
+            cmdNew.ExecuteNonQuery();
+            _connection.Close();
+        }
+
+        public static int ExecuteGetTeamId(Team t)
+        {
+            SqlCommand cmdNew = new SqlCommand("SELECT Teams.Id FROM Teams WHERE Teams.[Name] = '" + t.Name + "'", _connection);
+            cmdNew.CommandType = CommandType.Text;
+
+            _connection.Open();
+            int id = (int)cmdNew.ExecuteScalar();
+            _connection.Close();
+
+            return id;
+        }
+
+        public static void ExecuteAddAssignment(Classroom cls, ProblemSet assignment)
+        {
+            String problems = "";
+            for(int i = 0; i < cls.AssignedProblemSets.Count; i++)
+            {
+                problems += ExecuteGetProblemSetIdByName(cls.AssignedProblemSets[i].Name) + "";
+                if(i < cls.AssignedProblemSets.Count-1) { problems += ","; }
+            }
+
+            SqlCommand cmdNew = new SqlCommand("UPDATE Classrooms SET Classrooms.AssignedProblemSets = '" + "," + ExecuteGetProblemSetIdByName(assignment.Name) + "' WHERE Id = " + cls.Id + ";", _connection);
+            cmdNew.CommandType = CommandType.Text;
+
+            _connection.Open();
+            cmdNew.ExecuteNonQuery();
+            _connection.Close();
+        }
+
+        public static void ExecuteAddStudentToTeam(Team tm)
+        {
+            SqlCommand cmdNew = new SqlCommand("UPDATE Teams SET Teams.TeamStudents = '" + tm.Students + "' WHERE Teams.Id = " + tm.Id, _connection);
+            cmdNew.CommandType = CommandType.Text;
+
+            _connection.Open();
+            cmdNew.ExecuteNonQuery();
+            _connection.Close();
+        }
+
+        public static int ExecuteGetClassroomIdByName(String name)
+        {
+            SqlCommand cmdNew = new SqlCommand("SELECT Classrooms.Id FROM Classrooms WHERE Classrooms.[Name] = '" + name + "'", _connection);
+            cmdNew.CommandType = CommandType.Text;
+
+            int id = 0;
+
+            _connection.Open();
+            try
+            {
+                SqlDataReader reader = cmdNew.ExecuteReader();
+                while (reader.Read())
+                {
+                    id = (int)reader[0];
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("BB=========================BB");
+                Console.WriteLine(ex);
+            }
+            _connection.Close();
+
+            return id;
+        }
+
+        public static void ExecuteAddTeam(Team newTeam)
+        {
+
+            SqlCommand cmdNew = new SqlCommand("INSERT INTO Teams (Teams.[Name], Teams.TeamStudents) VALUES ('" + newTeam.Name + "', '" + newTeam.Students + "')", _connection);
+            cmdNew.CommandType = CommandType.Text;
+
+            _connection.Open();
+            cmdNew.ExecuteNonQuery();
+            _connection.Close();
+
+            if(newTeam != null) { newTeam.setId(); }
+        }
+
+        public static void ExecuteAddClassroomToTeacher(Classroom cls, Teacher teach)
+        {
+            SqlCommand cmdString = new SqlCommand("SELECT Teachers.Classrooms FROM Teachers WHERE Teachers.Id = " + teach.Id, _connection);
+            cmdString.CommandType = CommandType.Text;
+
+            String classesStringForm = "";
+
+            _connection.Open();
+            try
+            {
+                SqlDataReader reader = cmdString.ExecuteReader();
+                while (reader.Read())
+                {
+                    classesStringForm = reader[0] + "";
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("AA=========================AA");
+                Console.WriteLine(ex);
+            }
+            _connection.Close();
+
+            SqlCommand cmdNew = new SqlCommand("UPDATE Teachers SET Classrooms = '" + classesStringForm + "," + cls.Id + "' WHERE Teachers.Id = " + teach.Id, _connection);
+            cmdNew.CommandType = CommandType.Text;
+
+            _connection.Open();
+            cmdNew.ExecuteNonQuery();
+            _connection.Close();
+        }
+
         public static void ExecuteSaveProblemSet(Teacher teach, ProblemSet ps)
         {
             SqlCommand cmdString = new SqlCommand("SELECT Teachers.SavedProblemSets FROM Teachers WHERE Teachers.Id = " + teach.Id, _connection);
@@ -52,10 +173,11 @@ namespace Core.Server
         {
             String students = "";
             List<Student> listToReturn = new List<Student>();
-            SqlCommand cmdString = new SqlCommand("SELECT [TeamStudents] FROM Teams WHERE Teams.[Id] = "+teamid, _connection);
+            string ins = "SELECT [TeamStudents] FROM Teams WHERE Teams.[Id] = " + teamid;
+            SqlCommand cmdString = new SqlCommand(ins, _connection);
             cmdString.CommandType = CommandType.Text;
 
-            _connection.Open();
+            _connection.Open(); 
             try
             {
                 SqlDataReader reader = cmdString.ExecuteReader();
@@ -71,16 +193,15 @@ namespace Core.Server
                 Console.WriteLine(ex);
             }
             _connection.Close();
-        
 
-        String[] stringList = students.Split(',');
+            String[] stringList = students.Split(',');
 
-        for (int i = 0; i < stringList.Length; i++)
-        {
-            listToReturn.Add(ExecuteGetStudent(stringList[i]));
-        }
+            for (int i = 0; i < stringList.Length; i++)
+            {
+                listToReturn.Add(ExecuteGetStudent(stringList[i]));
+            }
 
-        return listToReturn;
+            return listToReturn;
 
         }
 
@@ -149,10 +270,32 @@ namespace Core.Server
             _connection.Close();
             return allTeams;
         }
-
-        public static void ExecuteAddClassroom(String name)
+        
+        public static void ExecuteAddClassroom(String name, Teacher teach, List<Student> students, List<ProblemSet> problemSets)
         {
+            String studentList = "";
+            for(int i = 0; i < students.Count; i++)
+            {
+                students[i].setStudentId();
+                studentList += students[i].Id;
+                if(i< students.Count-1)
+                {
+                    studentList += ",";
+                }
+            }
 
+            String problemList = "";
+            for(int a = 0; a < problemSets.Count; a++)
+            {
+                problemList += ExecuteGetProblemSetIdByName(problemSets[a].Name) + "";
+            }
+
+            SqlCommand cmdNew = new SqlCommand("INSERT INTO Classrooms (Classrooms.[Name], Classrooms.Teacher, Classrooms.Students, ClassRooms.AssignedProblemSets) VALUES ('" + name + "', '" + teach.Id + "', '" + studentList + "', '" + problemList + "')", _connection);
+            cmdNew.CommandType = CommandType.Text;
+
+            _connection.Open();
+            cmdNew.ExecuteNonQuery();
+            _connection.Close();
         }
 
         public static Classroom ExecuteGetClassroom(int id)
@@ -216,7 +359,7 @@ namespace Core.Server
             cmdNew.CommandType = CommandType.Text;
 
             _connection.Open();
-            String name = cmdNew.ExecuteNonQuery() + "";
+                   String name = cmdNew.ExecuteNonQuery() + "";
             _connection.Close();
 
             return Core.Server.Integration.ExecuteGetTeacher(name);
@@ -262,7 +405,6 @@ namespace Core.Server
 
             return (int)id;
         }
-
 
         public static void ExecuteAddTeacher(Teacher sturt)
         {

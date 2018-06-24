@@ -27,15 +27,31 @@ namespace MainMenu
         public void Initialize()
         {
             String[] problemSetArray = _problemList.Split(',');
+            if(_problemList.Length<=0)
+            {
+                return;
+            }
             for (int i = 0; i < problemSetArray.Length; i++)
             {
                 AssignedProblemSets.Add(Core.Server.Integration.ExecuteGetProblemSetById(problemSetArray[i]));
             }
         }
 
+        public void addStudent(Student stu)
+        {
+            Students += "," + stu.Id;
+            Core.Server.Integration.ExecuteAddStudentToClassroom(this);
+        }
+
+        public void assignProblemSet(ProblemSet ps)
+        {
+            AssignedProblemSets.Add(ps);
+            Core.Server.Integration.ExecuteAddAssignment(this, ps);
+        }
+
         public void setClassroomId()
         {
-            Id = 0;
+            Id = Core.Server.Integration.ExecuteGetClassroomIdByName(Name);
         }
     }
 }

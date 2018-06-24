@@ -13,10 +13,12 @@ namespace Teacher_form
 {
     public partial class TeacherForm : Form
     {
+        private Random random = new Random();
         private List<Classroom> _classrooms = new List<Classroom>();
         private List<ProblemSet> _allProblemSets = new List<ProblemSet>();
         private List<ProblemSet> _savedProblemSets = new List<ProblemSet>();
         private List<Student> _studentsInTeam = new List<Student>();
+        private List<Student> sortedStudents = new List<Student>();
         private List<Team> _allTeams = new List<Team>();
         private ProblemSet _currentlySelectedProblemSet;
         private Classroom _currentlySelectedClassrom;
@@ -38,18 +40,22 @@ namespace Teacher_form
             _classrooms = teacher.Classrooms;
             LoadAllTeams();
             LoadAllProblemSets();
+            LoadTeacherClassrooms();
         }
 
         private void LoadTeacherClassrooms()
         {
             //call server method
-
+            _classrooms = teacher.Classrooms;
             //update listbox
             if (_classrooms.Count > 0)
             {
                 foreach (Classroom cs in _classrooms)
                 {
-                    listBox1.Items.Add(cs.Name);
+                    if(cs!=null)
+                    {
+                        listBox1.Items.Add(cs.Name);
+                    }
                 }
             }
         }
@@ -130,7 +136,10 @@ namespace Teacher_form
                 listBox4.Items.Clear();
                 foreach(Student s in _studentsInTeam)
                 {
-                    listBox4.Items.Add(s.Name);
+                    if(s!=null)
+                    {
+                        listBox4.Items.Add(s.Name);
+                    }
                 }
                 //load team stats
             }
@@ -182,7 +191,10 @@ namespace Teacher_form
                 {
                     if(addStudent.ReturnedStudent!=null)
                     {
-                        // add student
+                        // add student to team
+                        _currentlySelectedTeam.addStudent(addStudent.ReturnedStudent);
+                        // visually add student 
+                        listBox4.Items.Add(addStudent.ReturnedStudent.Name);
                     }
                     addStudentOpened = false;
                 };
@@ -195,7 +207,10 @@ namespace Teacher_form
         {
             if(listBox4.Items.Count >= 0)
             {
-                //remove student
+                //remove student from team
+
+                //remove student visually
+                listBox4.Items.RemoveAt(listBox4.SelectedIndex);
             }
         }
 
@@ -203,7 +218,7 @@ namespace Teacher_form
         {
             if(!classManagementOpened)
             {
-                ClassManagerScreen classManager = new ClassManagerScreen();
+                ClassManagerScreen classManager = new ClassManagerScreen(_currentlySelectedClassrom);
                 classManager.FormClosing += (object se, FormClosingEventArgs ei) => 
                 {
                     classManagementOpened = false;
@@ -221,15 +236,120 @@ namespace Teacher_form
                 createClass.FormClosing += (object se, FormClosingEventArgs ei) =>
                 {
                     //create class if return is not null
-                    if(createClass.CreatedClassroom!=null)
+                    if(createClass.Created!=null)
                     {
                         //create classroom
-                        Core.Server.Integration.ExecuteAddClassroom("CLASSROOM PARAMS GO HERE");
+                        Core.Server.Integration.ExecuteAddClassroom(createClass.Name,teacher,createClass.added,new List<ProblemSet>());
+                        // add classroom to teacher
+                        string str = "";
+                        for(int i = 0; i < createClass.added.Count; i++)
+                        {
+                            str += createClass.added[i].Name;
+                            if(i< createClass.added.Count-1)
+                            {
+                                str += ",";
+                            }
+                        }
+                        Classroom cs = new Classroom(createClass.Name,teacher.Name,str,-1,"");
+                        _classrooms.Add(cs);
+                        teacher.addClassroom(cs);
+                        // visually create classroom
+                        listBox1.Items.Add(createClass.Name);
                     }
                     classCreatiorOpened = false;
                 };
                 classCreatiorOpened = true;
                 createClass.Show();
+            }
+        }
+
+        public string RandomId(int length)
+        {
+            const string chars = "mathedoniMATHEDONI.";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            string name = RandomId(10);
+            Team team = new Team(name,"",-1);
+            //add team 
+            Core.Server.Integration.ExecuteAddTeam(team);
+            //add team visually
+            _allTeams.Add(team);
+            listBox5.Items.Add(name);
+        }
+
+        private void button22_Click(object sender, EventArgs e)
+        {
+            if(listBox1.SelectedIndex>=0)
+            {
+                //remove class in teacher
+
+                //remove class visually
+                listBox1.Items.RemoveAt(listBox1.SelectedIndex);
+            }
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex >= 0)
+            {
+                Classroom cur = (Classroom)_classrooms[listBox1.SelectedIndex];
+                _currentlySelectedClassrom = cur;
+                //write to stats screen
+                string stats = "";
+                stats += $"Name : {cur.Name}\n";
+                stats += $"Teacher : {cur.TeacherName}\n";
+                stats += $"ID : {cur.Id}\n";
+                stats += $"Students : \n{cur.Students.Replace(",","\n\t")}\n";
+                richTextBox10.Text = stats;
+
+                classLeaderboard(cur);
+            }
+        }
+        private void classLeaderboard(Classroom classroom)
+        {
+            String[] IDstring = classroom.Students.Split(',');
+            List<Student> students = new List<Student>();
+            for (int i = 0; i < IDstring.Length; i++)
+            {
+                try
+                {
+                    students.Add(Core.Server.Integration.ExecuteGetStudentById(Int32.Parse(IDstring[i])));
+                } catch 
+                {
+
+                }
+            }
+            sortedStudents = students.OrderByDescending(x => x.Points).ToList();
+            int count = 1;
+            for (int i = 0; i < students.Count; i++)
+            {
+                ListViewItem lv1 = new ListViewItem(count.ToString());
+                string student = "";
+                Console.WriteLine("COUNT: " + sortedStudents.Count);
+                foreach (Student stu in sortedStudents)
+                {
+                    student += stu.Name + ", ";
+                }
+                lv1.SubItems.Add(sortedStudents[i].Name + ": " + students);
+                lv1.SubItems.Add((sortedStudents[i].Points).ToString());
+                Console.WriteLine("SortedStudents TEACHER Students: " + students);
+                Console.WriteLine("SortedStudents TEACHER: " + sortedStudents[i].Name);
+            }
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            if(listBox5.SelectedIndex>=0)
+            {
+                //remove team
+
+                //remove team visually
+                _allTeams.Remove((Team)listBox5.Items[listBox5.SelectedIndex]);
+                listBox5.Items.RemoveAt(listBox5.SelectedIndex);
             }
         }
     }

@@ -36,7 +36,7 @@ namespace TSA_SOFTDEV
             //string teammateIDs = team.Students;
             
 
-            t = Core.Server.Integration.ExecuteGetTeacherByStudent(s);
+            //t = Core.Server.Integration.ExecuteGetTeacherByStudent(s);
             
             this.Size = new Size(692, 505);
             teacherFormTab.Size = new Size(this.Width - 30, this.Height - 10);
@@ -46,7 +46,7 @@ namespace TSA_SOFTDEV
 
             Console.WriteLine("SETUPCHAT");
 
-            this.chat = new Chat();
+            this.chat = new Chat(s.Name, "" + s.Id, "" + team.Id);
             // below code commented out because function has gone missing in the sea of git
 
             chatTextBox.Text = "LOADING...";
@@ -54,7 +54,11 @@ namespace TSA_SOFTDEV
             networkThread.Start();
 
             DoStudentLeaderboard();
+<<<<<<< HEAD
             ShowTeamMembers(student);
+=======
+            DoTeamLeaderboard();
+>>>>>>> b366d62e9d05df27ef948d1ee3eed05679988cfe
 
             //names.Add(Core.Server.Integration.ExecuteGetUsers());
 
@@ -108,9 +112,18 @@ namespace TSA_SOFTDEV
             for (int i = 0; i < allTeams.Count; i++)
             {
                 ListViewItem lv1 = new ListViewItem(count.ToString());
-                lv1.SubItems.Add(sortedTeams[i].Name);
+                string students = "";
+                Console.WriteLine("COUNT: " + sortedTeams[i].studentsList.Count);
+                foreach (Student stu in sortedTeams[i].studentsList)
+                {
+                    students += stu.Name + ", ";
+                    Console.WriteLine("SortedTeams: Student: " + stu.Name);
+                }
+                lv1.SubItems.Add(sortedTeams[i].Name + ": " + students);
                 lv1.SubItems.Add((sortedTeams[i].score).ToString());
                 listView2.Items.Add(lv1);
+                Console.WriteLine("SortedTeams Students: " + students);
+                Console.WriteLine("SortedTeams: " + sortedTeams[i].Name);
             }
             
         }
@@ -171,6 +184,7 @@ namespace TSA_SOFTDEV
                     chat.messages.Remove(message);
                     //FILTER
                     string filteredMessage = message;
+                    string otheruser = "";
                     if (message.Contains("End of /NAMES list")) //ONCE Loaded get rid of loaded sign
                     {
                         Console.WriteLine("LOADING SHOULD STOP");
@@ -189,10 +203,13 @@ namespace TSA_SOFTDEV
                     if (message.Contains("PRIVMSG #"))
                     {
                         filteredMessage = message.Split('#')[1];
+                        otheruser = message.Split('#')[0];
                         filteredMessage = filteredMessage.Split(':')[1];
+                        otheruser = otheruser.Split('!')[0];
+                        otheruser = otheruser.Substring(1);
                         chatTextBox.Invoke((MethodInvoker)delegate {
-                            // Running on the UI thread
-                            chatTextBox.Text += ("\n [Other User]: " + filteredMessage);
+                            // Running on the UI thread                           
+                            chatTextBox.Text += ("\n [" + otheruser + "]: " + filteredMessage);
                         });
 
                     }

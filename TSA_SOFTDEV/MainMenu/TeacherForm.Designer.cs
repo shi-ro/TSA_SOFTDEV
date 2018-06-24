@@ -61,7 +61,6 @@
             this.richTextBox3 = new System.Windows.Forms.RichTextBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
-            this.richTextBox4 = new System.Windows.Forms.RichTextBox();
             this.teamTab = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
             this.label10 = new System.Windows.Forms.Label();
@@ -79,6 +78,10 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.listBox5 = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.teacherFormTab.SuspendLayout();
             this.classTab.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -186,6 +189,7 @@
             this.button22.TabIndex = 6;
             this.button22.Text = "Delete Class";
             this.button22.UseVisualStyleBackColor = false;
+            this.button22.Click += new System.EventHandler(this.button22_Click);
             // 
             // label6
             // 
@@ -203,16 +207,11 @@
             // 
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 24;
-            this.listBox1.Items.AddRange(new object[] {
-            "Period 1",
-            "Period 2",
-            "Period 3",
-            "Period 6",
-            "Afterschool"});
             this.listBox1.Location = new System.Drawing.Point(3, 26);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(113, 244);
             this.listBox1.TabIndex = 1;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // tableLayoutPanel15
             // 
@@ -519,8 +518,8 @@
             this.tableLayoutPanel7.ColumnCount = 1;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.Controls.Add(this.listView1, 0, 1);
             this.tableLayoutPanel7.Controls.Add(this.label5, 0, 0);
-            this.tableLayoutPanel7.Controls.Add(this.richTextBox4, 0, 1);
             this.tableLayoutPanel7.Location = new System.Drawing.Point(87, 1);
             this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(1);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
@@ -541,15 +540,6 @@
             this.label5.Size = new System.Drawing.Size(145, 23);
             this.label5.TabIndex = 0;
             this.label5.Text = "Class Leaderboard";
-            // 
-            // richTextBox4
-            // 
-            this.richTextBox4.Location = new System.Drawing.Point(1, 41);
-            this.richTextBox4.Margin = new System.Windows.Forms.Padding(1);
-            this.richTextBox4.Name = "richTextBox4";
-            this.richTextBox4.Size = new System.Drawing.Size(232, 340);
-            this.richTextBox4.TabIndex = 1;
-            this.richTextBox4.Text = "";
             // 
             // teamTab
             // 
@@ -699,6 +689,7 @@
             this.button11.TabIndex = 8;
             this.button11.Text = "Remove Team";
             this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // button8
             // 
@@ -724,6 +715,7 @@
             this.button10.TabIndex = 7;
             this.button10.Text = "Add Team";
             this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // button9
             // 
@@ -776,6 +768,36 @@
             this.label1.Size = new System.Drawing.Size(55, 23);
             this.label1.TabIndex = 1;
             this.label1.Text = "Teams";
+            // 
+            // listView1
+            // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3});
+            this.listView1.GridLines = true;
+            this.listView1.Location = new System.Drawing.Point(1, 41);
+            this.listView1.Margin = new System.Windows.Forms.Padding(1);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(232, 332);
+            this.listView1.TabIndex = 9;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Rank";
+            this.columnHeader1.Width = 166;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Name";
+            this.columnHeader2.Width = 246;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Points";
+            this.columnHeader3.Width = 372;
             // 
             // TeacherForm
             // 
@@ -859,7 +881,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.RichTextBox richTextBox3;
-        private System.Windows.Forms.RichTextBox richTextBox4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
@@ -874,5 +895,9 @@
         private System.Windows.Forms.ListBox listBox4;
         private System.Windows.Forms.ListBox listBox5;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
     }
 }
