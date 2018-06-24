@@ -329,6 +329,7 @@ namespace Core.Server
                 Console.WriteLine(ex);
             }
             _connection.Close();
+            userteam.Initialize();
             return userteam;
         }
         
