@@ -20,13 +20,7 @@ namespace MainMenu
         {
             Name = name;
             Password = password;
-            _classrooms = classrooms;
-            _s = s;
-        }
-
-        public void Initialize()
-        {
-            string[] cls = _classrooms.Split(',');
+            string[] cls = classrooms.Split(',');
             for (int i = 0; i < cls.Length; i++)
             {
                 Classrooms.Add(Core.Server.Integration.ExecuteGetClassroom(Int32.Parse(cls[i])));
@@ -36,17 +30,17 @@ namespace MainMenu
             {
                 SavedProblemSets.Add(Core.Server.Integration.ExecuteGetProblemSetById(sve[i]));
             }
-        }
+}
 
-        public void setTeacherId()
-        {
-            Id = Core.Server.Integration.ExecuteGetTeacherId(this);
-        }
+public void setTeacherId()
+{
+    Id = Core.Server.Integration.ExecuteGetTeacherId(this);
+}
 
-        public void saveProblemSet(String name)
-        {
+public void saveProblemSet(String name)
+{
 
-        }
+}
     }
 }
 
