@@ -19,8 +19,28 @@ namespace Core.Server
         public static int ExecuteGetClassroomIdByName(String name)
         {
             SqlCommand cmdNew = new SqlCommand("SELECT Classrooms.Id FROM Classrooms WHERE Classrooms.[Name] = '" + name + "'", _connection);
+            cmdNew.CommandType = CommandType.Text;
 
-            return 0;
+            int id = 0;
+
+            _connection.Open();
+            try
+            {
+                SqlDataReader reader = cmdNew.ExecuteReader();
+                while (reader.Read())
+                {
+                    id = (int)reader[0];
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("BB=========================BB");
+                Console.WriteLine(ex);
+            }
+            _connection.Close();
+
+            return id;
         }
 
         public static void ExecuteAddTeam(Team newTeam)
