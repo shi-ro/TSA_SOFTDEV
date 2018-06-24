@@ -218,7 +218,7 @@ namespace Teacher_form
         {
             if(!classManagementOpened)
             {
-                ClassManagerScreen classManager = new ClassManagerScreen();
+                ClassManagerScreen classManager = new ClassManagerScreen(_currentlySelectedClassrom);
                 classManager.FormClosing += (object se, FormClosingEventArgs ei) => 
                 {
                     classManagementOpened = false;
@@ -297,38 +297,48 @@ namespace Teacher_form
             if (listBox1.SelectedIndex >= 0)
             {
                 Classroom cur = (Classroom)_classrooms[listBox1.SelectedIndex];
+                _currentlySelectedClassrom = cur;
                 //write to stats screen
                 string stats = "";
                 stats += $"Name : {cur.Name}\n";
                 stats += $"Teacher : {cur.TeacherName}\n";
                 stats += $"ID : {cur.Id}\n";
                 stats += $"Students : \n{cur.Students.Replace(",","\n\t")}\n";
+                richTextBox10.Text = stats;
 
                 classLeaderboard(cur);
             }
         }
         private void classLeaderboard(Classroom classroom)
         {
-                String[] IDstring = classroom.Students.Split(',');
-                List<Student> students = new List<Student>();
-                for (int i = 0; i < IDstring.Length; i++)
+            String[] IDstring = classroom.Students.Split(',');
+            List<Student> students = new List<Student>();
+            for (int i = 0; i < IDstring.Length; i++)
+            {
+                try
                 {
                     students.Add(Core.Server.Integration.ExecuteGetStudentById(Int32.Parse(IDstring[i])));
-                }
-                sortedStudents = students.OrderByDescending(x => x.Points).ToList();
-                int count = 1;
-                for (int i = 0; i < students.Count; i++)
+                } catch 
                 {
-                    ListViewItem lv1 = new ListViewItem(count.ToString());
-                    string student = "";
-                    Console.WriteLine("COUNT: " + sortedStudents.Count);
-                    
-                    lv1.SubItems.Add(sortedStudents[i].Name);
-                    lv1.SubItems.Add((sortedStudents[i].Points).ToString());
-                    Console.WriteLine("SortedStudents TEACHER Students: " + student);
-                    Console.WriteLine("SortedStudents TEACHER: " + sortedStudents[i].Name);
-                    listView1.Items.Add(lv1);
+
+                }
             }
+            sortedStudents = students.OrderByDescending(x => x.Points).ToList();
+            int count = 1;
+            for (int i = 0; i < students.Count; i++)
+            {
+                ListViewItem lv1 = new ListViewItem(count.ToString());
+                //lv1.Width 
+                string student = "";
+                Console.WriteLine("COUNT: " + sortedStudents.Count);
+
+                lv1.SubItems.Add(sortedStudents[i].Name);
+                lv1.SubItems.Add((sortedStudents[i].Points).ToString());
+                Console.WriteLine("SortedStudents TEACHER Students: " + student);
+                Console.WriteLine("SortedStudents TEACHER: " + sortedStudents[i].Name);
+                listView1.Items.Add(lv1);
+            }
+        
         }
 
         private void button11_Click(object sender, EventArgs e)

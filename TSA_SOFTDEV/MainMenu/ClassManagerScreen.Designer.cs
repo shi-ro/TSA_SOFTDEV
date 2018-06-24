@@ -34,23 +34,23 @@
             this.label2 = new System.Windows.Forms.Label();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.button2 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.listBox3 = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.listBox4 = new System.Windows.Forms.ListBox();
-            this.button4 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.listBox4 = new System.Windows.Forms.ListBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -86,7 +86,7 @@
             this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.672634F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.32736F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(214, 413);
             this.tableLayoutPanel2.TabIndex = 2;
@@ -96,10 +96,10 @@
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button1.BackColor = System.Drawing.Color.White;
             this.button1.Font = new System.Drawing.Font("Comic Sans MS", 13F);
-            this.button1.Location = new System.Drawing.Point(1, 374);
+            this.button1.Location = new System.Drawing.Point(1, 376);
             this.button1.Margin = new System.Windows.Forms.Padding(1);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(212, 38);
+            this.button1.Size = new System.Drawing.Size(212, 36);
             this.button1.TabIndex = 8;
             this.button1.Text = "Add";
             this.button1.UseVisualStyleBackColor = false;
@@ -124,7 +124,7 @@
             this.listBox2.ItemHeight = 24;
             this.listBox2.Location = new System.Drawing.Point(3, 31);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(208, 316);
+            this.listBox2.Size = new System.Drawing.Size(208, 340);
             this.listBox2.TabIndex = 2;
             // 
             // tableLayoutPanel1
@@ -144,20 +144,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(256, 413);
             this.tableLayoutPanel1.TabIndex = 3;
-            // 
-            // button2
-            // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.Font = new System.Drawing.Font("Comic Sans MS", 13F);
-            this.button2.Location = new System.Drawing.Point(1, 375);
-            this.button2.Margin = new System.Windows.Forms.Padding(1);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(254, 37);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Remove";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label3
             // 
@@ -180,6 +166,20 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(250, 340);
             this.listBox1.TabIndex = 2;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button2.BackColor = System.Drawing.Color.White;
+            this.button2.Font = new System.Drawing.Font("Comic Sans MS", 13F);
+            this.button2.Location = new System.Drawing.Point(1, 375);
+            this.button2.Margin = new System.Windows.Forms.Padding(1);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(254, 37);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "Remove";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // listBox3
             // 
@@ -238,37 +238,19 @@
             this.tableLayoutPanel6.Size = new System.Drawing.Size(288, 219);
             this.tableLayoutPanel6.TabIndex = 2;
             // 
-            // label8
+            // button7
             // 
-            this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.label8.Location = new System.Drawing.Point(21, 2);
-            this.label8.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(101, 46);
-            this.label8.TabIndex = 3;
-            this.label8.Text = "Saved ProblemSets";
-            // 
-            // label9
-            // 
-            this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.label9.Location = new System.Drawing.Point(165, 2);
-            this.label9.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(101, 46);
-            this.label9.TabIndex = 4;
-            this.label9.Text = "Assigned ProblemSets";
-            // 
-            // listBox4
-            // 
-            this.listBox4.FormattingEnabled = true;
-            this.listBox4.Location = new System.Drawing.Point(147, 54);
-            this.listBox4.Name = "listBox4";
-            this.listBox4.Size = new System.Drawing.Size(138, 108);
-            this.listBox4.TabIndex = 5;
+            this.button7.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button7.BackColor = System.Drawing.Color.White;
+            this.button7.Font = new System.Drawing.Font("Comic Sans MS", 13F);
+            this.button7.Location = new System.Drawing.Point(1, 172);
+            this.button7.Margin = new System.Windows.Forms.Padding(1);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(142, 41);
+            this.button7.TabIndex = 10;
+            this.button7.Text = "Assign";
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button4
             // 
@@ -284,19 +266,37 @@
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button7
+            // listBox4
             // 
-            this.button7.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button7.BackColor = System.Drawing.Color.White;
-            this.button7.Font = new System.Drawing.Font("Comic Sans MS", 13F);
-            this.button7.Location = new System.Drawing.Point(1, 172);
-            this.button7.Margin = new System.Windows.Forms.Padding(1);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(142, 41);
-            this.button7.TabIndex = 10;
-            this.button7.Text = "Assign";
-            this.button7.UseVisualStyleBackColor = false;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.listBox4.FormattingEnabled = true;
+            this.listBox4.Location = new System.Drawing.Point(147, 54);
+            this.listBox4.Name = "listBox4";
+            this.listBox4.Size = new System.Drawing.Size(138, 108);
+            this.listBox4.TabIndex = 5;
+            // 
+            // label9
+            // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Comic Sans MS", 12F);
+            this.label9.Location = new System.Drawing.Point(165, 2);
+            this.label9.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(101, 46);
+            this.label9.TabIndex = 4;
+            this.label9.Text = "Assigned ProblemSets";
+            // 
+            // label8
+            // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Comic Sans MS", 12F);
+            this.label8.Location = new System.Drawing.Point(21, 2);
+            this.label8.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(101, 46);
+            this.label8.TabIndex = 3;
+            this.label8.Text = "Saved ProblemSets";
             // 
             // tableLayoutPanel5
             // 
@@ -316,34 +316,6 @@
             this.tableLayoutPanel5.Size = new System.Drawing.Size(288, 77);
             this.tableLayoutPanel5.TabIndex = 10;
             // 
-            // label6
-            // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.label6.Location = new System.Drawing.Point(47, 7);
-            this.label6.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(50, 23);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Name";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Font = new System.Drawing.Font("Comic Sans MS", 13F);
-            this.textBox2.Location = new System.Drawing.Point(147, 3);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(138, 32);
-            this.textBox2.TabIndex = 6;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Font = new System.Drawing.Font("Comic Sans MS", 13F);
-            this.textBox3.Location = new System.Drawing.Point(147, 41);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(138, 32);
-            this.textBox3.TabIndex = 7;
-            // 
             // label7
             // 
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -355,6 +327,34 @@
             this.label7.Size = new System.Drawing.Size(28, 23);
             this.label7.TabIndex = 9;
             this.label7.Text = "Id";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Font = new System.Drawing.Font("Comic Sans MS", 13F);
+            this.textBox3.Location = new System.Drawing.Point(147, 41);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(138, 32);
+            this.textBox3.TabIndex = 7;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Font = new System.Drawing.Font("Comic Sans MS", 13F);
+            this.textBox2.Location = new System.Drawing.Point(147, 3);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(138, 32);
+            this.textBox2.TabIndex = 6;
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Comic Sans MS", 12F);
+            this.label6.Location = new System.Drawing.Point(47, 7);
+            this.label6.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(50, 23);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Name";
             // 
             // button3
             // 

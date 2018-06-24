@@ -37,9 +37,16 @@ namespace MainMenu
             }
         }
 
+        public void addStudent(Student stu)
+        {
+            Students += "," + stu.Id;
+            Core.Server.Integration.ExecuteAddStudentToClassroom(this);
+        }
+
         public void assignProblemSet(ProblemSet ps)
         {
             AssignedProblemSets.Add(ps);
+            Core.Server.Integration.ExecuteAddAssignment(this, ps);
         }
 
         public void setClassroomId()
