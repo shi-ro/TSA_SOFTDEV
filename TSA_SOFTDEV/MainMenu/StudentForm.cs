@@ -253,11 +253,9 @@ namespace TSA_SOFTDEV
 
         private void LoadProblemSets()
         {
-            //Core.Server.Integration.ExecuteGetTeacherByStudent(s)
-            problemSets = s.Classroom;
             // add method call to get problemsets from server
             // and set them to the problem sets list here
-            //LoadTempProblemSets();
+            LoadTempProblemSets();
         }
 
         private void LoadTempProblemSets()
