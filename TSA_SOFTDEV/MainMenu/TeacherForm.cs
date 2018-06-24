@@ -315,11 +315,9 @@ namespace Teacher_form
                 {
                     students.Add(Core.Server.Integration.ExecuteGetStudentById(Int32.Parse(IDstring[i])));
                 }
-                List<Team> allTeams = Core.Server.Integration.ExecuteGetAllTeams();
-                List<int> TeamScoreList = new List<int>();
                 sortedStudents = students.OrderByDescending(x => x.Points).ToList();
                 int count = 1;
-                for (int i = 0; i < allTeams.Count; i++)
+                for (int i = 0; i < students.Count; i++)
                 {
                     ListViewItem lv1 = new ListViewItem(count.ToString());
                     string student = "";
