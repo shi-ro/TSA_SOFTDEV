@@ -16,10 +16,20 @@ namespace MainMenu
         public List<Student> all = new List<Student>();
         public List<ProblemSet> sets = new List<ProblemSet>();
         public List<ProblemSet> selected = new List<ProblemSet>();
-        public ClassManagerScreen()
+        public Classroom classroom;
+        public ClassManagerScreen(Classroom classroom)
         {
             InitializeComponent();
+            this.classroom = classroom;
             all = Core.Server.Integration.ExecuteGetStudents();
+            foreach(Student s in all)
+            {
+                if(s!=null)
+                {
+                    listBox2.Items.Add(s);
+                }
+            }
+            
         }
 
         private void tableLayoutPanel4_Paint(object sender, PaintEventArgs e)
