@@ -27,6 +27,10 @@ namespace MainMenu
         public void Initialize()
         {
             String[] problemSetArray = _problemList.Split(',');
+            if(_problemList.Length<=0)
+            {
+                return;
+            }
             for (int i = 0; i < problemSetArray.Length; i++)
             {
                 AssignedProblemSets.Add(Core.Server.Integration.ExecuteGetProblemSetById(problemSetArray[i]));

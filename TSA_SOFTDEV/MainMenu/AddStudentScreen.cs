@@ -35,6 +35,7 @@ namespace MainMenu
             {
                 ReturnedStudent = students[listBox1.SelectedIndex];
             }
+            Close();
         }
 
         private void AddStudentScreen_Load(object sender, EventArgs e)
