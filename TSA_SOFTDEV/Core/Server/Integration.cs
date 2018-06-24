@@ -16,6 +16,29 @@ namespace Core.Server
             return External.Wolfram.Connected();
         }
 
+        public static int ExecuteGetTeamId(Team t)
+        {
+            SqlCommand cmdNew = new SqlCommand("SELECT Teams.Id FROM Teams WHERE Teams.[Name] = '" + t.Name + "'", _connection);
+            cmdNew.CommandType = CommandType.Text;
+
+            _connection.Open();
+            int id = (int)cmdNew.ExecuteScalar();
+            _connection.Close();
+
+            return id;
+        }
+
+        public static void ExecuteAddAssignment(Classroom cls, ProblemSet assignment)
+        {
+            String problems = "";
+            for(int i = 0; i < cls.AssignedProblemSets.Count; i++)
+            {
+
+            }
+
+            SqlCommand cmdNew = new SqlCommand("UPDATE Classrooms SET Classrooms.AssignedProblemSets = '1' WHERE Id = 4;", _connection);
+        }
+
         public static void ExecuteAddStudentToTeam(Team tm)
         {
             SqlCommand cmdNew = new SqlCommand("UPDATE Teams SET Teams.TeamStudents = '" + tm.Students + "' WHERE Teams.Id = " + tm.Id, _connection);
@@ -55,12 +78,15 @@ namespace Core.Server
 
         public static void ExecuteAddTeam(Team newTeam)
         {
+
             SqlCommand cmdNew = new SqlCommand("INSERT INTO Teams (Teams.[Name], Teams.TeamStudents) VALUES ('" + newTeam.Name + "', '" + newTeam.Students + "')", _connection);
             cmdNew.CommandType = CommandType.Text;
 
             _connection.Open();
             cmdNew.ExecuteNonQuery();
             _connection.Close();
+
+            if(newTeam != null) { newTeam.setId(); }
         }
 
         public static void ExecuteAddClassroomToTeacher(Classroom cls, Teacher teach)
@@ -280,10 +306,7 @@ namespace Core.Server
             }
             _connection.Close();
 
-            if(toReturn!=null)
-            {
-                toReturn.Initialize();
-            }
+            toReturn.Initialize();
             return toReturn;
         }
 
