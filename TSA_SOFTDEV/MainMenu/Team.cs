@@ -11,7 +11,7 @@ namespace MainMenu
         public String Name { get; set; }
         public int Id { get; set; }
         public String Students { get; set; }
-        public List<Student> studentsList;
+        public List<Student> studentsList = new List<Student>();
         public int score;
         public double weightParticipation;
 
@@ -20,10 +20,15 @@ namespace MainMenu
             Name = name;
             Students = stud;
             Id = i;
-            studentsList = getTeamMembers("" + Id);
             weightParticipation = .6;
+        }
+
+        public void Initialize()
+        {
+            studentsList = getTeamMembers("" + Id);
             score = calculateScore();
         }
+
         private List<Student> getTeamMembers(string team) //insert teamID
         {
             String[] IDstring = team.Split(',');
@@ -31,7 +36,6 @@ namespace MainMenu
             for (int i = 0; i < IDstring.Length; i++)
             {
                 students.Add(Core.Server.Integration.ExecuteGetStudentById(Int32.Parse(IDstring[i])));
-
             }
             return students;
         }

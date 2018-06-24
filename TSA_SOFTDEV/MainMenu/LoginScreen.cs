@@ -31,7 +31,8 @@ namespace MainMenu
 
         private void LoginScreen_Load(object sender, EventArgs e)
         {
-
+            Team team = Core.Server.Integration.ExecuteGetStudentTeam("Bob test");
+            //Console.WriteLine(team.Students);
         }
 
         private void TryLogin()

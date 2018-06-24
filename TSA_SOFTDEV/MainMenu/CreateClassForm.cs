@@ -48,7 +48,7 @@ namespace MainMenu
                     ids += ",";
                 }
             }
-            CreatedClassroom = new Classroom(textBox2.Text,((TeacherForm)ParentForm).teacher.Name,ids,-1);//TEMPORARY ID USED HERE
+            CreatedClassroom = new Classroom(textBox2.Text,((TeacherForm)ParentForm).teacher.Name,ids,-1,"");//TEMPORARY ID USED HERE
             Close();
         }
 
