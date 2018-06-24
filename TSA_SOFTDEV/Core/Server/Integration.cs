@@ -16,6 +16,16 @@ namespace Core.Server
             return External.Wolfram.Connected();
         }
 
+        public static void ExecuteChangePoints(Student stu)
+        {
+            SqlCommand cmdNew = new SqlCommand("UPDATE Students SET Students.Points = " + stu.Points + " WHERE Students.Id = " + stu.Id, _connection);
+            cmdNew.CommandType = CommandType.Text;
+
+            _connection.Open();
+            cmdNew.ExecuteNonQuery();
+            _connection.Close();
+        }
+
         public static void ExecuteAddStudentToClassroom(Classroom cls)
         {
             SqlCommand cmdNew = new SqlCommand("UPDATE Classrooms SET Classrooms.Students = '" + cls.Students + "' WHERE Id = " + cls.Id + ";", _connection);

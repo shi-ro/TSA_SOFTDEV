@@ -26,6 +26,12 @@ namespace MainMenu
             TeamId = teamId;
         }
 
+        public void changePoints(int pts)
+        {
+            Points += pts;
+            Core.Server.Integration.ExecuteChangePoints(this);
+        }
+
         public void setStudentId()
         {
             Id = Core.Server.Integration.ExecuteGetStudentId(this);
