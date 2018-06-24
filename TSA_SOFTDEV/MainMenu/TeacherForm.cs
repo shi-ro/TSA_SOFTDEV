@@ -261,5 +261,24 @@ namespace Teacher_form
             _allTeams.Add(team);
             listBox5.Items.Add(name);
         }
+
+        private void button22_Click(object sender, EventArgs e)
+        {
+            if(listBox1.SelectedIndex>=0)
+            {
+                //remove class in teacher
+
+                //remove class visually
+                listBox1.Items.RemoveAt(listBox1.SelectedIndex);
+            }
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex >= 0)
+            {
+
+            }
+        }
     }
 }
