@@ -43,10 +43,16 @@ namespace MainMenu
             Id = Core.Server.Integration.ExecuteGetTeacherId(this);
         }
 
-            public void saveProblemSet(ProblemSet toSave)
-            {
-                SavedProblemSets.Add(toSave);
-            }
+        public void removeProblemSet(ProblemSet toRemove)
+        {
+            SavedProblemSets.Remove(toRemove);
+        }
+
+        public void saveProblemSet(ProblemSet toSave)
+        {
+            SavedProblemSets.Add(toSave);
+            Core.Server.Integration.ExecuteSaveProblemSet(this,toSave);
+        }
     }
 }
 

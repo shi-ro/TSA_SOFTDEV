@@ -16,19 +16,47 @@ namespace Core.Server
             return External.Wolfram.Connected();
         }
 
-        public static void ExecuteSaveProblemSet(ProblemSet ps)
+        public static void ExecuteSaveProblemSet(Teacher teach, ProblemSet ps)
         {
-            SqlCommand cmdNew = new SqlCommand("", _connection);
+            SqlCommand cmdString = new SqlCommand("SELECT Teachers.SavedProblemSets FROM Teachers WHERE Teachers.Id = " + teach.Id, _connection);
+            cmdString.CommandType = CommandType.Text;
+
+            String problemsStringForm = "";
+
+            _connection.Open();
+            try
+            {
+                SqlDataReader reader = cmdString.ExecuteReader();
+                while (reader.Read())
+                {
+                    problemsStringForm = reader[0] + "";
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("CC=========================CC");
+                Console.WriteLine(ex);
+            }
+            _connection.Close();
+
+            SqlCommand cmdNew = new SqlCommand("UPDATE Teachers SET SavedProblemSets = '" + problemsStringForm + "," + ExecuteGetProblemSetIdByName(ps.Name) + "' WHERE Teachers.Id = " + teach.Id, _connection);
+            cmdNew.CommandType = CommandType.Text;
+
+            _connection.Open();
+            cmdNew.ExecuteNonQuery();
+            _connection.Close();
         }
 
         public static List<Student> ExecuteGetStudentsInTeam(int teamid)
         {
             String students = "";
             List<Student> listToReturn = new List<Student>();
-            SqlCommand cmdString = new SqlCommand("SELECT [TeamStudents] FROM Teams WHERE Teams.[Id] = "+teamid, _connection);
+            string ins = "SELECT [TeamStudents] FROM Teams WHERE Teams.[Id] = " + teamid;
+            SqlCommand cmdString = new SqlCommand(ins, _connection);
             cmdString.CommandType = CommandType.Text;
 
-            _connection.Open();
+            _connection.Open(); 
             try
             {
                 SqlDataReader reader = cmdString.ExecuteReader();
@@ -44,16 +72,15 @@ namespace Core.Server
                 Console.WriteLine(ex);
             }
             _connection.Close();
-        
 
-        String[] stringList = students.Split(',');
+            String[] stringList = students.Split(',');
 
-        for (int i = 0; i < stringList.Length; i++)
-        {
-            listToReturn.Add(ExecuteGetStudent(stringList[i]));
-        }
+            for (int i = 0; i < stringList.Length; i++)
+            {
+                listToReturn.Add(ExecuteGetStudent(stringList[i]));
+            }
 
-        return listToReturn;
+            return listToReturn;
 
         }
 
@@ -123,9 +150,31 @@ namespace Core.Server
             return allTeams;
         }
 
-        public static void ExecuteAddClassroom(String name)
+        public static void ExecuteAddClassroom(String name, Teacher teach, List<Student> students, List<ProblemSet> problemSets)
         {
+            String studentList = "";
+            for(int i = 0; i < students.Count; i++)
+            {
+                students[i].setStudentId();
+                studentList += students[i].Id;
+                if(i< students.Count-1)
+                {
+                    studentList += ",";
+                }
+            }
 
+            String problemList = "";
+            for(int a = 0; a < problemSets.Count; a++)
+            {
+                problemList += ExecuteGetProblemSetIdByName(problemSets[a].Name) + "";
+            }
+
+            SqlCommand cmdNew = new SqlCommand("INSERT INTO Classrooms (Classrooms.[Name], Classrooms.Teacher, Classrooms.Students, ClassRooms.AssignedProblemSets) VALUES ('" + name + "', '" + teach.Id + "', '" + studentList + "', '" + problemList + "')", _connection);
+            cmdNew.CommandType = CommandType.Text;
+
+            _connection.Open();
+            cmdNew.ExecuteNonQuery();
+            _connection.Close();
         }
 
         public static Classroom ExecuteGetClassroom(int id)
@@ -141,7 +190,8 @@ namespace Core.Server
                 SqlDataReader reader = cmdNew.ExecuteReader();
                 while (reader.Read())
                 {
-                    toReturn = new Classroom(reader[0] + "", reader[1] + "", reader[2] + "", id, reader[3] + "");
+                    toReturn = new Clas
+                        sroom(reader[0] + "", reader[1] + "", reader[2] + "", id, reader[3] + "");
                 }
                 reader.Close();
             }

@@ -21,6 +21,7 @@ namespace MainMenu
             TeacherName = tName;
             Students = students;
             Id = id;
+            _problemList = problemList;
         }
 
         public void Initialize()

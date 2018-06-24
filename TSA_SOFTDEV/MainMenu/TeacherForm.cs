@@ -13,6 +13,7 @@ namespace Teacher_form
 {
     public partial class TeacherForm : Form
     {
+        private Random random = new Random();
         private List<Classroom> _classrooms = new List<Classroom>();
         private List<ProblemSet> _allProblemSets = new List<ProblemSet>();
         private List<ProblemSet> _savedProblemSets = new List<ProblemSet>();
@@ -153,7 +154,24 @@ namespace Teacher_form
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            if(listBox2.SelectedIndex>=0)
+            {
+                //save problemset
+                teacher.saveProblemSet(_allProblemSets[listBox2.SelectedIndex]);
+                //add problemset to saved visually
+                listBox3.Items.Add(_allProblemSets[listBox2.SelectedIndex].Name);
+            }
+        }
+        
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if(listBox3.SelectedIndex>=0)
+            {
+                //remove saved problemset
+                teacher.removeProblemSet(teacher.SavedProblemSets[listBox3.SelectedIndex]);
+                //remove saved problemset visually
+                listBox3.Items.RemoveAt(listBox3.SelectedIndex);
+            }
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -166,6 +184,9 @@ namespace Teacher_form
                     if(addStudent.ReturnedStudent!=null)
                     {
                         // add student
+
+                        // visually add student 
+
                     }
                     addStudentOpened = false;
                 };
@@ -179,6 +200,9 @@ namespace Teacher_form
             if(listBox4.Items.Count >= 0)
             {
                 //remove student
+
+                //remove student visually
+                listBox4.Items.RemoveAt(listBox4.SelectedIndex);
             }
         }
 
@@ -208,12 +232,30 @@ namespace Teacher_form
                     {
                         //create classroom
                         Core.Server.Integration.ExecuteAddClassroom("CLASSROOM PARAMS GO HERE");
+                        // visually create classroom
                     }
                     classCreatiorOpened = false;
                 };
                 classCreatiorOpened = true;
                 createClass.Show();
             }
+        }
+
+        public string RandomId(int length)
+        {
+            const string chars = "mathedoniMATHEDONI.";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            string name = RandomId(10);
+            Team team = new Team(name,"",-1);
+            //add team 
+
+            //add team visually
+            _allTeams.Add(team);
         }
     }
 }

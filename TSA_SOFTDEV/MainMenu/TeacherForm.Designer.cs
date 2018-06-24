@@ -385,6 +385,7 @@
             this.button2.TabIndex = 7;
             this.button2.Text = "Un-Save";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label8
             // 
@@ -723,6 +724,7 @@
             this.button10.TabIndex = 7;
             this.button10.Text = "Add Team";
             this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // button9
             // 
