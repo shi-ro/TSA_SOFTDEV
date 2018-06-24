@@ -62,7 +62,16 @@ namespace MainMenu
             List<Student> students = new List<Student>();
             for (int i = 0; i < IDstring.Length; i++)
             {
-                students.Add(Core.Server.Integration.ExecuteGetStudentById(Int32.Parse(IDstring[i])));
+                try
+                {
+                   
+                    students.Add(Core.Server.Integration.ExecuteGetStudentById(Int32.Parse(IDstring[i])));
+                }
+                catch
+                {
+                    Console.WriteLine("Error");
+                }
+                
             }
             return students;
         }
@@ -76,8 +85,10 @@ namespace MainMenu
                 totalPoints += teammates[i].Points;
 
             }
-            int avgPercent = 1 / teammates.Count;
-            double totalDisplacement = 0;
+            double avgPercent = .5;
+            if (teammates.Count > 0)
+                avgPercent = 1 / teammates.Count;
+        double totalDisplacement = 0;
             for (int i = 0; i < teammates.Count; i++)
             {
                 totalDisplacement = Math.Abs(avgPercent - teammates[i].Points / totalPoints);
