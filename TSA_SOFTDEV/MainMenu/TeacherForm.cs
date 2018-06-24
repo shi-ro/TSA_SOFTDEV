@@ -218,7 +218,7 @@ namespace Teacher_form
         {
             if(!classManagementOpened)
             {
-                ClassManagerScreen classManager = new ClassManagerScreen();
+                ClassManagerScreen classManager = new ClassManagerScreen(_currentlySelectedClassrom);
                 classManager.FormClosing += (object se, FormClosingEventArgs ei) => 
                 {
                     classManagementOpened = false;
@@ -297,12 +297,14 @@ namespace Teacher_form
             if (listBox1.SelectedIndex >= 0)
             {
                 Classroom cur = (Classroom)_classrooms[listBox1.SelectedIndex];
+                _currentlySelectedClassrom = cur;
                 //write to stats screen
                 string stats = "";
                 stats += $"Name : {cur.Name}\n";
                 stats += $"Teacher : {cur.TeacherName}\n";
                 stats += $"ID : {cur.Id}\n";
                 stats += $"Students : \n{cur.Students.Replace(",","\n\t")}\n";
+                richTextBox10.Text = stats;
 
                 classLeaderboard(cur);
             }
