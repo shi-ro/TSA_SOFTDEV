@@ -51,6 +51,7 @@ namespace MainMenu
         public void saveProblemSet(ProblemSet toSave)
         {
             SavedProblemSets.Add(toSave);
+            Core.Server.Integration.ExecuteSaveProblemSet(this,toSave);
         }
     }
 }

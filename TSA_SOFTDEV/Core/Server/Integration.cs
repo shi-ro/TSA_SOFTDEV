@@ -52,10 +52,11 @@ namespace Core.Server
         {
             String students = "";
             List<Student> listToReturn = new List<Student>();
-            SqlCommand cmdString = new SqlCommand("SELECT [TeamStudents] FROM Teams WHERE Teams.[Id] = "+teamid, _connection);
+            string ins = "SELECT [TeamStudents] FROM Teams WHERE Teams.[Id] = " + teamid;
+            SqlCommand cmdString = new SqlCommand(ins, _connection);
             cmdString.CommandType = CommandType.Text;
 
-            _connection.Open();
+            _connection.Open(); 
             try
             {
                 SqlDataReader reader = cmdString.ExecuteReader();
@@ -71,16 +72,15 @@ namespace Core.Server
                 Console.WriteLine(ex);
             }
             _connection.Close();
-        
 
-        String[] stringList = students.Split(',');
+            String[] stringList = students.Split(',');
 
-        for (int i = 0; i < stringList.Length; i++)
-        {
-            listToReturn.Add(ExecuteGetStudent(stringList[i]));
-        }
+            for (int i = 0; i < stringList.Length; i++)
+            {
+                listToReturn.Add(ExecuteGetStudent(stringList[i]));
+            }
 
-        return listToReturn;
+            return listToReturn;
 
         }
 
