@@ -153,7 +153,24 @@ namespace Teacher_form
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            if(listBox2.SelectedIndex>=0)
+            {
+                //save problemset
+                teacher.saveProblemSet(_allProblemSets[listBox2.SelectedIndex]);
+                //add problemset to saved visually
+                listBox3.Items.Add(_allProblemSets[listBox2.SelectedIndex].Name);
+            }
+        }
+        
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if(listBox3.SelectedIndex>=0)
+            {
+                //remove saved problemset
+                teacher.removeProblemSet(teacher.SavedProblemSets[listBox3.SelectedIndex]);
+                //remove saved problemset visually
+                listBox3.Items.RemoveAt(listBox3.SelectedIndex);
+            }
         }
 
         private void button8_Click(object sender, EventArgs e)
