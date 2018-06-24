@@ -54,11 +54,10 @@ namespace TSA_SOFTDEV
             networkThread.Start();
 
             DoStudentLeaderboard();
-<<<<<<< HEAD
+
             ShowTeamMembers(student);
-=======
+
             DoTeamLeaderboard();
->>>>>>> b366d62e9d05df27ef948d1ee3eed05679988cfe
 
             //names.Add(Core.Server.Integration.ExecuteGetUsers());
 
