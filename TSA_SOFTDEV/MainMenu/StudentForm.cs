@@ -54,12 +54,64 @@ namespace TSA_SOFTDEV
             networkThread.Start();
 
             DoStudentLeaderboard();
+            ShowTeamMembers(student);
+            DoTeamLeaderboard();
+            ShowTeamMembers(student);
+
             DoTeamLeaderboard();
 
             //names.Add(Core.Server.Integration.ExecuteGetUsers());
 
             //User bob = Core.Server.Integration.ExecuteGetUser("Bob test");
             //Console.WriteLine("bob's team is " + Core.Server.Integration.ExecuteGetUserTeam(bob.Name));
+        }
+        private void ShowTotalPoints(int totalPoints)
+        {
+            String points = totalPoints.ToString();
+            richTextBox1.Text = points;
+        }
+        private void ShowTeamMembers(Student student)
+        {
+            int total = 0;
+            Team users = Core.Server.Integration.ExecuteGetStudentTeam(student.Name);
+            List<Student> teamList = users.studentsList;
+            int count = 1;
+            for (int i = 0; i < teamList.Count(); i++)
+            {
+                ListViewItem lv1 = new ListViewItem(count.ToString());
+                lv1.SubItems.Add(teamList[i].Name);
+                lv1.SubItems.Add((teamList[i].Points).ToString());
+                listView5.Items.Add(lv1);
+                //listView3.Items.Add(lv2);
+                total += teamList[i].Points;
+                
+                /*
+                if (i < sortedUsers.Count() - 1)
+                {
+                    if (teamList[i].Points == teamList[i + 1].Points)
+                    {
+                        count += 0;
+                    }
+                    else
+                    {
+                        count++;
+                    }
+                }
+                else
+                {
+                    if (teamList[i].Points == teamList[sortedUsers.Count() - 1].Points)
+                        count += 0;
+                    else
+                    {
+                        count++;
+                    }
+                }
+                */
+            } 
+            ShowTotalPoints(total);
+
+
+
         }
         private void DoTeamLeaderboard()
         {
@@ -201,9 +253,11 @@ namespace TSA_SOFTDEV
 
         private void LoadProblemSets()
         {
+            //Core.Server.Integration.ExecuteGetTeacherByStudent(s)
+            problemSets = s.Classroom;
             // add method call to get problemsets from server
             // and set them to the problem sets list here
-            LoadTempProblemSets();
+            //LoadTempProblemSets();
         }
 
         private void LoadTempProblemSets()
@@ -273,7 +327,7 @@ namespace TSA_SOFTDEV
         {
             if (selectedSet != null)
             {
-                Solver solver = new Solver(selectedSet);
+                Solver solver = new Solver(selectedSet,s);
                 solver.FormClosed += DoSolverClosed;
                 button1.Enabled = false;
                 solver.Show();

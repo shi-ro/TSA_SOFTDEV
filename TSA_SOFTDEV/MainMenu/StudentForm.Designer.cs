@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.teacherFormTab = new System.Windows.Forms.TabControl();
             this.studentLeaderboard = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -62,7 +59,15 @@
             this.studentTeam = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
+            this.listView5 = new System.Windows.Forms.ListView();
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.studentChat = new System.Windows.Forms.TabPage();
             this.chatTextBox = new System.Windows.Forms.RichTextBox();
             this.sendButton = new System.Windows.Forms.Button();
@@ -95,7 +100,9 @@
             this.tableLayoutPanel7.SuspendLayout();
             this.studentTeam.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel13.SuspendLayout();
+            this.tableLayoutPanel14.SuspendLayout();
             this.studentChat.SuspendLayout();
             this.studentStat.SuspendLayout();
             this.tableLayoutPanel12.SuspendLayout();
@@ -140,7 +147,7 @@
             this.tableLayoutPanel1.Controls.Add(this.label5, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.listView1, 0, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(32, 9);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(1);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.863946F));
@@ -169,7 +176,7 @@
             this.columnHeader3});
             this.listView1.GridLines = true;
             this.listView1.Location = new System.Drawing.Point(1, 37);
-            this.listView1.Margin = new System.Windows.Forms.Padding(1);
+            this.listView1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(267, 332);
             this.listView1.TabIndex = 2;
@@ -201,7 +208,7 @@
             this.tableLayoutPanel5.Controls.Add(this.listView2, 0, 1);
             this.tableLayoutPanel5.Controls.Add(this.label6, 0, 0);
             this.tableLayoutPanel5.Location = new System.Drawing.Point(355, 10);
-            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(1);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.863946F));
@@ -218,7 +225,7 @@
             this.columnHeader6});
             this.listView2.GridLines = true;
             this.listView2.Location = new System.Drawing.Point(1, 37);
-            this.listView2.Margin = new System.Windows.Forms.Padding(1);
+            this.listView2.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.listView2.Name = "listView2";
             this.listView2.Size = new System.Drawing.Size(270, 332);
             this.listView2.TabIndex = 3;
@@ -421,7 +428,7 @@
             this.listBox1.ItemHeight = 24;
             this.listBox1.Location = new System.Drawing.Point(3, 35);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(241, 316);
+            this.listBox1.Size = new System.Drawing.Size(241, 292);
             this.listBox1.TabIndex = 1;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -442,9 +449,9 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.Controls.Add(this.label3, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this.chart1, 0, 1);
+            this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel2, 0, 1);
             this.tableLayoutPanel6.Location = new System.Drawing.Point(-6, -5);
-            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(1);
+            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.18908F));
@@ -465,23 +472,103 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "Team Stats";
             // 
-            // chart1
+            // tableLayoutPanel2
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(3, 43);
-            this.chart1.Name = "chart1";
-            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(300, 300);
-            this.chart1.TabIndex = 2;
-            this.chart1.Text = "chart1";
-            this.chart1.Click += new System.EventHandler(this.chart1_Click);
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel13, 0, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(1, 41);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(667, 356);
+            this.tableLayoutPanel2.TabIndex = 2;
+            // 
+            // tableLayoutPanel13
+            // 
+            this.tableLayoutPanel13.ColumnCount = 1;
+            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel13.Controls.Add(this.listView5, 0, 0);
+            this.tableLayoutPanel13.Controls.Add(this.tableLayoutPanel14, 0, 1);
+            this.tableLayoutPanel13.Location = new System.Drawing.Point(1, 1);
+            this.tableLayoutPanel13.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.tableLayoutPanel13.Name = "tableLayoutPanel13";
+            this.tableLayoutPanel13.RowCount = 2;
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel13.Size = new System.Drawing.Size(331, 354);
+            this.tableLayoutPanel13.TabIndex = 0;
+            // 
+            // listView5
+            // 
+            this.listView5.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader7,
+            this.columnHeader8,
+            this.columnHeader9});
+            this.listView5.GridLines = true;
+            this.listView5.Location = new System.Drawing.Point(1, 1);
+            this.listView5.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.listView5.Name = "listView5";
+            this.listView5.Size = new System.Drawing.Size(329, 175);
+            this.listView5.TabIndex = 3;
+            this.listView5.UseCompatibleStateImageBehavior = false;
+            this.listView5.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Member";
+            this.columnHeader7.Width = 184;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "Name";
+            this.columnHeader8.Width = 246;
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "Points";
+            this.columnHeader9.Width = 170;
+            // 
+            // tableLayoutPanel14
+            // 
+            this.tableLayoutPanel14.ColumnCount = 1;
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel14.Controls.Add(this.label4, 0, 0);
+            this.tableLayoutPanel14.Controls.Add(this.richTextBox1, 0, 1);
+            this.tableLayoutPanel14.Location = new System.Drawing.Point(1, 178);
+            this.tableLayoutPanel14.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.tableLayoutPanel14.Name = "tableLayoutPanel14";
+            this.tableLayoutPanel14.RowCount = 2;
+            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.26923F));
+            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 81.73077F));
+            this.tableLayoutPanel14.Size = new System.Drawing.Size(329, 174);
+            this.tableLayoutPanel14.TabIndex = 4;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Comic Sans MS", 10F);
+            this.label4.Location = new System.Drawing.Point(121, 6);
+            this.label4.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(87, 19);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Total Points";
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(1, 32);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(327, 141);
+            this.richTextBox1.TabIndex = 1;
+            this.richTextBox1.Text = "";
             // 
             // studentChat
             // 
@@ -490,7 +577,7 @@
             this.studentChat.Controls.Add(this.sendButton);
             this.studentChat.Controls.Add(this.messageText);
             this.studentChat.Location = new System.Drawing.Point(4, 45);
-            this.studentChat.Margin = new System.Windows.Forms.Padding(1);
+            this.studentChat.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.studentChat.Name = "studentChat";
             this.studentChat.Size = new System.Drawing.Size(657, 377);
             this.studentChat.TabIndex = 8;
@@ -510,7 +597,7 @@
             // sendButton
             // 
             this.sendButton.Location = new System.Drawing.Point(564, 338);
-            this.sendButton.Margin = new System.Windows.Forms.Padding(1);
+            this.sendButton.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.sendButton.Name = "sendButton";
             this.sendButton.Size = new System.Drawing.Size(86, 32);
             this.sendButton.TabIndex = 2;
@@ -521,7 +608,7 @@
             // messageText
             // 
             this.messageText.Location = new System.Drawing.Point(5, 338);
-            this.messageText.Margin = new System.Windows.Forms.Padding(1);
+            this.messageText.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.messageText.Name = "messageText";
             this.messageText.ReadOnly = true;
             this.messageText.Size = new System.Drawing.Size(557, 32);
@@ -550,7 +637,7 @@
             this.tableLayoutPanel12.Controls.Add(this.listView3, 0, 1);
             this.tableLayoutPanel12.Controls.Add(this.label14, 0, 0);
             this.tableLayoutPanel12.Location = new System.Drawing.Point(2, 241);
-            this.tableLayoutPanel12.Margin = new System.Windows.Forms.Padding(1);
+            this.tableLayoutPanel12.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.tableLayoutPanel12.Name = "tableLayoutPanel12";
             this.tableLayoutPanel12.RowCount = 2;
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.81218F));
@@ -562,7 +649,7 @@
             // 
             this.listView3.GridLines = true;
             this.listView3.Location = new System.Drawing.Point(1, 29);
-            this.listView3.Margin = new System.Windows.Forms.Padding(1);
+            this.listView3.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.listView3.Name = "listView3";
             this.listView3.Size = new System.Drawing.Size(643, 105);
             this.listView3.TabIndex = 12;
@@ -667,7 +754,7 @@
             this.tableLayoutPanel3.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.listView4, 0, 1);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(1, 6);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(1);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.38461F));
@@ -694,7 +781,7 @@
             this.columnHeader10});
             this.listView4.GridLines = true;
             this.listView4.Location = new System.Drawing.Point(1, 34);
-            this.listView4.Margin = new System.Windows.Forms.Padding(1);
+            this.listView4.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.listView4.Name = "listView4";
             this.listView4.Size = new System.Drawing.Size(644, 184);
             this.listView4.TabIndex = 11;
@@ -756,7 +843,10 @@
             this.studentTeam.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel13.ResumeLayout(false);
+            this.tableLayoutPanel14.ResumeLayout(false);
+            this.tableLayoutPanel14.PerformLayout();
             this.studentChat.ResumeLayout(false);
             this.studentChat.PerformLayout();
             this.studentStat.ResumeLayout(false);
@@ -826,6 +916,14 @@
         private System.Windows.Forms.ListView listView4;
         private System.Windows.Forms.ColumnHeader columnHeader10;
         private System.Windows.Forms.ListView listView3;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
+        private System.Windows.Forms.ListView listView5;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }

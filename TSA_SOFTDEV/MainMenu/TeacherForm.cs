@@ -20,6 +20,7 @@ namespace Teacher_form
         private List<Student> _studentsInTeam = new List<Student>();
         private List<Student> sortedStudents = new List<Student>();
         private List<Team> _allTeams = new List<Team>();
+        private List<Team> sortedTeams = new List<Team>();
         private ProblemSet _currentlySelectedProblemSet;
         private Classroom _currentlySelectedClassrom;
         private Team _currentlySelectedTeam;
@@ -42,6 +43,7 @@ namespace Teacher_form
             LoadAllProblemSets();
             LoadTeacherClassrooms();
             LoadSavedProblemSets();
+            teamLeaderboard();
         }
 
         private void LoadTeacherClassrooms()
@@ -310,6 +312,30 @@ namespace Teacher_form
                 classLeaderboard(cur);
             }
         }
+
+        private void teamLeaderboard()
+        {
+            List<Team> allTeams = Core.Server.Integration.ExecuteGetAllTeams();
+            List<int> TeamScoreList = new List<int>();
+            sortedTeams = allTeams.OrderByDescending(x => x.score).ToList();
+            int count = 1;
+            for (int i = 0; i < allTeams.Count; i++)
+            {
+                ListViewItem lv1 = new ListViewItem(count.ToString());
+                string students = "";
+                Console.WriteLine("COUNT: " + sortedTeams[i].studentsList.Count);
+                foreach (Student stu in sortedTeams[i].studentsList)
+                {
+                    students += stu.Name + ", ";
+                    Console.WriteLine("SortedTeams: Student: " + stu.Name);
+                }
+                lv1.SubItems.Add(sortedTeams[i].Name + ": " + students);
+                lv1.SubItems.Add((sortedTeams[i].score).ToString());
+                listView3.Items.Add(lv1);
+                Console.WriteLine("SortedTeams Students: " + students);
+                Console.WriteLine("SortedTeams: " + sortedTeams[i].Name);
+            }
+        }
         private void classLeaderboard(Classroom classroom)
         {
             String[] IDstring = classroom.Students.Split(',');
@@ -329,17 +355,17 @@ namespace Teacher_form
             for (int i = 0; i < students.Count; i++)
             {
                 ListViewItem lv1 = new ListViewItem(count.ToString());
+                //lv1.Width 
                 string student = "";
                 Console.WriteLine("COUNT: " + sortedStudents.Count);
-                foreach (Student stu in sortedStudents)
-                {
-                    student += stu.Name + ", ";
-                }
-                lv1.SubItems.Add(sortedStudents[i].Name + ": " + students);
+
+                lv1.SubItems.Add(sortedStudents[i].Name);
                 lv1.SubItems.Add((sortedStudents[i].Points).ToString());
-                Console.WriteLine("SortedStudents TEACHER Students: " + students);
+                Console.WriteLine("SortedStudents TEACHER Students: " + student);
                 Console.WriteLine("SortedStudents TEACHER: " + sortedStudents[i].Name);
+                listView1.Items.Add(lv1);
             }
+        
         }
 
         private void button11_Click(object sender, EventArgs e)

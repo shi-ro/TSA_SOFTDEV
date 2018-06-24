@@ -29,8 +29,9 @@ namespace MainMenu
         }
         public bool CompareAnswer(string answer)
         {
-            Console.WriteLine(Core.External.Wolfram.GetSolution(HttpUtility.HtmlEncode($"{answer} == {Answer}")));
-            return false;
+            string s = Core.External.Wolfram.GetSolution(HttpUtility.HtmlEncode($"{answer} == {Answer}"));
+            Console.WriteLine();
+            return s.ToLower().Contains("yes");
         }
     }
 }

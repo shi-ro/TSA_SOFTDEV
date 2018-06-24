@@ -22,9 +22,12 @@ namespace MainMenu
         private BitmapTex _tex;
         private int _attempts = 0;
         private int _allotted = 3;
-        public Solver(ProblemSet problemSet)
+        private Student _student;
+        private Random r = new Random();
+        public Solver(ProblemSet problemSet, Student student)
         {
             InitializeComponent();
+            _student = student;
             _problemSet = problemSet;
         }
 
@@ -36,7 +39,7 @@ namespace MainMenu
 
         private string FormatQuestion(string question)
         {
-            return question.Replace("_","2");
+            return question.Replace("_",r.Next(11)+"");
         }
 
         private void Solver_Load(object sender, EventArgs e)
@@ -65,6 +68,20 @@ namespace MainMenu
             Thread thread = new Thread(() => 
             {
                 bool ans = _currentProblem.CompareAnswer(attempt);
+                string ret = "";
+                if (ans)
+                {
+                    ret = $"\n[ {attempt} ] \t Correct! (+{_problemSet.Points})\n";
+                    _student.changePoints(_problemSet.Points);
+                } else
+                {
+                    ret = $"\n[ {attempt} ] \t Incorrect ... \n";
+                }
+                richTextBox1.Invoke((MethodInvoker)delegate
+                {
+                    // Running on the UI thread
+                    richTextBox1.Text += ret;
+                });
             });
 
 
