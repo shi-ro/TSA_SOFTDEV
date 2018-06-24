@@ -16,6 +16,11 @@ namespace Core.Server
             return External.Wolfram.Connected();
         }
 
+        public static void ExecuteSaveProblemSet(ProblemSet ps)
+        {
+            SqlCommand cmdNew = new SqlCommand("", _connection);
+        }
+
         public static List<Student> ExecuteGetStudentsInTeam(int teamid)
         {
             String students = "";
@@ -156,8 +161,23 @@ namespace Core.Server
             SqlCommand cmdNew = new SqlCommand("SELECT Students.[Name] FROM Students WHERE Students.Id = " + id, _connection);
             cmdNew.CommandType = CommandType.Text;
 
+            String n = "";
+
             _connection.Open();
-            String n = cmdNew.ExecuteNonQuery() + "";
+            try
+            {
+                SqlDataReader reader = cmdNew.ExecuteReader();
+                while (reader.Read())
+                {
+                    n += reader[0] + "";
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("=========================");
+                Console.WriteLine(ex);
+            }
             _connection.Close();
 
             return ExecuteGetStudent(n);
@@ -412,6 +432,9 @@ namespace Core.Server
                 Console.WriteLine(ex);
             }
             _connection.Close();
+
+            if(userToReturn != null) { userToReturn.setStudentId(); }
+
             return userToReturn;
         }
 
