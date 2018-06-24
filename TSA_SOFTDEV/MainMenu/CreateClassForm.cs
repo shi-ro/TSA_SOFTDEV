@@ -13,9 +13,10 @@ namespace MainMenu
 {
     public partial class CreateClassForm : Form
     {
-        public Classroom CreatedClassroom;
+        public bool Created = false;
         public List<Student> added = new List<Student>();
         public List<Student> all = new List<Student>();
+        public string Name;
         public CreateClassForm()
         {
             InitializeComponent();
@@ -38,17 +39,8 @@ namespace MainMenu
 
         private void button3_Click(object sender, EventArgs e)
         {
-            string ids = "";
-            for(int i = 0; i < listBox1.Items.Count; i++)
-            {
-                added[i].setStudentId();
-                ids += added[i].Id;
-                if(i< listBox1.Items.Count-1)
-                {
-                    ids += ",";
-                }
-            }
-            CreatedClassroom = new Classroom(textBox2.Text,((TeacherForm)ParentForm).teacher.Name,ids,-1,"");//TEMPORARY ID USED HERE
+            Name = textBox2.Text;
+            Created = true;
             Close();
         }
 

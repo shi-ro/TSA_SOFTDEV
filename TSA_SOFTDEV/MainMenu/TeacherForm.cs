@@ -44,7 +44,7 @@ namespace Teacher_form
         private void LoadTeacherClassrooms()
         {
             //call server method
-
+            _classrooms = teacher.Classrooms;
             //update listbox
             if (_classrooms.Count > 0)
             {
@@ -228,11 +228,14 @@ namespace Teacher_form
                 createClass.FormClosing += (object se, FormClosingEventArgs ei) =>
                 {
                     //create class if return is not null
-                    if(createClass.CreatedClassroom!=null)
+                    if(createClass.Created!=null)
                     {
                         //create classroom
-                        Core.Server.Integration.ExecuteAddClassroom("CLASSROOM PARAMS GO HERE");
+                        Core.Server.Integration.ExecuteAddClassroom(createClass.Name,teacher,createClass.added,new List<ProblemSet>());
+                        // add classroom to teacher
+
                         // visually create classroom
+                        listBox1.Items.Add(createClass.Name);
                     }
                     classCreatiorOpened = false;
                 };
@@ -256,6 +259,7 @@ namespace Teacher_form
 
             //add team visually
             _allTeams.Add(team);
+            listBox5.Items.Add(name);
         }
     }
 }

@@ -203,12 +203,6 @@
             // 
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 24;
-            this.listBox1.Items.AddRange(new object[] {
-            "Period 1",
-            "Period 2",
-            "Period 3",
-            "Period 6",
-            "Afterschool"});
             this.listBox1.Location = new System.Drawing.Point(3, 26);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(113, 244);
