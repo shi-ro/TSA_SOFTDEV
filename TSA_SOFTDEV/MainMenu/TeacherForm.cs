@@ -40,8 +40,7 @@ namespace Teacher_form
             _classrooms = teacher.Classrooms;
             LoadAllTeams();
             LoadAllProblemSets();
-
-
+            LoadTeacherClassrooms();
         }
 
         private void LoadTeacherClassrooms()
@@ -53,7 +52,10 @@ namespace Teacher_form
             {
                 foreach (Classroom cs in _classrooms)
                 {
-                    listBox1.Items.Add(cs.Name);
+                    if(cs!=null)
+                    {
+                        listBox1.Items.Add(cs.Name);
+                    }
                 }
             }
         }
@@ -190,7 +192,7 @@ namespace Teacher_form
                     if(addStudent.ReturnedStudent!=null)
                     {
                         // add student to team
-                        
+                        _currentlySelectedTeam.addStudent(addStudent.ReturnedStudent);
                         // visually add student 
                         listBox4.Items.Add(addStudent.ReturnedStudent.Name);
                     }

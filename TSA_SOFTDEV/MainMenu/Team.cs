@@ -15,18 +15,30 @@ namespace MainMenu
         public int score;
         public double weightParticipation;
 
+        public Team(String name, String stud)
+        {
+            Name = name;
+            Students = stud;
+            weightParticipation = .6;
+        }
+
         public Team(String name, String stud, int i)
         {
             Name = name;
             Students = stud;
-            Id = i;
             weightParticipation = .6;
+            Id = i;
         }
 
         public void Initialize()
         {
             studentsList = getTeamMembers("" + Id);
             score = calculateScore();
+        }
+
+        public void setId()
+        {
+            Id = Core.Server.Integration.ExecuteGetTeamId(this);
         }
 
         public void addStudent(Student bob)

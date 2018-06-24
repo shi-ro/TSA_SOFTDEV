@@ -26,11 +26,19 @@ namespace MainMenu
 
         public void Initialize()
         {
+            Console.WriteLine("Initializing ...");
+            Console.WriteLine("C -> " +_classrooms);
+            Console.WriteLine("S -> "+_s);
             string[] cls = _classrooms.Split(',');
             for (int i = 0; i < cls.Length; i++)
             {
-                Classrooms.Add(Core.Server.Integration.ExecuteGetClassroom(Int32.Parse(cls[i])));
+                Classroom cl = Core.Server.Integration.ExecuteGetClassroom(Int32.Parse(cls[i]));
+                if(cl!=null)
+                {
+                    Classrooms.Add(cl);
+                }
             }
+
             string[] sve = _s.Split(',');
             for (int i = 0; i < sve.Length; i++)
             {
