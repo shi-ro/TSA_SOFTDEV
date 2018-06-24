@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.teacherFormTab = new System.Windows.Forms.TabControl();
             this.studentLeaderboard = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -59,7 +62,7 @@
             this.studentTeam = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.studentChat = new System.Windows.Forms.TabPage();
             this.chatTextBox = new System.Windows.Forms.RichTextBox();
             this.sendButton = new System.Windows.Forms.Button();
@@ -92,6 +95,7 @@
             this.tableLayoutPanel7.SuspendLayout();
             this.studentTeam.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.studentChat.SuspendLayout();
             this.studentStat.SuspendLayout();
             this.tableLayoutPanel12.SuspendLayout();
@@ -438,7 +442,7 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.Controls.Add(this.label3, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this.richTextBox2, 0, 1);
+            this.tableLayoutPanel6.Controls.Add(this.chart1, 0, 1);
             this.tableLayoutPanel6.Location = new System.Drawing.Point(-6, -5);
             this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(1);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
@@ -447,6 +451,7 @@
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 89.81092F));
             this.tableLayoutPanel6.Size = new System.Drawing.Size(669, 399);
             this.tableLayoutPanel6.TabIndex = 10;
+            this.tableLayoutPanel6.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel6_Paint_1);
             // 
             // label3
             // 
@@ -460,14 +465,23 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "Team Stats";
             // 
-            // richTextBox2
+            // chart1
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(1, 41);
-            this.richTextBox2.Margin = new System.Windows.Forms.Padding(1);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(667, 357);
-            this.richTextBox2.TabIndex = 2;
-            this.richTextBox2.Text = "";
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(3, 43);
+            this.chart1.Name = "chart1";
+            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(300, 300);
+            this.chart1.TabIndex = 2;
+            this.chart1.Text = "chart1";
+            this.chart1.Click += new System.EventHandler(this.chart1_Click);
             // 
             // studentChat
             // 
@@ -742,6 +756,7 @@
             this.studentTeam.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.studentChat.ResumeLayout(false);
             this.studentChat.PerformLayout();
             this.studentStat.ResumeLayout(false);
@@ -766,7 +781,6 @@
         private System.Windows.Forms.TabPage studentStat;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.RichTextBox richTextBox2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.RichTextBox richTextBox3;
         private System.Windows.Forms.Label label1;
@@ -812,5 +826,6 @@
         private System.Windows.Forms.ListView listView4;
         private System.Windows.Forms.ColumnHeader columnHeader10;
         private System.Windows.Forms.ListView listView3;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }

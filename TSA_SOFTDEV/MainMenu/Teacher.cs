@@ -36,17 +36,24 @@ namespace MainMenu
             {
                 SavedProblemSets.Add(Core.Server.Integration.ExecuteGetProblemSetById(sve[i]));
             }
-        }
+}
 
-        public void setTeacherId()
-        {
-            Id = Core.Server.Integration.ExecuteGetTeacherId(this);
-        }
+public void setTeacherId()
+{
+    Id = Core.Server.Integration.ExecuteGetTeacherId(this);
+}
 
+<<<<<<< HEAD
         public void saveProblemSet(ProblemSet toSave)
         {
             SavedProblemSets.Add(toSave);
         }
+=======
+public void saveProblemSet(String name)
+{
+
+}
+>>>>>>> e7b47ccfd95e989df12c69e29ac96a45c17513e7
     }
 }
 
