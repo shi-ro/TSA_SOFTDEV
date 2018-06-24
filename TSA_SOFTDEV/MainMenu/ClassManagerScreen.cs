@@ -19,6 +19,7 @@ namespace MainMenu
         public ClassManagerScreen()
         {
             InitializeComponent();
+            all = Core.Server.Integration.ExecuteGetStudents();
         }
 
         private void tableLayoutPanel4_Paint(object sender, PaintEventArgs e)
