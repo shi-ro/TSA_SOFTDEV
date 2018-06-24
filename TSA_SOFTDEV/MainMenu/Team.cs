@@ -62,7 +62,14 @@ namespace MainMenu
             List<Student> students = new List<Student>();
             for (int i = 0; i < IDstring.Length; i++)
             {
-                students.Add(Core.Server.Integration.ExecuteGetStudentById(Int32.Parse(IDstring[i])));
+                try
+                {
+                    students.Add(Core.Server.Integration.ExecuteGetStudentById(Int32.Parse(IDstring[i])));
+                }
+                catch
+                {
+                    Console.WriteLine("Error: getTeamMembers()");
+                }
             }
             return students;
         }
