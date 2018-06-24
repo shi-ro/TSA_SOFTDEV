@@ -33,6 +33,11 @@ namespace MainMenu
             }
         }
 
+        public void assignProblemSet(ProblemSet ps)
+        {
+            AssignedProblemSets.Add(ps);
+        }
+
         public void setClassroomId()
         {
             Id = Core.Server.Integration.ExecuteGetClassroomIdByName(Name);
