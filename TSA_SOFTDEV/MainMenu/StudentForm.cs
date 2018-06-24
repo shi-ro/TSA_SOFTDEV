@@ -36,7 +36,7 @@ namespace TSA_SOFTDEV
             //string teammateIDs = team.Students;
             
 
-            t = Core.Server.Integration.ExecuteGetTeacherByStudent(s);
+            //t = Core.Server.Integration.ExecuteGetTeacherByStudent(s);
             
             this.Size = new Size(692, 505);
             teacherFormTab.Size = new Size(this.Width - 30, this.Height - 10);
@@ -46,7 +46,7 @@ namespace TSA_SOFTDEV
 
             Console.WriteLine("SETUPCHAT");
 
-            this.chat = new Chat();
+            this.chat = new Chat(s.Name, "" + s.Id, "" + team.Id);
             // below code commented out because function has gone missing in the sea of git
 
             chatTextBox.Text = "LOADING...";
@@ -153,7 +153,8 @@ namespace TSA_SOFTDEV
                         filteredMessage = filteredMessage.Split(':')[1];
                         chatTextBox.Invoke((MethodInvoker)delegate {
                             // Running on the UI thread
-                            chatTextBox.Text += ("\n [Other User]: " + filteredMessage);
+                            chatTextBox.SelectionColor = Color.Black;
+                            chatTextBox.Text += ("\n [OtherUser]: " + filteredMessage);
                         });
 
                     }
@@ -163,7 +164,9 @@ namespace TSA_SOFTDEV
                         filteredMessage = filteredMessage.Split(':')[1];
                         chatTextBox.Invoke((MethodInvoker)delegate {
                             // Running on the UI thread
+                            chatTextBox.SelectionColor = Color.ForestGreen;
                             chatTextBox.Text += ("\n [Me]: " + filteredMessage);
+                            chatTextBox.SelectionColor = Color.Black;
                         });
                     }
                     //Add to chat box

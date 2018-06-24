@@ -40,11 +40,11 @@ namespace MainMenu
         private StreamReader reader;
         private StreamWriter writer;
 
-        public Chat()
+        public Chat(string name, string userID, string TEAMID)
         {
-            this.user = "DANIELA";
-            this.nick = "bfkbqewheqwbjk"; //Get user name
-            this.channel = "#Mathedonia_TEAM1"; //replace with actual Team ID
+            this.user = name;
+            this.nick = userID; //Get user name
+            this.channel = "#Mathedonia_" + TEAMID; //replace with actual Team ID
             this.server = "chat.freenode.net";
             this.port = "6667";
             inQueue = new ConcurrentQueue<string>();
@@ -52,21 +52,6 @@ namespace MainMenu
             messages = new List<string>();
             var networkThread = new Thread(DoConnect);
             networkThread.Start();
-
-            //TcpClient socket = new TcpClient(server, 6667);
-            //socket.ReceiveBufferSize = 1024;
-            //Console.WriteLine("Connected");
-            //NetworkStream stream = socket.GetStream();
-            //StreamReader reader = new StreamReader(stream);
-            //StreamWriter writer = new StreamWriter(stream) { NewLine = "\r\n", AutoFlush = true };
-            //writer.WriteLine("PASS 12345");
-            //writer.WriteLine("NICK " + nick);
-            //writer.WriteLine("USER guest 0 * :" + user);
-            //writer.WriteLine("JOIN " + channel);
-            //writer.Flush();
-            //System.Threading.Thread.Sleep(5000);
-            
-            //Connect(server);
         }
 
         private void DoConnect()
@@ -77,7 +62,7 @@ namespace MainMenu
             NetworkStream stream = socket.GetStream();
             reader = new StreamReader(stream);
             writer = new StreamWriter(stream) { NewLine = "\r\n", AutoFlush = true };
-            writer.WriteLine("PASS 12345");
+            writer.WriteLine("PASS 12345"); //might need to change this
             writer.WriteLine("NICK " + nick);
             writer.WriteLine("USER guest 0 * :" + user);
             writer.WriteLine("JOIN " + channel);
@@ -112,6 +97,7 @@ namespace MainMenu
             var networkThread = new Thread(DoMessage);
             networkThread.Start(m);
         }
+        //Probbably dont neeed
         public void joinChannel()
         {
             string channel = "TEAM1"; //INSERT CHANNEL NAME
@@ -134,9 +120,8 @@ namespace MainMenu
                 {
                     string message;
                     Boolean m = inQueue.TryDequeue(out message);
-                    
                     Console.WriteLine("MessageTask: " + message);
-                    string prefix = "";
+                    //string prefix = "";
                     /*if (message.CharAt(0) == ':')
                     { //indicates presense of a prefix
                         int spaceIndex = message.indexOf(' ');

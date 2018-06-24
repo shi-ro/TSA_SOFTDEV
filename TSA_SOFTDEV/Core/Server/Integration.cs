@@ -167,7 +167,7 @@ namespace Core.Server
             cmdNew.CommandType = CommandType.Text;
 
             _connection.Open();
-            String name = cmdNew.ExecuteNonQuery() + "";
+                   String name = cmdNew.ExecuteNonQuery() + "";
             _connection.Close();
 
             return Core.Server.Integration.ExecuteGetTeacher(name);
@@ -213,7 +213,6 @@ namespace Core.Server
 
             return (int)id;
         }
-
 
         public static void ExecuteAddTeacher(Teacher sturt)
         {
