@@ -131,7 +131,10 @@ namespace Teacher_form
                 listBox4.Items.Clear();
                 foreach(Student s in _studentsInTeam)
                 {
-                    listBox4.Items.Add(s.Name);
+                    if(s!=null)
+                    {
+                        listBox4.Items.Add(s.Name);
+                    }
                 }
                 //load team stats
             }
@@ -183,10 +186,10 @@ namespace Teacher_form
                 {
                     if(addStudent.ReturnedStudent!=null)
                     {
-                        // add student
-
+                        // add student to team
+                        
                         // visually add student 
-
+                        listBox4.Items.Add(addStudent.ReturnedStudent.Name);
                     }
                     addStudentOpened = false;
                 };
@@ -199,7 +202,7 @@ namespace Teacher_form
         {
             if(listBox4.Items.Count >= 0)
             {
-                //remove student
+                //remove student from team
 
                 //remove student visually
                 listBox4.Items.RemoveAt(listBox4.SelectedIndex);
@@ -243,6 +246,7 @@ namespace Teacher_form
                             }
                         }
                         Classroom cs = new Classroom(createClass.Name,teacher.Name,str,-1,"");
+                        _classrooms.Add(cs);
                         teacher.addClassroom(cs);
                         // visually create classroom
                         listBox1.Items.Add(createClass.Name);
@@ -266,7 +270,7 @@ namespace Teacher_form
             string name = RandomId(10);
             Team team = new Team(name,"",-1);
             //add team 
-
+            Core.Server.Integration.ExecuteAddTeam(team);
             //add team visually
             _allTeams.Add(team);
             listBox5.Items.Add(name);
@@ -287,7 +291,25 @@ namespace Teacher_form
         {
             if (listBox1.SelectedIndex >= 0)
             {
+                Classroom cur = (Classroom)_classrooms[listBox1.SelectedIndex];
                 //write to stats screen
+                string stats = "";
+                stats += $"Name : {cur.Name}\n";
+                stats += $"Teacher : {cur.TeacherName}\n";
+                stats += $"ID : {cur.Id}\n";
+                stats += $"Students : \n{cur.Students.Replace(",","\n\t")}\n";
+            }
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            if(listBox5.SelectedIndex>=0)
+            {
+                //remove team
+
+                //remove team visually
+                _allTeams.Remove((Team)listBox5.Items[listBox5.SelectedIndex]);
+                listBox5.Items.RemoveAt(listBox5.SelectedIndex);
             }
         }
     }

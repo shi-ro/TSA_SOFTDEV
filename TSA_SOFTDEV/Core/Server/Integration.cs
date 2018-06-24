@@ -250,7 +250,10 @@ namespace Core.Server
             }
             _connection.Close();
 
-            toReturn.Initialize();
+            if(toReturn!=null)
+            {
+                toReturn.Initialize();
+            }
             return toReturn;
         }
 
