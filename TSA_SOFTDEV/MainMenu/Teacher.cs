@@ -53,6 +53,13 @@ namespace MainMenu
             SavedProblemSets.Add(toSave);
             Core.Server.Integration.ExecuteSaveProblemSet(this,toSave);
         }
+
+        public void addClassroom(Classroom cls)
+        {
+            cls.setClassroomId();
+            Classrooms.Add(cls);
+            Core.Server.Integration.ExecuteAddClassroomToTeacher(cls, this);
+        }
     }
 }
 

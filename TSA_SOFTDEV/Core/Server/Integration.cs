@@ -16,6 +16,38 @@ namespace Core.Server
             return External.Wolfram.Connected();
         }
 
+        public static void ExecuteAddClassroomToTeacher(Classroom cls, Teacher teach)
+        {
+            SqlCommand cmdString = new SqlCommand("SELECT Teachers.Classrooms FROM Teachers WHERE Teachers.Id = " + teach.Id, _connection);
+            cmdString.CommandType = CommandType.Text;
+
+            String classesStringForm = "";
+
+            _connection.Open();
+            try
+            {
+                SqlDataReader reader = cmdString.ExecuteReader();
+                while (reader.Read())
+                {
+                    classesStringForm = reader[0] + "";
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("AA=========================AA");
+                Console.WriteLine(ex);
+            }
+            _connection.Close();
+
+            SqlCommand cmdNew = new SqlCommand("UPDATE Teachers SET Classrooms = '" + classesStringForm + "," + teach.Id + "' WHERE Teachers.Id = " + teach.Id, _connection);
+            cmdNew.CommandType = CommandType.Text;
+
+            _connection.Open();
+            cmdNew.ExecuteNonQuery();
+            _connection.Close();
+        }
+
         public static void ExecuteSaveProblemSet(Teacher teach, ProblemSet ps)
         {
             SqlCommand cmdString = new SqlCommand("SELECT Teachers.SavedProblemSets FROM Teachers WHERE Teachers.Id = " + teach.Id, _connection);
@@ -190,8 +222,7 @@ namespace Core.Server
                 SqlDataReader reader = cmdNew.ExecuteReader();
                 while (reader.Read())
                 {
-                    toReturn = new Clas
-                        sroom(reader[0] + "", reader[1] + "", reader[2] + "", id, reader[3] + "");
+                    toReturn = new Classroom(reader[0] + "", reader[1] + "", reader[2] + "", id, reader[3] + "");
                 }
                 reader.Close();
             }
