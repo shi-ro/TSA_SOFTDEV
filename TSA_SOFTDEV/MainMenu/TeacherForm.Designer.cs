@@ -708,6 +708,7 @@
             this.button8.TabIndex = 5;
             this.button8.Text = "Add Student";
             this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button10
             // 
@@ -732,6 +733,7 @@
             this.button9.TabIndex = 6;
             this.button9.Text = "Remove Student";
             this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // tableLayoutPanel3
             // 
