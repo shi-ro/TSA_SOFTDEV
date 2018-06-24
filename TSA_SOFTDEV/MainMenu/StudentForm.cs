@@ -54,6 +54,7 @@ namespace TSA_SOFTDEV
             networkThread.Start();
 
             DoStudentLeaderboard();
+            DoTeamLeaderboard();
 
             //names.Add(Core.Server.Integration.ExecuteGetUsers());
 
@@ -69,9 +70,18 @@ namespace TSA_SOFTDEV
             for (int i = 0; i < allTeams.Count; i++)
             {
                 ListViewItem lv1 = new ListViewItem(count.ToString());
-                lv1.SubItems.Add(sortedTeams[i].Name);
+                string students = "";
+                Console.WriteLine("COUNT: " + sortedTeams[i].studentsList.Count);
+                foreach (Student stu in sortedTeams[i].studentsList)
+                {
+                    students += stu.Name + ", ";
+                    Console.WriteLine("SortedTeams: Student: " + stu.Name);
+                }
+                lv1.SubItems.Add(sortedTeams[i].Name + ": " + students);
                 lv1.SubItems.Add((sortedTeams[i].score).ToString());
                 listView2.Items.Add(lv1);
+                Console.WriteLine("SortedTeams Students: " + students);
+                Console.WriteLine("SortedTeams: " + sortedTeams[i].Name);
             }
             
         }
@@ -132,6 +142,7 @@ namespace TSA_SOFTDEV
                     chat.messages.Remove(message);
                     //FILTER
                     string filteredMessage = message;
+                    string otheruser = "";
                     if (message.Contains("End of /NAMES list")) //ONCE Loaded get rid of loaded sign
                     {
                         Console.WriteLine("LOADING SHOULD STOP");
@@ -150,11 +161,13 @@ namespace TSA_SOFTDEV
                     if (message.Contains("PRIVMSG #"))
                     {
                         filteredMessage = message.Split('#')[1];
+                        otheruser = message.Split('#')[0];
                         filteredMessage = filteredMessage.Split(':')[1];
+                        otheruser = otheruser.Split('!')[0];
+                        otheruser = otheruser.Substring(1);
                         chatTextBox.Invoke((MethodInvoker)delegate {
-                            // Running on the UI thread
-                            chatTextBox.SelectionColor = Color.Black;
-                            chatTextBox.Text += ("\n [OtherUser]: " + filteredMessage);
+                            // Running on the UI thread                           
+                            chatTextBox.Text += ("\n [" + otheruser + "]: " + filteredMessage);
                         });
 
                     }
@@ -164,9 +177,7 @@ namespace TSA_SOFTDEV
                         filteredMessage = filteredMessage.Split(':')[1];
                         chatTextBox.Invoke((MethodInvoker)delegate {
                             // Running on the UI thread
-                            chatTextBox.SelectionColor = Color.ForestGreen;
                             chatTextBox.Text += ("\n [Me]: " + filteredMessage);
-                            chatTextBox.SelectionColor = Color.Black;
                         });
                     }
                     //Add to chat box

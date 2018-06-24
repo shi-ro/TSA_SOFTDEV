@@ -42,9 +42,11 @@ namespace MainMenu
 
         public Chat(string name, string userID, string TEAMID)
         {
-            this.user = name;
-            this.nick = userID; //Get user name
-            this.channel = "#Mathedonia_" + TEAMID; //replace with actual Team ID
+
+            this.user = userID;//"DANIELA";
+            string nickname = name.Replace(" ", "");
+            this.nick = nickname + " MATHfgytfghjhfdrtyjhguygfvb";//name + " ?? Mathedonia";   //Get user name
+            this.channel = "#Mathedonia_" + TEAMID;// + TEAMID; //replace with actual Team ID
             this.server = "chat.freenode.net";
             this.port = "6667";
             inQueue = new ConcurrentQueue<string>();
