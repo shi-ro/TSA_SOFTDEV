@@ -13,6 +13,7 @@ namespace Teacher_form
 {
     public partial class TeacherForm : Form
     {
+        private Random random = new Random();
         private List<Classroom> _classrooms = new List<Classroom>();
         private List<ProblemSet> _allProblemSets = new List<ProblemSet>();
         private List<ProblemSet> _savedProblemSets = new List<ProblemSet>();
@@ -183,6 +184,9 @@ namespace Teacher_form
                     if(addStudent.ReturnedStudent!=null)
                     {
                         // add student
+
+                        // visually add student 
+
                     }
                     addStudentOpened = false;
                 };
@@ -196,6 +200,9 @@ namespace Teacher_form
             if(listBox4.Items.Count >= 0)
             {
                 //remove student
+
+                //remove student visually
+                listBox4.Items.RemoveAt(listBox4.SelectedIndex);
             }
         }
 
@@ -225,12 +232,30 @@ namespace Teacher_form
                     {
                         //create classroom
                         Core.Server.Integration.ExecuteAddClassroom("CLASSROOM PARAMS GO HERE");
+                        // visually create classroom
                     }
                     classCreatiorOpened = false;
                 };
                 classCreatiorOpened = true;
                 createClass.Show();
             }
+        }
+
+        public string RandomId(int length)
+        {
+            const string chars = "mathedoniMATHEDONI.";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            string name = RandomId(10);
+            Team team = new Team(name,"",-1);
+            //add team 
+
+            //add team visually
+            _allTeams.Add(team);
         }
     }
 }
