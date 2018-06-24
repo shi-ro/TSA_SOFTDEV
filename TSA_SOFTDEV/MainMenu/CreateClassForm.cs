@@ -39,6 +39,7 @@ namespace MainMenu
 
         private void button3_Click(object sender, EventArgs e)
         {
+
             Name = textBox2.Text;
             Created = true;
             Close();

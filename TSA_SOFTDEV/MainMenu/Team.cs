@@ -50,7 +50,6 @@ namespace MainMenu
 
             }
             int avgPercent = 1 / teammates.Count;
-            double buffer = .05;
             double totalDisplacement = 0;
             for (int i = 0; i < teammates.Count; i++)
             {

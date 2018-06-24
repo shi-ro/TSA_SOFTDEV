@@ -186,6 +186,7 @@
             this.button22.TabIndex = 6;
             this.button22.Text = "Delete Class";
             this.button22.UseVisualStyleBackColor = false;
+            this.button22.Click += new System.EventHandler(this.button22_Click);
             // 
             // label6
             // 
@@ -207,6 +208,7 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(113, 244);
             this.listBox1.TabIndex = 1;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // tableLayoutPanel15
             // 
