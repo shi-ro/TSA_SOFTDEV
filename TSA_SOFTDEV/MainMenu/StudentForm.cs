@@ -55,15 +55,34 @@ namespace TSA_SOFTDEV
 
             DoStudentLeaderboard();
             ShowTeamMembers(student);
+<<<<<<< HEAD
             DoTeamLeaderboard();
+=======
+            DoTeamLeaderboard();
+            
+
+            
+=======
+
+            ShowTeamMembers(student);
+
+            DoTeamLeaderboard();
+>>>>>>> 93585d7b841fa35530cce592df3260924113b341
+>>>>>>> 716b13af24f79fe248d15e352aed62787a51a400
 
             //names.Add(Core.Server.Integration.ExecuteGetUsers());
 
             //User bob = Core.Server.Integration.ExecuteGetUser("Bob test");
             //Console.WriteLine("bob's team is " + Core.Server.Integration.ExecuteGetUserTeam(bob.Name));
         }
+        private void ShowTotalPoints(int totalPoints)
+        {
+            String points = totalPoints.ToString();
+            richTextBox1.Text = points;
+        }
         private void ShowTeamMembers(Student student)
         {
+            int total = 0;
             Team users = Core.Server.Integration.ExecuteGetStudentTeam(student.Name);
             List<Student> teamList = users.studentsList;
             int count = 1;
@@ -74,7 +93,9 @@ namespace TSA_SOFTDEV
                 lv1.SubItems.Add((teamList[i].Points).ToString());
                 listView5.Items.Add(lv1);
                 //listView3.Items.Add(lv2);
-
+                total += teamList[i].Points;
+                
+                /*
                 if (i < sortedUsers.Count() - 1)
                 {
                     if (teamList[i].Points == teamList[i + 1].Points)
@@ -95,7 +116,9 @@ namespace TSA_SOFTDEV
                         count++;
                     }
                 }
-            }
+                */
+            } 
+            ShowTotalPoints(total);
 
 
 
