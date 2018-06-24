@@ -33,10 +33,16 @@ namespace Core.Server
             String problems = "";
             for(int i = 0; i < cls.AssignedProblemSets.Count; i++)
             {
-
+                problems += ExecuteGetProblemSetIdByName(cls.AssignedProblemSets[i].Name) + "";
+                if(i < cls.AssignedProblemSets.Count-1) { problems += ","; }
             }
 
-            SqlCommand cmdNew = new SqlCommand("UPDATE Classrooms SET Classrooms.AssignedProblemSets = '1' WHERE Id = 4;", _connection);
+            SqlCommand cmdNew = new SqlCommand("UPDATE Classrooms SET Classrooms.AssignedProblemSets = '" + "," + ExecuteGetProblemSetIdByName(assignment.Name) + "' WHERE Id = " + cls.Id + ";", _connection);
+            cmdNew.CommandType = CommandType.Text;
+
+            _connection.Open();
+            cmdNew.ExecuteNonQuery();
+            _connection.Close();
         }
 
         public static void ExecuteAddStudentToTeam(Team tm)
