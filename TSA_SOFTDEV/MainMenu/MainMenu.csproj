@@ -71,7 +71,11 @@
     <Compile Include="CreateClassForm.cs">
       <SubType>Form</SubType>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="CreateClassForm.Designer.cs">
+=======
+    <Compile Include="CreateClassForm.designer.cs">
+>>>>>>> 68ebe708353c645b185b99fe5d0001c631cab945
       <DependentUpon>CreateClassForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginScreen.cs">

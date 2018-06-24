@@ -150,9 +150,26 @@ namespace Core.Server
             return allTeams;
         }
 
-        public static void ExecuteAddClassroom(String name)
+        public static void ExecuteAddClassroom(String name, Teacher teach, List<Student> students, List<ProblemSet> problemSets)
         {
+            String studentList = "";
+            for(int i = 0; i < students.Count; i++)
+            {
+                studentList += students[i].Id + "";
+            }
 
+            String problemList = "";
+            for(int a = 0; a < problemSets.Count; a++)
+            {
+                problemList += ExecuteGetProblemSetIdByName(problemSets[a].Name) + "";
+            }
+
+            SqlCommand cmdNew = new SqlCommand("INSERT INTO Classrooms (Classrooms.[Name], Classrooms.Teacher, Classrooms.Students, ClassRooms.AssignedProblemSets) VALUES ('" + name + "', '" + teach.Id + "', '" + studentList + "', '" + problemList + "')", _connection);
+            cmdNew.CommandType = CommandType.Text;
+
+            _connection.Open();
+            cmdNew.ExecuteNonQuery();
+            _connection.Close();
         }
 
         public static Classroom ExecuteGetClassroom(int id)
