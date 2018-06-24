@@ -233,7 +233,17 @@ namespace Teacher_form
                         //create classroom
                         Core.Server.Integration.ExecuteAddClassroom(createClass.Name,teacher,createClass.added,new List<ProblemSet>());
                         // add classroom to teacher
-
+                        string str = "";
+                        for(int i = 0; i < createClass.added.Count; i++)
+                        {
+                            str += createClass.added[i].Name;
+                            if(i< createClass.added.Count-1)
+                            {
+                                str += ",";
+                            }
+                        }
+                        Classroom cs = new Classroom(createClass.Name,teacher.Name,str,-1,"");
+                        teacher.addClassroom(cs);
                         // visually create classroom
                         listBox1.Items.Add(createClass.Name);
                     }
@@ -277,7 +287,7 @@ namespace Teacher_form
         {
             if (listBox1.SelectedIndex >= 0)
             {
-
+                //write to stats screen
             }
         }
     }
