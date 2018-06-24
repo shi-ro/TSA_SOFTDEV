@@ -23,6 +23,8 @@ namespace Teacher_form
         private Team _currentlySelectedTeam;
         public bool setCreatorOpened = false;
         public bool addStudentOpened = false;
+        public bool classManagementOpened = false;
+        public bool classCreatiorOpened = false;
         public Teacher teacher;
         public TeacherForm(Teacher teacher)
         {
@@ -124,7 +126,12 @@ namespace Teacher_form
             {
                 _currentlySelectedTeam = _allTeams[listBox5.SelectedIndex];
                 //load students in team
-
+                _studentsInTeam = Core.Server.Integration.ExecuteGetStudentsInTeam(_currentlySelectedTeam.Id);
+                listBox4.Items.Clear();
+                foreach(Student s in _studentsInTeam)
+                {
+                    listBox4.Items.Add(s.Name);
+                }
                 //load team stats
             }
         }
@@ -160,7 +167,10 @@ namespace Teacher_form
                     {
                         // add student
                     }
+                    addStudentOpened = false;
                 };
+                addStudentOpened = true;
+                addStudent.Show();
             }
         }
 
@@ -168,7 +178,41 @@ namespace Teacher_form
         {
             if(listBox4.Items.Count >= 0)
             {
+                //remove student
+            }
+        }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if(!classManagementOpened)
+            {
+                ClassManagerScreen classManager = new ClassManagerScreen();
+                classManager.FormClosing += (object se, FormClosingEventArgs ei) => 
+                {
+                    classManagementOpened = false;
+                };
+                classManagementOpened = true;
+                classManager.Show();
+            }
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            if(!classCreatiorOpened)
+            {
+                CreateClassForm createClass = new CreateClassForm();
+                createClass.FormClosing += (object se, FormClosingEventArgs ei) =>
+                {
+                    //create class if return is not null
+                    if(createClass.CreatedClassroom!=null)
+                    {
+                        //create classroom
+                        Core.Server.Integration.ExecuteAddClassroom("CLASSROOM PARAMS GO HERE");
+                    }
+                    classCreatiorOpened = false;
+                };
+                classCreatiorOpened = true;
+                createClass.Show();
             }
         }
     }

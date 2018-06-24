@@ -15,26 +15,34 @@ namespace Core.Server
         {
             return External.Wolfram.Connected();
         }
-
+        
         public static List<Student> ExecuteGetStudentsInTeam(int teamid)
         {
             String students = "";
-            List<Student> listToReturn = null;
-
-            SqlCommand cmdOne = new SqlCommand("SELECT Teams.Students FROM Teams WHERE Teams.Id = " + teamid, _connection);
-            cmdOne.CommandType = CommandType.Text;
-
+            List<Student> listToReturn = new List<Student>();
+            SqlCommand cmdString = new SqlCommand("SELECT [TeamStudents] FROM Teams WHERE Teams.[Id] = "+teamid, _connection);
+            cmdString.CommandType = CommandType.Text;
             _connection.Open();
-            students = cmdOne.ExecuteNonQuery() + "";
-            _connection.Close();
-
-            String[] stringList = students.Split(',');
-
-            for(int i = 0; i < stringList.Length; i++)
+            try
             {
-                listToReturn.Add(Core.Server.Integration.ExecuteGetStudent(stringList[i]));
+                SqlDataReader reader = cmdString.ExecuteReader();
+                while (reader.Read())
+                {
+                    students = reader[0] + "";
+                }
+                reader.Close();
             }
-
+            catch (Exception ex)
+            {
+                Console.WriteLine("AA=========================AA");
+                Console.WriteLine(ex);
+            }
+            _connection.Close();
+            string[] stringList = students.Split(',');
+            for (int i = 0; i < stringList.Length; i++)
+            {
+                listToReturn.Add(ExecuteGetStudent(stringList[i]));
+            }
             return listToReturn;
         }
 
@@ -82,7 +90,7 @@ namespace Core.Server
 
             List<Team> allTeams = new List<Team>(num);
 
-            SqlCommand cmdTwo = new SqlCommand("SELECT Teams.Id, Teams.[Name], Teams.Students FROM Teams", _connection);
+            SqlCommand cmdTwo = new SqlCommand("SELECT Teams.Id, Teams.[Name], Teams.TeamStudents FROM Teams", _connection);
             cmdTwo.CommandType = CommandType.Text;
 
             _connection.Open();
@@ -300,7 +308,7 @@ namespace Core.Server
             int teamid = Core.Server.Integration.ExecuteGetStudent(username).TeamId;
             Team userteam = null;
 
-            SqlCommand scndCmd = new SqlCommand("SELECT Teams.Id, Teams.[Name], Teams.Students FROM Teams WHERE  Teams.Id = " + teamid, _connection);
+            SqlCommand scndCmd = new SqlCommand("SELECT Teams.Id, Teams.[Name], Teams.TeamStudents FROM Teams WHERE  Teams.Id = " + teamid, _connection);
             scndCmd.CommandType = CommandType.Text;
 
             _connection.Open();
