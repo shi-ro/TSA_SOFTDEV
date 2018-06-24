@@ -22,6 +22,14 @@ namespace MainMenu
             weightParticipation = .6;
         }
 
+        public Team(String name, String stud, int i)
+        {
+            Name = name;
+            Students = stud;
+            weightParticipation = .6;
+            Id = i;
+        }
+
         public void Initialize()
         {
             studentsList = getTeamMembers("" + Id);
