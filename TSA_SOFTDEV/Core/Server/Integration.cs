@@ -16,6 +16,13 @@ namespace Core.Server
             return External.Wolfram.Connected();
         }
 
+        public static int ExecuteGetClassroomIdByName(String name)
+        {
+            SqlCommand cmdNew = new SqlCommand("SELECT Classrooms.Id FROM Classrooms WHERE Classrooms.[Name] = '" + name + "'", _connection);
+
+            return 0;
+        }
+
         public static void ExecuteAddTeam(Team newTeam)
         {
             SqlCommand cmdNew = new SqlCommand("INSERT INTO Teams (Teams.[Name], Teams.TeamStudents) VALUES ('" + newTeam.Name + "', '" + newTeam.Students + "')", _connection);
@@ -50,7 +57,7 @@ namespace Core.Server
             }
             _connection.Close();
 
-            SqlCommand cmdNew = new SqlCommand("UPDATE Teachers SET Classrooms = '" + classesStringForm + "," + teach.Id + "' WHERE Teachers.Id = " + teach.Id, _connection);
+            SqlCommand cmdNew = new SqlCommand("UPDATE Teachers SET Classrooms = '" + classesStringForm + "," + cls.Id + "' WHERE Teachers.Id = " + teach.Id, _connection);
             cmdNew.CommandType = CommandType.Text;
 
             _connection.Open();
