@@ -155,7 +155,12 @@ namespace Core.Server
             String studentList = "";
             for(int i = 0; i < students.Count; i++)
             {
-                studentList += students[i].Id + "";
+                students[i].setStudentId();
+                studentList += students[i].Id;
+                if(i< students.Count-1)
+                {
+                    studentList += ",";
+                }
             }
 
             String problemList = "";
@@ -185,7 +190,8 @@ namespace Core.Server
                 SqlDataReader reader = cmdNew.ExecuteReader();
                 while (reader.Read())
                 {
-                    toReturn = new Classroom(reader[0] + "", reader[1] + "", reader[2] + "", id, reader[3] + "");
+                    toReturn = new Clas
+                        sroom(reader[0] + "", reader[1] + "", reader[2] + "", id, reader[3] + "");
                 }
                 reader.Close();
             }
