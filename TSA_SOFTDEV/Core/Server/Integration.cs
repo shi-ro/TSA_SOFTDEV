@@ -149,7 +149,7 @@ namespace Core.Server
             _connection.Close();
             return allTeams;
         }
-
+        
         public static void ExecuteAddClassroom(String name, Teacher teach, List<Student> students, List<ProblemSet> problemSets)
         {
             String studentList = "";
@@ -190,8 +190,7 @@ namespace Core.Server
                 SqlDataReader reader = cmdNew.ExecuteReader();
                 while (reader.Read())
                 {
-                    toReturn = new Clas
-                        sroom(reader[0] + "", reader[1] + "", reader[2] + "", id, reader[3] + "");
+                    toReturn = new Classroom(reader[0] + "", reader[1] + "", reader[2] + "", id, reader[3] + "");
                 }
                 reader.Close();
             }
