@@ -38,13 +38,12 @@ namespace MainMenu
                     Classrooms.Add(cl);
                 }
             }
-
             string[] sve = _s.Split(',');
             for (int i = 0; i < sve.Length; i++)
             {
                 SavedProblemSets.Add(Core.Server.Integration.ExecuteGetProblemSetById(sve[i]));
             }
-}
+        }
 
         public void setTeacherId()
         {

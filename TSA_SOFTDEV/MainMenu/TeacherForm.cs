@@ -42,7 +42,7 @@ namespace Teacher_form
             LoadAllTeams();
             LoadAllProblemSets();
             LoadTeacherClassrooms();
-
+            LoadSavedProblemSets();
             teamLeaderboard();
         }
 
@@ -66,7 +66,7 @@ namespace Teacher_form
         private void LoadSavedProblemSets()
         {
             //call server method
-
+            _savedProblemSets = teacher.SavedProblemSets;
             //update listbox
             if (_savedProblemSets.Count > 0)
             {
@@ -221,7 +221,7 @@ namespace Teacher_form
         {
             if(!classManagementOpened)
             {
-                ClassManagerScreen classManager = new ClassManagerScreen(_currentlySelectedClassrom);
+                ClassManagerScreen classManager = new ClassManagerScreen(_currentlySelectedClassrom,teacher);
                 classManager.FormClosing += (object se, FormClosingEventArgs ei) => 
                 {
                     classManagementOpened = false;

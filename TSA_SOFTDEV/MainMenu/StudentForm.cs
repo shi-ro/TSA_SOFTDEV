@@ -55,12 +55,9 @@ namespace TSA_SOFTDEV
 
             DoStudentLeaderboard();
             ShowTeamMembers(student);
-
             DoTeamLeaderboard();
-            
-
-         
-
+            ShowTeamMembers(student);
+            DoTeamLeaderboard();
 
             //names.Add(Core.Server.Integration.ExecuteGetUsers());
 
@@ -255,9 +252,13 @@ namespace TSA_SOFTDEV
 
         private void LoadProblemSets()
         {
+            //Core.Server.Integration.ExecuteGetTeacherByStudent(s)
+            int classid = Int32.Parse(s.Classrooms);
+            Classroom cls = Core.Server.Integration.ExecuteGetClassroom(classid);
+            problemSets = cls.AssignedProblemSets;
             // add method call to get problemsets from server
             // and set them to the problem sets list here
-            LoadTempProblemSets();
+            //LoadTempProblemSets();
         }
 
         private void LoadTempProblemSets()
@@ -327,7 +328,7 @@ namespace TSA_SOFTDEV
         {
             if (selectedSet != null)
             {
-                Solver solver = new Solver(selectedSet);
+                Solver solver = new Solver(selectedSet,s);
                 solver.FormClosed += DoSolverClosed;
                 button1.Enabled = false;
                 solver.Show();
