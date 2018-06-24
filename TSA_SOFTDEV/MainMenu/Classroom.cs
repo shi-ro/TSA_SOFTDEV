@@ -39,7 +39,7 @@ namespace MainMenu
 
         public void setClassroomId()
         {
-            Id = 0;
+            Id = Core.Server.Integration.ExecuteGetClassroomIdByName(Name);
         }
     }
 }

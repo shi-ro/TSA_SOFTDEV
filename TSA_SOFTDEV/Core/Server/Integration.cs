@@ -16,11 +16,41 @@ namespace Core.Server
             return External.Wolfram.Connected();
         }
 
+        public static void ExecuteAddStudentToTeam(Team tm)
+        {
+            SqlCommand cmdNew = new SqlCommand("UPDATE Teams SET Teams.TeamStudents = '" + tm.Students + "' WHERE Teams.Id = " + tm.Id, _connection);
+            cmdNew.CommandType = CommandType.Text;
+
+            _connection.Open();
+            cmdNew.ExecuteNonQuery();
+            _connection.Close();
+        }
+
         public static int ExecuteGetClassroomIdByName(String name)
         {
             SqlCommand cmdNew = new SqlCommand("SELECT Classrooms.Id FROM Classrooms WHERE Classrooms.[Name] = '" + name + "'", _connection);
+            cmdNew.CommandType = CommandType.Text;
 
-            return 0;
+            int id = 0;
+
+            _connection.Open();
+            try
+            {
+                SqlDataReader reader = cmdNew.ExecuteReader();
+                while (reader.Read())
+                {
+                    id = (int)reader[0];
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("BB=========================BB");
+                Console.WriteLine(ex);
+            }
+            _connection.Close();
+
+            return id;
         }
 
         public static void ExecuteAddTeam(Team newTeam)

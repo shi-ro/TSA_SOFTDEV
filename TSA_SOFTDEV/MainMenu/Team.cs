@@ -29,6 +29,21 @@ namespace MainMenu
             score = calculateScore();
         }
 
+        public void addStudent(Student bob)
+        {
+            if (Students.Equals(""))
+            {
+                Students += bob.Name;
+            }
+            else
+            {
+                Students += ("," + bob.Name);
+            }
+
+            studentsList.Add(bob);
+            Core.Server.Integration.ExecuteAddStudentToTeam(this);
+        }
+
         private List<Student> getTeamMembers(string team) //insert teamID
         {
             String[] IDstring = team.Split(',');
