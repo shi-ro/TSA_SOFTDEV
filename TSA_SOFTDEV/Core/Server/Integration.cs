@@ -16,9 +16,36 @@ namespace Core.Server
             return External.Wolfram.Connected();
         }
 
-        public static void ExecuteSaveProblemSet(ProblemSet ps)
+        public static void ExecuteSaveProblemSet(Teacher teach, ProblemSet ps)
         {
-            SqlCommand cmdNew = new SqlCommand("", _connection);
+            SqlCommand cmdString = new SqlCommand("SELECT Teachers.SavedProblemSets FROM Teachers WHERE Teachers.Id = " + teach.Id, _connection);
+            cmdString.CommandType = CommandType.Text;
+
+            String problemsStringForm = "";
+
+            _connection.Open();
+            try
+            {
+                SqlDataReader reader = cmdString.ExecuteReader();
+                while (reader.Read())
+                {
+                    problemsStringForm = reader[0] + "";
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("CC=========================CC");
+                Console.WriteLine(ex);
+            }
+            _connection.Close();
+
+            SqlCommand cmdNew = new SqlCommand("UPDATE Teachers SET SavedProblemSets = '" + problemsStringForm + "," + ExecuteGetProblemSetIdByName(ps.Name) + "' WHERE Teachers.Id = " + teach.Id, _connection);
+            cmdNew.CommandType = CommandType.Text;
+
+            _connection.Open();
+            cmdNew.ExecuteNonQuery();
+            _connection.Close();
         }
 
         public static List<Student> ExecuteGetStudentsInTeam(int teamid)
