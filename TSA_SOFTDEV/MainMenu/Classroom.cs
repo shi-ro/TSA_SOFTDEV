@@ -11,14 +11,25 @@ namespace MainMenu
         public String Name { get; set; }
         public String TeacherName { get; set; }
         public String Students { get; set; }
+        public List<ProblemSet> AssignedProblemSets = new List<ProblemSet>();
         public int Id { get; set; }
+        private string _problemList;
 
-        public Classroom(String name, String tName, String students, int id)
+        public Classroom(String name, String tName, String students, int id, String problemList)
         {
             Name = name;
             TeacherName = tName;
             Students = students;
             Id = id;
+        }
+
+        public void Initialize()
+        {
+            String[] problemSetArray = _problemList.Split(',');
+            for (int i = 0; i < problemSetArray.Length; i++)
+            {
+                AssignedProblemSets.Add(Core.Server.Integration.ExecuteGetProblemSetById(problemSetArray[i]));
+            }
         }
 
         public void setClassroomId()

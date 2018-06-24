@@ -15,13 +15,14 @@ namespace Core.Server
         {
             return External.Wolfram.Connected();
         }
-        
+
         public static List<Student> ExecuteGetStudentsInTeam(int teamid)
         {
             String students = "";
             List<Student> listToReturn = new List<Student>();
             SqlCommand cmdString = new SqlCommand("SELECT [TeamStudents] FROM Teams WHERE Teams.[Id] = "+teamid, _connection);
             cmdString.CommandType = CommandType.Text;
+
             _connection.Open();
             try
             {
@@ -34,16 +35,21 @@ namespace Core.Server
             }
             catch (Exception ex)
             {
-                Console.WriteLine("AA=========================AA");
+                Console.WriteLine("GG=========================GG");
                 Console.WriteLine(ex);
             }
             _connection.Close();
-            string[] stringList = students.Split(',');
-            for (int i = 0; i < stringList.Length; i++)
-            {
-                listToReturn.Add(ExecuteGetStudent(stringList[i]));
-            }
-            return listToReturn;
+        
+
+        String[] stringList = students.Split(',');
+
+        for (int i = 0; i < stringList.Length; i++)
+        {
+            listToReturn.Add(ExecuteGetStudent(stringList[i]));
+        }
+
+        return listToReturn;
+
         }
 
         public static List<ProblemSet> ExecuteGetAllProblemSets()
@@ -112,11 +118,6 @@ namespace Core.Server
             return allTeams;
         }
 
-        public static int ExecuteGetClassroomId(Classroom math)
-        {
-            return 0;
-        }
-
         public static void ExecuteAddClassroom(String name)
         {
 
@@ -125,7 +126,7 @@ namespace Core.Server
         public static Classroom ExecuteGetClassroom(int id)
         {
             var e = _connection.State;
-            SqlCommand cmdNew = new SqlCommand("SELECT Classrooms.[Name], Classrooms.Teacher, Classrooms.Students FROM Classrooms WHERE Classrooms.Id = " + id, _connection);
+            SqlCommand cmdNew = new SqlCommand("SELECT Classrooms.[Name], Classrooms.Teacher, Classrooms.Students, Classrooms.AssignedProblemSets FROM Classrooms WHERE Classrooms.Id = " + id, _connection);
             cmdNew.CommandType = CommandType.Text;
 
             Classroom toReturn = null;
@@ -135,7 +136,7 @@ namespace Core.Server
                 SqlDataReader reader = cmdNew.ExecuteReader();
                 while (reader.Read())
                 {
-                    toReturn = new Classroom(reader[0] + "", reader[1] + "", reader[2] + "", id);
+                    toReturn = new Classroom(reader[0] + "", reader[1] + "", reader[2] + "", id, reader[3] + "");
                 }
                 reader.Close();
             }
@@ -146,6 +147,7 @@ namespace Core.Server
             }
             _connection.Close();
 
+            toReturn.Initialize();
             return toReturn;
         }
 
