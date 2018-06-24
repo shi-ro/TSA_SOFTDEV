@@ -328,17 +328,17 @@ namespace Teacher_form
             for (int i = 0; i < students.Count; i++)
             {
                 ListViewItem lv1 = new ListViewItem(count.ToString());
+                //lv1.Width 
                 string student = "";
                 Console.WriteLine("COUNT: " + sortedStudents.Count);
-                foreach (Student stu in sortedStudents)
-                {
-                    student += stu.Name + ", ";
-                }
-                lv1.SubItems.Add(sortedStudents[i].Name + ": " + students);
+
+                lv1.SubItems.Add(sortedStudents[i].Name);
                 lv1.SubItems.Add((sortedStudents[i].Points).ToString());
-                Console.WriteLine("SortedStudents TEACHER Students: " + students);
+                Console.WriteLine("SortedStudents TEACHER Students: " + student);
                 Console.WriteLine("SortedStudents TEACHER: " + sortedStudents[i].Name);
+                listView1.Items.Add(lv1);
             }
+        
         }
 
         private void button11_Click(object sender, EventArgs e)
