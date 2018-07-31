@@ -45,7 +45,7 @@ namespace MainMenu
 
             this.user = userID;//"DANIELA";
             string nickname = name.Replace(" ", "");
-            this.nick = nickname + " MATHfgytfghjhfdrtyjhguygfvb";//name + " ?? Mathedonia";   //Get user name
+            this.nick = nickname + "MATHfgytfgtrftgf";//name + " ?? Mathedonia";   //Get user name
             this.channel = "#Mathedonia_" + TEAMID;// + TEAMID; //replace with actual Team ID
             this.server = "chat.freenode.net";
             this.port = "6667";

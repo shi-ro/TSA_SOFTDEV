@@ -338,34 +338,41 @@ namespace Teacher_form
         }
         private void classLeaderboard(Classroom classroom)
         {
-            String[] IDstring = classroom.Students.Split(',');
-            List<Student> students = new List<Student>();
-            for (int i = 0; i < IDstring.Length; i++)
+            try
             {
-                try
+                String[] IDstring = classroom.Students.Split(',');
+                List<Student> students = new List<Student>();
+                for (int i = 0; i < IDstring.Length; i++)
                 {
-                    students.Add(Core.Server.Integration.ExecuteGetStudentById(Int32.Parse(IDstring[i])));
-                } catch 
-                {
+                    try
+                    {
+                        students.Add(Core.Server.Integration.ExecuteGetStudentById(Int32.Parse(IDstring[i])));
+                    }
+                    catch
+                    {
 
+                    }
+                }
+                sortedStudents = students.OrderByDescending(x => x.Points).ToList();
+                int count = 1;
+                for (int i = 0; i < students.Count; i++)
+                {
+                    ListViewItem lv1 = new ListViewItem(count.ToString());
+                    //lv1.Width 
+                    string student = "";
+                    Console.WriteLine("COUNT: " + sortedStudents.Count);
+
+                    lv1.SubItems.Add(sortedStudents[i].Name);
+                    lv1.SubItems.Add((sortedStudents[i].Points).ToString());
+                    Console.WriteLine("SortedStudents TEACHER Students: " + student);
+                    Console.WriteLine("SortedStudents TEACHER: " + sortedStudents[i].Name);
+                    listView1.Items.Add(lv1);
                 }
             }
-            sortedStudents = students.OrderByDescending(x => x.Points).ToList();
-            int count = 1;
-            for (int i = 0; i < students.Count; i++)
+            catch
             {
-                ListViewItem lv1 = new ListViewItem(count.ToString());
-                //lv1.Width 
-                string student = "";
-                Console.WriteLine("COUNT: " + sortedStudents.Count);
 
-                lv1.SubItems.Add(sortedStudents[i].Name);
-                lv1.SubItems.Add((sortedStudents[i].Points).ToString());
-                Console.WriteLine("SortedStudents TEACHER Students: " + student);
-                Console.WriteLine("SortedStudents TEACHER: " + sortedStudents[i].Name);
-                listView1.Items.Add(lv1);
             }
-        
         }
 
         private void button11_Click(object sender, EventArgs e)

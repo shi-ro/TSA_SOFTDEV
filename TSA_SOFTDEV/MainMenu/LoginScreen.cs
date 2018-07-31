@@ -59,7 +59,7 @@ namespace MainMenu
                     }
                     else
                     {
-                        errorText.Text = "Incorrect Uassword";
+                        errorText.Text = "Incorrect Password";
                     }
                 } else if(user2 != null)
                 {

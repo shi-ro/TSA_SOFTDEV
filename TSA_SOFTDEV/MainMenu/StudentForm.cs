@@ -57,7 +57,6 @@ namespace TSA_SOFTDEV
             ShowTeamMembers(student);
             DoTeamLeaderboard();
             ShowTeamMembers(student);
-
             DoTeamLeaderboard();
 
             //names.Add(Core.Server.Integration.ExecuteGetUsers());
@@ -219,7 +218,7 @@ namespace TSA_SOFTDEV
                         otheruser = otheruser.Substring(1);
                         chatTextBox.Invoke((MethodInvoker)delegate {
                             // Running on the UI thread                           
-                            chatTextBox.Text += ("\n [" + otheruser + "]: " + filteredMessage);
+                            chatTextBox.Text += ("\n [Other User]: " + filteredMessage);
                         });
 
                     }
@@ -253,6 +252,10 @@ namespace TSA_SOFTDEV
 
         private void LoadProblemSets()
         {
+            //Core.Server.Integration.ExecuteGetTeacherByStudent(s)
+            //int classid = Int32.Parse(s.Classrooms);
+            //Classroom cls = Core.Server.Integration.ExecuteGetClassroom(classid);
+            //problemSets = cls.AssignedProblemSets;
             // add method call to get problemsets from server
             // and set them to the problem sets list here
             LoadTempProblemSets();
@@ -260,7 +263,11 @@ namespace TSA_SOFTDEV
 
         private void LoadTempProblemSets()
         {
-            problemSets.Add(new ProblemSet("Multi", 5, "Basic multiplication", "indefinite integral of sqrt(_)", 1, "", "0,10"));
+            problemSets.Add(new ProblemSet("Calculus", 5, "Basic multiplication", "indefinite integral of sqrt(_)", 5, "", "0,10"));
+            problemSets.Add(new ProblemSet("Addition", 5, "Basic addition", "_+_", 6, "", "0,10"));
+            problemSets.Add(new ProblemSet("Subtraction", 5, "Basic subtraction", "_-_-_", 4, "", "0,10"));
+            problemSets.Add(new ProblemSet("Division", 5, "Basic division", "_/_", 3, "", "0,10"));
+            problemSets.Add(new ProblemSet("Square Root", 5, "Basic sqrt", "sqrt(_)", 3, "", "0,10"));
         }
 
         private void label10_Click(object sender, EventArgs e)
