@@ -55,20 +55,8 @@ namespace TSA_SOFTDEV
 
             DoStudentLeaderboard();
             ShowTeamMembers(student);
-<<<<<<< HEAD
             DoTeamLeaderboard();
-=======
-            DoTeamLeaderboard();
-            
 
-            
-=======
-
-            ShowTeamMembers(student);
-
-            DoTeamLeaderboard();
->>>>>>> 93585d7b841fa35530cce592df3260924113b341
->>>>>>> 716b13af24f79fe248d15e352aed62787a51a400
 
             //names.Add(Core.Server.Integration.ExecuteGetUsers());
 
